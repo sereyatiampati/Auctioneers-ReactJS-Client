@@ -9,13 +9,13 @@ function Footer() {
       <p className="footer-contact">9045 Embakasi Avenue, Nairobi</p>
       <p className="footer-contact">Email: support@actionhub.co.ke</p>
       <div className="footer-social-icons">
-        <a href="#">
+        <a href="#Facebook">
           <img src="https://img.icons8.com/fluency/1x/facebook-new.png" alt="Facebook" />
         </a>
-        <a href="#">
+        <a href="#Linkedin">
           <img src="https://img.icons8.com/fluency/1x/linkedin.png" alt="LinkedIn" />
         </a>
-        <a href="#">
+        <a href="#Instagram">
           <img src="https://img.icons8.com/color/1x/instagram-new.png" alt="Instagram" />
         </a>
       </div>
