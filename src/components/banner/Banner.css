@@ -1,0 +1,60 @@
+.div {
+    display: flex;
+    position: relative;
+    min-width: 20px;
+    min-height: 20px;
+    max-width: 1921px;
+    background-color: rgba(6, 48, 83, 0.699999988079071);
+  }
+  .image {
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+  .image-sizer {
+    width: 100%;
+    padding-top: 12.493492972410202%;
+    pointer-events: none;
+    font-size: 0;
+  }
+  .mydiv {
+    display: flex;
+    flex-direction: column;
+    max-width: 1133px;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 50px; /* added margin to separate the two text sections */
+    background-color: rgba(6, 48, 83, 0.699999988079071);
+  }
+  .we-verify-all-auctioned-items {
+    max-width: 1133px;
+    color: white;
+    font-size: 52px;
+    line-height: 72px;
+    letter-spacing: 0%;
+    text-align: center;
+    font-family: "Public Sans", sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+  .online-safety-assured-all-ite {
+    max-width: 598px;
+    margin-top: 12px;
+    color: rgba(231, 233, 235, 1);
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0%;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    position: absolute;
+    top: calc(17% + 90px); /* added position to appear beneath the first text section */
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
