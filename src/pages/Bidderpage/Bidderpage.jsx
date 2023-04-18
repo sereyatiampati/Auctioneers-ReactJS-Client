@@ -20,11 +20,9 @@ function Bidderpage() {
   }, []);
 
   console.log('products:', products);
-
   const indexOfLastBid = currentPage * bidsPerPage;
   const indexOfFirstBid = indexOfLastBid - bidsPerPage;
   const currentBids = Array.isArray(products) ? products.slice(indexOfFirstBid, indexOfLastBid) : [];
-
   return (
     <>
       <Banner />
