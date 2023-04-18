@@ -201,7 +201,67 @@
       font-size: 28px;
       line-height: 32px;
     }
-  } 
+  }
+  
+  /*--------------------------------------------------------------
+# F.A.Q
+--------------------------------------------------------------*/
+.faq .accordion-collapse {
+  border: 0;
+}
+
+.faq .accordion-button {
+  padding: 15px 15px 20px 0;
+  font-weight: 600;
+  border: 0;
+  font-size: 18px;
+  color: #444444;
+  text-align: left;
+}
+
+.faq .accordion-button:focus {
+  box-shadow: none;
+}
+
+.faq .accordion-button:not(.collapsed) {
+  background: none;
+  color: #4154f1;
+  border-bottom: 0;
+}
+
+.faq .accordion-body {
+  padding: 0 0 25px 0;
+  border: 0;
+}
+
+  /*--------------------------------------------------------------
+# Clients
+--------------------------------------------------------------*/
+.clients .clients-slider .swiper-slide img {
+  opacity: 0.5;
+  transition: 0.3s;
+}
+
+.clients .clients-slider .swiper-slide img:hover {
+  opacity: 1;
+}
+
+.clients .clients-slider .swiper-pagination {
+  margin-top: 20px;
+  position: relative;
+}
+
+.clients .clients-slider .swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  opacity: 1;
+  border: 1px solid #4154f1;
+}
+
+.clients .clients-slider .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: #4154f1;
+}
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
@@ -351,10 +411,10 @@
   position: relative;
   border-radius: 4px;
   border: 1px solid #e1ecff;
-  -webkit-border-radius:;
+  /* -webkit-border-radius:;
   -moz-border-radius:;
   -ms-border-radius:;
-  -o-border-radius:;
+  -o-border-radius:; */
 }
 
 .footer .footer-newsletter form input[type=email] {
@@ -377,10 +437,10 @@
   color: #fff;
   transition: 0.3s;
   border-radius: 4px;
-  -webkit-border-radius:;
+  /* -webkit-border-radius:;
   -moz-border-radius:;
   -ms-border-radius:;
-  -o-border-radius:;
+  -o-border-radius:; */
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
   -ms-transition: 0.3s;

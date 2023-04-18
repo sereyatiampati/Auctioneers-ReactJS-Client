@@ -1,0 +1,31 @@
+.category-btn {
+    height: 35px;
+    width: 170px;
+    border: none;
+    border-radius: 20px;
+    background-color: #633a9c;
+    font-size: 14px;
+    font-weight: 500
+}
+
+.text {
+    font-size: 23px;
+    font-weight: bold
+}
+
+.card-category {
+    height: 130px;
+    overflow: hidden;
+    border: none;
+    border-radius: 15px;
+    background-color:#f6f9ff;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+
+.imagename {
+    font-size: 14px;
+    font-weight: bold
+}
