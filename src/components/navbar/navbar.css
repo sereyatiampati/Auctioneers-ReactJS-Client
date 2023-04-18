@@ -9,3 +9,15 @@
   .nav-links li {
     margin-right: 20px;
   }
+  .link-body-emphasis {
+    color: black;
+  }
+  .link-body-emphasis {
+    font-size: 14px;
+  }
+  .link-body-emphasis {
+    font-weight: bold;
+  }
+  .fs-4 {
+    color: rgb(43, 30, 82);
+  }
