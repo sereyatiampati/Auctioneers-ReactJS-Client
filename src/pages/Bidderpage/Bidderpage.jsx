@@ -1,4 +1,3 @@
-// import { Pagination } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { Banner } from "../../components/banner/Banner";
 import ProductsContainer from "../../components/ProductsContainer/ProductsContainer";
