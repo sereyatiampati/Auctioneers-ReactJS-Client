@@ -26,40 +26,41 @@ function Signup() {
                 placeholder="ex: Lindsey Wilson"
               />
             </div>
-        <div className="form-row">
-          <label htmlFor="your_email">Your Email:</label>
-          <input
-            type="text"
-            name="your_email"
-            id="your_email"
-            className="input-text"
-            required
-            pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}"
-          />
-        </div>
-        <div className="form-row">
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            className="input-text"
-            required
-          />
-        </div>
-        <div className="form-row">
-          <label htmlFor="confirm_password">Confirm Password:</label>
-          <input
-            type="password"
-            name="confirm_password"
-            id="confirm_password"
-            className="input-text"
-            required
-          />
-        </div>
-        <div className="login-link-container">
-            <p>Already have an account? <a href="#">Sign in</a></p>
-          </div>
+            <div className="form-row">
+              <label htmlFor="your_email">Your Email:</label>
+              <input
+                type="text"
+                name="your_email"
+                id="your_email"
+                className="input-text"
+                required
+                pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}"
+              />
+            </div>
+            <div className="form-row">
+              <label htmlFor="password">Password:</label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                className="input-text"
+                required
+              />
+            </div>
+            <div className="form-row">
+              <label htmlFor="confirm_password">Confirm Password:</label>
+              <input
+                type="password"
+                name="confirm_password"
+                id="confirm_password"
+                className="input-text"
+                required
+              />
+            </div>
+            <div className="login-link-container">
+              <p>Already have an account? <a href="#">Sign in</a>
+              </p>
+            </div>
             <div className="form-row-last">
               <input
                 type="submit"
@@ -76,10 +77,10 @@ function Signup() {
                 value="Signup as Buyer"
               />
             </div>
-      </form>
-    </div>
-  </div>
-</body>
+          </form>
+        </div>
+      </div>
+    </body>
   );
 }
 
