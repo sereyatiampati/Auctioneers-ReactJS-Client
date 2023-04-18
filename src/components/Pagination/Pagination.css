@@ -19,11 +19,11 @@
     border-color : #edeff4
 }
 .pagination button.active {
-    width: 45px;
-    height: 45px;
+    width: 42px;
+    height: 42px;
     font-weight: 900;
     border-color: #101010;
-    background: #ffe400;
-    color: #101010;
+    background: #172754;
+    color: #eee;
 }
   
