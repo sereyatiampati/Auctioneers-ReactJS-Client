@@ -1,4 +1,4 @@
-import 'login-form.css';
+import './login-form.css';
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
@@ -33,8 +33,10 @@ const LoginForm = () => {
         if (response?.ok) {
             navigate("/dashboard");
         } else if (response['status'] === 401){
+            console.log('Invalid username or password')
             setLoginError('Invalid username or password')
         } else {
+            console.log('Other login error')
             setLoginError('Login error')
         }
     }
