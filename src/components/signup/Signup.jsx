@@ -9,6 +9,11 @@ function Signup({setUser}) {
     const [errors, setErrors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     // let navigator = useNavigate();
+    const [role, setRole] = useState(1);
+
+    // identifying user role
+    const vendorRole = () => setRole(2)
+    const buyerRole = () => setRole(1)
 
     function handleSubmit(e) {
       e.preventDefault();
@@ -26,6 +31,7 @@ function Signup({setUser}) {
             username,
             password,
             password_confirmation: passwordConfirmation,
+            role_id: role,
           },
         }),
       }).then((r) => {
@@ -117,9 +123,14 @@ function Signup({setUser}) {
             <div className="form-row-last">
               <input
                 type="submit"
-                name="signup as Seller"
+                name="signup as Vendor"
                 className="signup"
-                value="Signup as Seller"
+                value="Signup as Vendor"
+                onClick={() => {
+                  vendorRole();
+                  
+                }}
+                
               />
             </div>
             <div className="form-row-last">
@@ -128,6 +139,10 @@ function Signup({setUser}) {
                 name="signup as Buyer"
                 className="signup"
                 value="Signup as Buyer"
+                onClick={() => {
+                  buyerRole();
+                }}
+                
               />
             </div>
       </form>
