@@ -6,11 +6,14 @@ import Signup from './components/signup/Signup';
 function App() {
   return (
     <div className="body">
-       <Navbar/>
+    <Navbar/>
         <Routes>
           <Route path='/signup' element={<Signup/>}/>
-          <Route path='/bids' element={<Bidhistory/>} />
-        </Routes>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/auctions' />
+          <Route path='/vendors' />
+          <Route path='/contact' />
+          </Routes>
     </div>
   );
 }
