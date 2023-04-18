@@ -21,7 +21,7 @@ const NotFound = ({value}) => {
         <div className="row justify-content-center">
           <div className="col-lg-6">
             <div className="jumbotron bg-white text-center">
-              <h1 className="display-3">404 - Page Not Found</h1>
+              <h1 className="h2">404 - Page Not Found</h1>
               <p className="lead">Sorry, the page you are looking for does not exist.</p>
               <p>Redirecting to the previous page in 8 seconds...</p>
             </div>
