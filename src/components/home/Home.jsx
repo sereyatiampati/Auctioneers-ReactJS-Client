@@ -10,6 +10,7 @@ function Home() {
     return (
         <>
         <HeroSection/>
+        <Clients/>
         <LatestAuctions/>
         <Categories/>
         <FAQ/>

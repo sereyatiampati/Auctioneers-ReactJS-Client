@@ -9,7 +9,7 @@ function HomeFooter () {
           <div class="row justify-content-center">
             <div class="col-lg-12 text-center">
               <h4>Our Newsletter</h4>
-              <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+              <p>Signup to receive email updates on new product announcements, special promotions, sales and more.</p>
             </div>
             <div class="col-lg-6">
               <form action="" method="post">
@@ -28,7 +28,7 @@ function HomeFooter () {
                 {/* <img src="assets/img/logo.png" alt=""/> */}
                 <span>Auctioneers</span>
               </a>
-              <p className="text-left">Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+              <p className="text-left">We strive to provide the highest level of service to our clients. With our extensive knowledge and experience in the industry, we offer a reliable and transparent auction process for both buyers and sellers. Our goal is to create a trusted platform where everyone can find unique and valuable items while enjoying a seamless auction experience. Thank you for choosing us as your auctioneer partner.</p>
               <div class="social-links mt-3">
                 <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                 <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
