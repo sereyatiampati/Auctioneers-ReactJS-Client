@@ -1,22 +1,21 @@
 import React from 'react';
-import './App.css';
-import Home from './components/home/Home';
-import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/navbar/Navbar';
-import Bidhistory from './components/bidhistory/Bidhistory';
 import Signup from './components/signup/Signup';
+import './App.css'
+import Home from './components/home/Home'
+import { Routes, Route } from 'react-router-dom'
 
 function App() {
   return (
     <div className="body">
-      <Navbar />
-      <Routes>
-        <Route path='/signup' element={<Signup/>}/>
-        <Route path='/' element={<Home/> }/>
-        <Route path='/auctions' />
-        <Route path='/vendors' />
-        <Route path='/contact' />
-      </Routes>
+        <Navbar/>
+        <Routes>
+          <Route path='/signup' element={<Signup/>}/>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/auctions' />
+          <Route path='/vendors' />
+          <Route path='/contact' />
+        </Routes>
     </div>
   );
 }
