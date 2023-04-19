@@ -16,12 +16,12 @@ function  FAQ(){
                 <div class="accordion-item">
                   <h2 class="accordion-header">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-1">
-                      Non consectetur a erat nam at lectus urna duis?
+                    What types of items can be sold on an online auction platform?
                     </button>
                   </h2>
                   <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
                     <div class="accordion-body">
-                      Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+                    Almost anything can be sold on our auction platform, including antiques, art, collectibles, electronics, and more.
                     </div>
                   </div>
                 </div>
@@ -29,12 +29,12 @@ function  FAQ(){
                 <div class="accordion-item">
                   <h2 class="accordion-header">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-2">
-                      Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque?
+                    How do I participate in an auction?
                     </button>
                   </h2>
                   <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
                     <div class="accordion-body">
-                      Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+                    To participate in an ongoing auction, you'll need to register on our platform, then you can then browse the available items and bid on the ones you're interested in.
                     </div>
                   </div>
                 </div>
@@ -42,12 +42,12 @@ function  FAQ(){
                 <div class="accordion-item">
                   <h2 class="accordion-header">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3">
-                      Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi?
+                    What happens if I win an item in an auction?
                     </button>
                   </h2>
                   <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
                     <div class="accordion-body">
-                      Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
+                    If you win an item in an auction, you'll typically be emailed to pay for the item plus any shipping or handling fees. The auctioneer will then ship the item to you.
                     </div>
                   </div>
                 </div>
@@ -61,12 +61,12 @@ function  FAQ(){
                 <div class="accordion-item">
                   <h2 class="accordion-header">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-1">
-                      Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?
+                    What is a reserve price in an auction?
                     </button>
                   </h2>
                   <div id="faq2-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
                     <div class="accordion-body">
-                      Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+                    A reserve price is the minimum price that the seller is willing to accept for an item. If the bidding doesn't reach the reserve price, the item won't be sold.
                     </div>
                   </div>
                 </div>
@@ -74,12 +74,12 @@ function  FAQ(){
                 <div class="accordion-item">
                   <h2 class="accordion-header">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-2">
-                      Tempus quam pellentesque nec nam aliquam sem et tortor consequat?
+                    What happens if there is a dispute between the buyer and seller in an auction?
                     </button>
                   </h2>
                   <div id="faq2-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
                     <div class="accordion-body">
-                      Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
+                    We have a dispute resolution process in place to handle any issues that may arise between buyers and sellers.
                     </div>
                   </div>
                 </div>
@@ -87,12 +87,12 @@ function  FAQ(){
                 <div class="accordion-item">
                   <h2 class="accordion-header">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-3">
-                      Varius vel pharetra vel turpis nunc eget lorem dolor?
+                    How does an online auction work?
                     </button>
                   </h2>
                   <div id="faq2-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
                     <div class="accordion-body">
-                      Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Nibh tellus molestie nunc non blandit massa enim nec.
+                    Online auctions work similarly to traditional auctions. The auctioneer will post items for sale, and users can bid on those items in real-time. The highest bidder at the end of the auction wins the item and gets contacted via email.
                     </div>
                   </div>
                 </div>
