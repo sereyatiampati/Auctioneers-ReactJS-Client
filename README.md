@@ -16,7 +16,7 @@ It is strongly advised to install the following linting plugins on VS-code to re
 ```
 npm install
 ```
-2. Run development frontend server at port 5173
+2. Run the frontend dev server - [http://localhost:5173](http://localhost:5173)
 
 ```
 npm run dev
