@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Banner } from "../../components/banner/Banner";
 import ProductsContainer from "../../components/ProductsContainer/ProductsContainer";
 import Pagination from "../../components/Pagination/Pagination";
-import Footer from "../../components/footer/Footer";
 
 function Bidderpage() {
   const [products, setProducts] = useState([]);
@@ -28,7 +27,6 @@ function Bidderpage() {
       <Banner />
       <ProductsContainer products={currentBids} />
       <Pagination totalbids={products.length} bidsPerPage={bidsPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage} />
-      <Footer />
     </>
   );
 }
