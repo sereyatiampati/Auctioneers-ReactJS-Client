@@ -32,6 +32,9 @@ function runServer() {
     routes() {
       this.logging = true;
 
+      /*Add an artificial response delay*/
+      this.routes = 2000
+
       this.post("/login", (schema, request)  => {
         const requestedUser = JSON.parse(request.requestBody);
         const results = schema.users.where(requestedUser)
