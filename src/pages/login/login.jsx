@@ -5,8 +5,8 @@ import Footer from "../../components/footer/Footer";
 import { useNavigate } from "react-router-dom";
 
 // fake JSON API
-import runServer from "../../mockserver"
-runServer()
+// import runServer from "../../mockserver"
+// runServer()
 
 const Login = ({value}) => {
     const [username, setUsername] = useState("");

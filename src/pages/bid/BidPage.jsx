@@ -12,12 +12,11 @@ function BidPage() {
           </div>
           <div className="col-5" style={{border:'0px solid gray'}}>
               <h3>Samsung Galaxy S4 I337 16GB 4G LTE Unlocked GSM Android Cell Phone</h3>    
-              <h5 style={{color:'#337ab7'}}><a href="#">Samsung</a> · <small style={{color:'#337ab7'}}>(5054 views)</small></h5>
+              <h5 style={{color:'#3E54AC'}}><a href="#">Samsung</a> · <small style={{color:'#3E54AC'}}>(5054 views)</small></h5>
   
               <h6 className="title-price"><small>Current winning bid</small></h6>
               <h3 style={{marginTop:'0px'}}>KES 2000</h3>
                   
-  
               <div className="section" style={{paddingBottom:'20px'}}>
                   <button className="btn btn-success"><span style={{marginRight:'20px'}} className="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Bid</button>
               </div>                                        
