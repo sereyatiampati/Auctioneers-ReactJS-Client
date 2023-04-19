@@ -17,6 +17,7 @@ function App() {
           <Route path='/vendors' />
           <Route path='/contact' />
         </Routes>
+        
     </div>
   );
 }
