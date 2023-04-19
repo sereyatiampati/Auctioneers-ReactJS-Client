@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Banner } from "../../components/banner/Banner";
-import ProductsContainer from "../../components/ProductsContainer/ProductsContainer";
+import { ProductsContainer } from "../../components/ProductsContainer/ProductsContainer";
 import Pagination from "../../components/Pagination/Pagination";
 
 function Bidderpage() {
@@ -19,6 +19,7 @@ function Bidderpage() {
   }, []);
 
   console.log('products:', products);
+  console.log(products)
   const indexOfLastBid = currentPage * bidsPerPage;
   const indexOfFirstBid = indexOfLastBid - bidsPerPage;
   const currentBids = Array.isArray(products) ? products.slice(indexOfFirstBid, indexOfLastBid) : [];

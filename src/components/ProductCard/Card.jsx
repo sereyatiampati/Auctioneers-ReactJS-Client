@@ -1,20 +1,19 @@
 function Card({ product }) {
     const now = new Date();
-    const startDate = new Date(product.start_date)
-    const endDate = new Date(product.end_date);
-    const timeDiff = endDate.getTime() - now.getTime();
+    const startDate = product && product.start_date ? new Date(product.start_date) : null;
+    const endDate = product && product.end_date ? new Date(product.end_date) : null;
+    const timeDiff = endDate && startDate ? endDate.getTime() - now.getTime() : 0;
     const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
     const hours = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
-    const startDateString = `${startDate.toLocaleDateString()} ${startDate.toLocaleTimeString()}`
-    const endDateString = `${endDate.toLocaleDateString()} ${endDate.toLocaleTimeString()}`;
-    let auctionstatus = ''
-    if (timeDiff <= 0) {
-        auctionstatus = 'Auction Ended'
+    const startDateString = startDate ? `${startDate.toLocaleDateString()} ${startDate.toLocaleTimeString()}` : '';
+    const endDateString = endDate ? `${endDate.toLocaleDateString()} ${endDate.toLocaleTimeString()}` : '';
+    let auctionstatus = '';
+    if (!endDate || timeDiff <= 0) {
+        auctionstatus = 'Auction Ended';
+    } else {
+        auctionstatus = `Auction ending in: ${days} day(s) ${hours} hour(s)`;
     }
-    else {
-        auctionstatus = `Auction ending in: ${days} day(s) ${hours} hour(s)`
-    }
-    console.log(product.name)
+    console.log(product.name);
     return (
         <div class="col-md-4 mt-2">
             <div class="card">
@@ -30,8 +29,8 @@ function Card({ product }) {
                         </h6>
                         <p style={{ color: "#4A60A1" }} data-abc="true">Start price : ${product.starting_price}</p>
                     </div>
-                    <p class="text-muted" data-abc="true">Start Date : {startDateString}</p>
-                    <div class="text-muted mb-3">End Date: {endDateString}</div>
+                    {startDateString && <p class="text-muted" data-abc="true">Start Date : {startDateString}</p>}
+                    {endDateString && <div class="text-muted mb-3">End Date: {endDateString}</div>}
                     <div class="text-muted mb-2 pb-2 border-bottom" >{auctionstatus}</div>
                     <button type="button" class="btn bg-light mr-3" style={{ color: "#4A60A1" }}><i class="bi bi-share"></i></button>
                     <button type="button" class="btn bg-light mr-3" style={{ color: "#4A60A1" }}><i class="fa-regular fa-heart"></i></button>
@@ -40,7 +39,6 @@ function Card({ product }) {
             </div>
         </div>
     );
-
 }
 
 export default Card;

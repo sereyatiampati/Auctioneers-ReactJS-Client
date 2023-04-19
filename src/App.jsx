@@ -5,6 +5,10 @@ import Signup from './components/signup/Signup';
 import './App.css'
 import Home from './components/home/Home'
 import { Routes, Route } from 'react-router-dom'
+import Createbid from './components/Createbid/Createbid';
+import { useState, useEffect } from "react"
+import Bidderpage from './pages/Bidderpage/Bidderpage';
+import HomeFooter from './components/home/HomeFooter';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -31,6 +35,7 @@ function App() {
   return (
     <div className="body">
         <Navbar/>
+        <Createbid/>
         <Routes>
           <Route path='/signup' element={<Signup/>}/>
           <Route path='/' element={<Home/>}/>
