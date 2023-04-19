@@ -1,15 +1,9 @@
-<<<<<<<<< Temporary merge branch 1
-import React from 'react';
-import './App.css';
-import Navbar from './components/navbar/Navbar';
-import Signup from './components/signup/Signup';
-import Footer from './components/footer/Footer';
-=========
+
 import React, { useState, useEffect } from 'react';
 import './App.css'
 import Home from './components/home/Home'
 import { Routes, Route } from 'react-router-dom'
->>>>>>>>> Temporary merge branch 2
+
 
 function App() {
   const [user, setUser] = useState(null);
@@ -34,12 +28,6 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const value = [loggedIn, setLoggedIn];
   return (
-<<<<<<<<< Temporary merge branch 1
-    <div className="App">
-      <Navbar />
-      <Signup />
-      <Footer />
-=========
     <div className="body">
         <Navbar/>
         <Createbid/>
@@ -51,7 +39,6 @@ function App() {
           <Route path='/contact' />
         </Routes>
         
->>>>>>>>> Temporary merge branch 2
     </div>
   );
 }
