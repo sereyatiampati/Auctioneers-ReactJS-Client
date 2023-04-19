@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import './App.css'
 import Login from './pages/login/login'
 import NotFound from './pages/404/NotFound'
+import BidPage from './pages/bid/BidPage'
 import Navbar from './components/navbar/Navbar';
 import Signup from './components/signup/Signup';
 import Home from './components/home/Home'
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path='/signup' element={<Signup/>}/>
           <Route path='/' element={<Home/>}/>
+          <Route path='/product-bid' element={<BidPage/>}/>
           <Route path='/auctions' />
           <Route path='/vendors' />
           <Route path='/contact' />

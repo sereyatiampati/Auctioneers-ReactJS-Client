@@ -5,7 +5,7 @@ import Footer from "../../components/footer/Footer";
 import { useNavigate } from "react-router-dom";
 
 // fake JSON API
-import runServer from "../../local-api"
+import runServer from "../../mockserver"
 runServer()
 
 const Login = ({value}) => {
@@ -39,6 +39,7 @@ const Login = ({value}) => {
 
         setSubmitRespondPending(false)
         if (response?.ok) {
+            console.log('success')
             setLoggedIn(true)
             navigate("/dashboard");
         } else if (response['status'] === 401){
@@ -67,7 +68,7 @@ const Login = ({value}) => {
                                         <input type="password" className="form-control" id="password" name="password" value={password} placeholder="Password*" onChange={(e) => setPassword(e.target.value)} required />
                                     </div>
                                     <div className="d-grid gap-2 mb-2">
-                                        <button className="btn-theme-color py-2 rounded-lg" type="submit">{(submitRespondPending===true)?<div class="spinner-border spinner-border-sm" role="status" />:"Log in"}</button>
+                                        <button className="btn-theme-color py-2 rounded-lg" type="submit">{(submitRespondPending===true)?<div className="spinner-border spinner-border-sm" role="status" />:"Log in"}</button>
                                     </div>
                                     {(loginError.length > 0)&&<p  className="theme-font text-danger">{loginError}</p> }
                                 </form>
