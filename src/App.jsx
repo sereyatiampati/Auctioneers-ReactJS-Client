@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import './App.css'
 import Home from './components/home/Home'
 import { Routes, Route } from 'react-router-dom'
+import Navbar from './components/navbar/Navbar'
+import Signup from './components/signup/Signup'
 
 
 function App() {
@@ -28,9 +30,8 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const value = [loggedIn, setLoggedIn];
   return (
-    <div className="body">
+    <div className="App">
         <Navbar/>
-        <Createbid/>
         <Routes>
           <Route path='/signup' element={<Signup/>}/>
           <Route path='/' element={<Home/>}/>
