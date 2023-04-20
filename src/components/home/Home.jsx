@@ -1,4 +1,4 @@
-import ProductsContainer from "../ProductsContainer/ProductsContainer";
+// import ProductsContainer from "../ProductsContainer/ProductsContainer";
 import Categories from "./Categories";
 import Clients from "./Clients";
 import FAQ from "./FAQ";
@@ -10,6 +10,7 @@ function Home() {
     return (
         <>
         <HeroSection/>
+        <Clients/>
         <LatestAuctions/>
         <Categories/>
         <FAQ/>
