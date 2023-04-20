@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Lato:wght@100;300;400;700;900&display=swap');
+
+.banner {
+    height: 50vh;
+    width: 100%;
+
+    background:
+    url("/src/assets/banner-arrow.png") 0% 50%/20% 80% no-repeat,
+    url("/src/assets/banner-image-person.jpg") 110% 50%/40% 110% no-repeat,
+    linear-gradient(101.62deg, #BFACE2 0%, rgba(255, 255, 255, 0) 30.73%);
+}
+
+.login-background{
+    background: linear-gradient(136.61deg, #BFACE2 0%, #F5F8FF 56.25%);
+}
+
+.img{
+    width: 90px;
+    height: 90px;
+}
+
+.logo-img{
+    width: 20%;
+}
+
+.header-footer-theme{
+    background-color: #655DBB;
+}
+
+.homepage-background-color{
+    background-color: #F5F8FF;
+}
+
+.theme-font{
+    font-family: 'Lato', sans-serif;
+}
+
+.color-3E54AC{
+    color:#3E54AC;
+}
+
+.color-655DBB{
+    color:#655DBB;
+}
+
+.color-F5F8FF{
+    color:#F5F8FF;
+}
+
+.header-btn{
+    background-color: #F5F8FF;
+    color:#000000;
+}
+
+form button{
+    background-color: #3E54AC;
+    color: #FFFFFF
+}
+
+form button:hover{
+    background-color: #655DBB;
+    color: #FFFFFF
+}
+
+.extend-height{
+    min-height: 70vh
+}

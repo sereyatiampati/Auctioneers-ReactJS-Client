@@ -1,4 +1,5 @@
 import './categories.css'
+import EachCategory from './EachCategory'
 function Categories () {
     return (
         <>
