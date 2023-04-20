@@ -1,0 +1,53 @@
+.confirm-bid-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    height: 500px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .confirm-bid-card__image {
+    margin-bottom: 20px;
+  }
+  
+  .confirm-bid-card__image img {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    max-height: 200px;
+  }
+  
+  .confirm-bid-card__details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .confirm-bid-card__details h2 {
+    margin-top: 0;
+  }
+  
+  .confirm-bid-card__details p {
+    margin-bottom: 20px;
+  }
+  
+  .confirm-bid-card__button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #ffa200;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .confirm-bid-card__button:hover {
+    background-color: #ecf0f1;
+  }

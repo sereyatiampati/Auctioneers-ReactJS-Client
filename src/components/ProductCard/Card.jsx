@@ -1,3 +1,4 @@
+
 function Card({ product }) {
     const now = new Date();
     const startDate = product && product.start_date ? new Date(product.start_date) : null;
