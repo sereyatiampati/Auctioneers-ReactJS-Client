@@ -1,4 +1,3 @@
-import Bidderpage from "../../pages/Bidderpage/Bidderpage";
 import Card from "../ProductCard/Card";
 
 function LatestAuctions (){
@@ -11,7 +10,12 @@ function LatestAuctions (){
         <div class="container d-flex justify-content-center mt-50 mb-50">
            
         <div class="row">
-          {/* <Bidderpage/> */}
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
         </div>
     </div>
     </div>

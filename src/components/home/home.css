@@ -407,7 +407,7 @@
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
-.footer {
+/* .footer {
   background: #f6f9ff;
   padding: 0 0 30px 0;
   font-size: 14px;
@@ -434,12 +434,12 @@
   padding: 6px 10px;
   position: relative;
   border-radius: 4px;
-  border: 1px solid #e1ecff;
+  border: 1px solid #e1ecff; */
   /* -webkit-border-radius:;
   -moz-border-radius:;
   -ms-border-radius:;
   -o-border-radius:; */
-}
+/* }
 
 .footer .footer-newsletter form input[type=email] {
   border: 0;
@@ -460,12 +460,12 @@
   background: #4154f1;
   color: #fff;
   transition: 0.3s;
-  border-radius: 4px;
+  border-radius: 4px; */
   /* -webkit-border-radius:;
   -moz-border-radius:;
   -ms-border-radius:;
   -o-border-radius:; */
-  -webkit-transition: 0.3s;
+  /* -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
   -ms-transition: 0.3s;
   -o-transition: 0.3s;
@@ -594,4 +594,4 @@
   text-align: center;
   font-size: 13px;
   color: #012970;
-}
+} */
