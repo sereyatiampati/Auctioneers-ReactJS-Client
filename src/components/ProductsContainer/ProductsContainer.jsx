@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Card from "../ProductCard/Card";
+import Card from "../ProductCard/Carding";
 
 export const ProductsContainer = ({products}) =>  {
   const allProducts = products.map((product) => <Card key={product.id} product={product}/>)
@@ -9,6 +9,7 @@ export const ProductsContainer = ({products}) =>  {
     <div class="container d-flex justify-content-center mt-50 mb-50">
             
             <div class="row">
+              {/* <Card/>
               <Card/>
               <Card/>
               <Card/>
@@ -16,9 +17,8 @@ export const ProductsContainer = ({products}) =>  {
               <Card/>
               <Card/>
               <Card/>
-              <Card/>
-              <Card/>
-              {/* {allProducts} */}
+              <Card/> */}
+              {allProducts}
             </div>
         </div>
         </>
