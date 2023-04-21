@@ -57,7 +57,7 @@ function Signup({setUser}) {
       <div className="page-content">
         <div className="form-v2-content">
           <div className="form-left">
-            <img src="https://images.pexels.com/photos/5668473/pexels-photo-5668473.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="form" />
+            <img src="https://images.pexels.com/photos/5668473/pexels-photo-5668473.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="form" height='300' width='250'/>
           </div>
           <form
             onSubmit={handleSubmit}
