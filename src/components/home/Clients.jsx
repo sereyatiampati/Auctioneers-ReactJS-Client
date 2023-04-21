@@ -1,7 +1,7 @@
 
 function Clients() {
     return (
-<section id="clients" class="clients section">
+<section id="clients" class="clients section mx-0">
         <header className="section-header">
             <h2>TRUSTED BY 20,000+ ORGANIZATIONS WORLDWIDE</h2>
           </header>

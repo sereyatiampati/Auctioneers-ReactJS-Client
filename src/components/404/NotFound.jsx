@@ -2,8 +2,6 @@ import './NotFound.css'
 import React, { useEffect, Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 // import Header from "../components/Header";
-import Footer from "../../components/footer/Footer";
-
 const NotFound = ({value}) => {
   let navigate = useNavigate();
 
@@ -28,7 +26,6 @@ const NotFound = ({value}) => {
           </div>
         </div>
       </div>
-      <Footer/>
     </>
   );
 };

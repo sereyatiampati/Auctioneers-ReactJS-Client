@@ -1,5 +1,4 @@
 import React from 'react'
-import './Banner.css'
 
 export const Banner = ({ sellertext, buyertext }) => {
   return (

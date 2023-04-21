@@ -1,0 +1,12 @@
+.vendors-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    width: 100%;
+    margin: 0;
+}
+  
+  .vendors {
+    text-align: center;
+  }

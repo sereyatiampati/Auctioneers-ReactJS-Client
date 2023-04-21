@@ -253,7 +253,7 @@
 # Clients
 --------------------------------------------------------------*/
 .clients {
-  padding: 12px 0;
+  padding: 0;
   text-align: center;
 }
 
@@ -273,7 +273,8 @@
   padding-bottom: 0px;
 }
 .clients .section-header h2{
-  padding-bottom: 20px;
+  padding-bottom: 5px;
+  padding-top: 12px;
   font-size: medium;
   color: grey;
   filter: grayscale(100);

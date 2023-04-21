@@ -1,6 +1,5 @@
 import "./seller.css"
 import React, { Fragment } from 'react';
-import Footer from "../../components/footer/Footer";
 
 function Seller() {
   return (
@@ -101,7 +100,6 @@ function Seller() {
                 </table>
             </div>
         </div>
-        <Footer />
     </>
   )
 

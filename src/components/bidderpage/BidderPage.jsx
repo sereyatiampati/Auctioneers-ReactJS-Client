@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
-import { Banner } from "../../components/banner/Banner";
-import { ProductsContainer } from "../../components/ProductsContainer/ProductsContainer";
-import Pagination from "../../components/Pagination/Pagination";
+import './bidderpage.css'
+import { Banner } from "./Banner";
+import { ProductsContainer } from "../ProductsContainer/ProductsContainer";
+import Pagination from "../Pagination/Pagination";
 
-function Bidderpage() {
+
+function BidderPage() {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [bidsPerPage, setbidsPerPage] = useState(9);
@@ -32,4 +34,4 @@ function Bidderpage() {
   );
 }
 
-export default Bidderpage;
+export default BidderPage;

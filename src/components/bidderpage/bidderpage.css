@@ -1,0 +1,104 @@
+/* Default styles for the banner component */
+.div {
+    display: flex;
+    position: relative;
+    min-width: 20px;
+    min-height: 20px;
+    max-width: 1921px;
+    background-color: rgba(6, 48, 83, 0.7);
+    background-image: url('https://cdn.builder.io/api/v1/image/assets%2FTEMP%2F21d4290877be4427a4361421da739b24');
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(6, 48, 83, 0.6);
+  }
+  
+  .image-sizer {
+    width: 100%;
+    padding-top: 12.493492972410202%;
+    pointer-events: none;
+    font-size: 0;
+  }
+  
+  .mydiv {
+    display: flex;
+    flex-direction: column;
+    max-width: 1133px;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 50px;
+    background-color: rgba(6, 48, 83, 0.7);
+  }
+  
+  .we-verify-all-auctioned-items {
+    max-width: 1133px;
+    color: #fff;
+    font-size: 50px;
+    line-height: 72px;
+    letter-spacing: 0%;
+    text-align: center;
+    font-family: "Public Sans", sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+  
+  .online-safety-assured-all-ite {
+    max-width: 598px;
+    margin-top: 12px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0%;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    position: absolute;
+    top: calc(17% + 90px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  /* Media queries for smaller screens */
+  @media (max-width: 767px) {
+    .we-verify-all-auctioned-items {
+      font-size: 30px;
+      line-height: 42px;
+    }
+  
+    .online-safety-assured-all-ite {
+      font-size: 14px;
+      line-height: 20px;
+      top: calc(17% + 60px);
+    }
+  }
+  
+  /* Media queries for medium screens */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .we-verify-all-auctioned-items {
+      font-size: 40px;
+      line-height: 56px;
+    }
+  
+    .online-safety-assured-all-ite {
+      font-size: 16px;
+      line-height: 24px;
+      top: calc(17% + 80px);
+    }
+  }
+  
+  /* Media queries for large screens */
+  @media (min-width: 1024px) {
+    .we-verify-all-auctioned-items {
+      font-size: 50px;
+      line-height: 72px;
+    }
+  
+  }
+  

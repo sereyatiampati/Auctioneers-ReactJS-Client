@@ -4,8 +4,8 @@ import Clients from "./Clients";
 import FAQ from "./FAQ";
 import HeroSection from "./HeroSection";
 import HomeContact from "./HomeContact";
-import HomeFooter from "./HomeFooter";
 import LatestAuctions from "./LatestAuctions";
+import Newsletter from "./Newsletter";
 function Home() {
     return (
         <>
@@ -15,7 +15,7 @@ function Home() {
         <Categories/>
         <FAQ/>
         <HomeContact/>
-        <HomeFooter/>
+        <Newsletter/>
         </>
      );
 }

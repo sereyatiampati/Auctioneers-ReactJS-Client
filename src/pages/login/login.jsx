@@ -1,6 +1,5 @@
 import './login.css';
 import React, { useState } from 'react';
-import Footer from "../../components/footer/Footer";
 // import Header from "../../components/Header";
 import { useNavigate } from "react-router-dom";
 
@@ -74,7 +73,6 @@ const Login = ({value}) => {
                 </div>
             </div>
         </div>
-        <Footer />
     </div>
     );
 };
