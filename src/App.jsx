@@ -1,10 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
 import './App.css'
-import Login from './pages/login/login'
+import Login from './components/login/login'
 import NotFound from './components/404/NotFound'
 import BidPage from './components/bidPage/BidPage'
-import Seller from './pages/seller-page/seller'
+import Seller from './components/seller-page/seller'
 import Home from './components/home/Home'
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/navbar/Navbar'
@@ -44,7 +44,6 @@ function App() {
           <Route path='/' element={<Home/>}/>
           <Route path='/auctions' element={<BidderPage/>}/>
           <Route path='/vendors' element={<Vendors/>}/>
-          <Route path='/team' element={<Vendors/>}/>
           <Route path='/product' element={<BidPage/>}/>
           <Route path='/contact' element={
             <>

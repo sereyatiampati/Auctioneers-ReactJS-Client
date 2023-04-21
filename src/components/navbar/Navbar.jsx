@@ -28,7 +28,6 @@ function Navbar() {
           <li><NavLink to='/auctions'class="nav-link scrollto" >Auctions</NavLink></li>
           <li><NavLink to='/vendors' class="nav-link scrollto" >Vendors</NavLink></li>
           <li><NavLink to='/contact'  class="nav-link   scrollto" >Contact</NavLink></li>
-          <li><NavLink to='/team'  class="nav-link scrollto">Team</NavLink></li>
           <li><NavLink to='/login' class="nav-link scrollto">Sign-in</NavLink></li>
           <li><a class="getstarted scrollto" onClick={()=> navigate('/signup')}>Get Started</a></li>
         </ul>
