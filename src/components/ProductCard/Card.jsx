@@ -1,21 +1,21 @@
 import { useNavigate } from "react-router";
 import BidPage from "../bidPage/BidPage";
-function Card() {
+function Card({product}) {
+    const {name, image, description} = product
     const navigate= useNavigate()
     return (
-    <div class="col-md-4 mt-2" onClick={()=> navigate ('/product')}>   
+    <div class="product-card col-md-4 mt-2" onClick={()=> navigate ('/product')} >   
         <div class="card">
                             <div class="card-body">
                                 <div class="card-img-actions">
-
-                                        <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png" class="card-img img-fluid" width="96" height="300" alt=""/>
+                                        <img src={image} class="card-img img-fluid" alt="" style={{height: "240px", width: '300px', objectFit: 'cover'}}/>
                                 </div>
                             </div>
 
                             <div class="card-body pb-1">
                                 <div class="mb-2">
                                     <h6 class="font-weight-semibold mb-2">
-                                        <a href="#" class="text-dark mb-2" data-abc="true">Toshiba Notebook with 500GB HDD & 8GB RAM</a>
+                                        <a href="#" class="text-dark mb-2" data-abc="true">{name}</a>
                                     </h6>
 
                                     <p style={{color: "#4A60A1"}} data-abc="true">Top Bid: 36,000 KES</p>
