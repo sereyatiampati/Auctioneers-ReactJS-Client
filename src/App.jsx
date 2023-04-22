@@ -52,7 +52,7 @@ function App() {
             </>
           }/>
           <Route path="/login" element={<Login value={value}/>} />
-          <Route path='/product-bid' element={<BidPage/>}/>
+          <Route path="/auction/:id" element={<BidPage />}/>
           <Route path='/seller' element={<Seller/>}/>
           <Route path="*" element={<NotFound value={value}/>} />
         </Routes>
