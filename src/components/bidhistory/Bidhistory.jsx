@@ -5,10 +5,10 @@ function Bidhistory() {
   const [bids, setBids] = useState([]);
 
   useEffect(() => {
-    fetch('https://testing-e1kb.onrender.com/products')
-    .then(response => response.json())
-    .then(data => setBids(data))
-    .catch(error => console.error(error));
+    fetch('https://testing-e1kb.onrender.com/bidhistory')
+      .then(response => response.json())
+      .then(data => setBids(data))
+      .catch(error => console.error(error));
   }, []);
 
   console.log(bids);
@@ -23,23 +23,23 @@ function Bidhistory() {
         {bids.map((bid) => (
           <li key={bid.id} className="list-group-item">
             <div className="row">
-  <div className="col-md-6">
-    <div className="item-image">
-      <img src={bid.image} alt={bid.name} />
-    </div>
-    <div className="item-details">
-      <h5 className="item-name">{bid.name}</h5>
-      <p className="item-description">{bid.description}</p>
-    </div>
-  </div>
-  <div className="col-md-6">
-    <div className="item-bid-details">
-      <p className="item-start-price">Starting price: {bid.starting_price}</p>
-      <p className="item-start-date">Start time: {bid.start_date}</p>
-      <p className="item-end-date">End time: {bid.end_date}</p>
-    </div>
-  </div>
-</div>
+              <div className="col-md-6">
+                <div className="item-image">
+                  <img src={bid.image} alt={bid.name} />
+                </div>
+                <div className="item-details">
+                  <h5 className="item-name">{bid.name}</h5>
+                  <p className="item-description">{bid.description}</p>
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="item-bid-details">
+                  <p className="item-start-price">Starting price: {bid.starting_price}</p>
+                  <p className="item-start-date">Start time: {bid.start_date}</p>
+                  <p className="item-end-date">End time: {bid.end_date}</p>
+                </div>
+              </div>
+            </div>
           </li>
         ))}
       </ul>
