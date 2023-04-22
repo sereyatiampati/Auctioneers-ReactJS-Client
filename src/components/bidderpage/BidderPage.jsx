@@ -11,7 +11,7 @@ function BidderPage() {
   const [bidsPerPage, setbidsPerPage] = useState(9);
 
   useEffect(() => {
-    fetch('http://localhost:3000/products')
+    fetch('https://testing-e1kb.onrender.com/products')
       .then(res => res.json())
       .then(data => {
         console.log('products data:', data);
@@ -28,7 +28,7 @@ function BidderPage() {
   return (
     <>
       <Banner />
-      <ProductsContainer products={currentBids} />
+      <ProductsContainer products={products} />
       <Pagination totalbids={products.length} bidsPerPage={bidsPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage} />
     </>
   );

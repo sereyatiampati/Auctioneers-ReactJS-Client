@@ -1,6 +1,7 @@
 import Card from "../ProductCard/Card";
 
-function LatestAuctions (){
+function LatestAuctions ({latestProducts}){
+ 
     return (
         <div className="my-5">
         <div className="auctions-title mb-5">
@@ -9,12 +10,7 @@ function LatestAuctions (){
         <div class="container d-flex justify-content-center mt-50 mb-50">
            
         <div class="row">
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
+          {latestProducts.map(product=> <Card key={product.id} product={product}/>)}
         </div>
     </div>
     </div>
