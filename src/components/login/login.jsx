@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
+import runServer from "../../mockserver"
+runServer()
+
 const Login = ({value}) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -33,14 +36,15 @@ const Login = ({value}) => {
         }
 
         setSubmitRespondPending(false)
-        if (response?.ok) {
-            console.log('success')
-            setLoggedIn(true)
-            navigate("/dashboard");
+        if (response?.ok) {  
+          const responseBody = await response.json()
+          localStorage.setItem("jwt", responseBody.encodedToken)
+          setLoggedIn(true)
+          navigate("/");
         } else if (response['status'] === 401){
-            setLoginError('Invalid username or password')
+          setLoginError('Invalid username or password')
         } else {
-            setLoginError('Login error')
+          setLoginError('Login error')
         }
     }
 

@@ -16,11 +16,11 @@ import Newsletter from './components/home/Newsletter';
 import BidderPage from './components/bidderpage/BidderPage';
 function App() {
   const [user, setUser] = useState(null);
-  const token = localStorage.getItem("jwt");
 
   // auto-login
   useEffect(() => {
-    fetch("http://localhost:3000/me", {
+    const token = localStorage.getItem("jwt");
+    fetch("http://localhost:5173/me", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -28,6 +28,7 @@ function App() {
     }).then((r) => {
       if (r.ok) {
         r.json().then((user) => {
+          console.log("logged in")
           setUser(user)
         });        
       }
