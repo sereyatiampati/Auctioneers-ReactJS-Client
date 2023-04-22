@@ -2,6 +2,7 @@ import './login.css';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
+import { loginHandler } from '../../utilities/auth'
 
 import runServer from "../../mockserver"
 runServer()
@@ -17,36 +18,9 @@ const Login = ({value}) => {
     const navigate = useNavigate();
 
     const handleSubmit = async(evt) => {
-        setSubmitRespondPending(true)
         evt.preventDefault();
-
-        const loginRequestHeader = { "Content-Type": "application/json"};
-        const loginRequestBody = { username: username, password: password};
-        
-        let response = undefined
-        
-        try {
-            response = await fetch("/login", {
-                method: "POST",
-                headers: loginRequestHeader,
-                body: JSON.stringify(loginRequestBody),
-              });
-        } catch (error){
-            console.log("errors")
-        }
-
-        setSubmitRespondPending(false)
-        if (response?.ok) {  
-          const responseBody = await response.json()
-          localStorage.setItem("jwt", responseBody.encodedToken)
-          setLoggedIn(true)
-          navigate("/");
-        } else if (response['status'] === 401){
-          setLoginError('Invalid username or password')
-        } else {
-          setLoginError('Login error')
-        }
-    }
+        loginHandler(username, password, setSubmitRespondPending, setLoginError, setLoggedIn);
+      }
 
     return (
     <div class="vh-100 d-flex justify-content-center align-items-center">

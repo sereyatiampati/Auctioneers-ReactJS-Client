@@ -45,22 +45,30 @@ function runServer() {
 
         if (results.models.length  === 1){
           // console.log(results)
-          const jwt = await new jose.SignJWT({ foo: "bar" })
+          const roleName = results.models[0].role_id === 1 ? 'buyer' : 'seller';
+          const jwt = await new jose.SignJWT({role: roleName})
                                 .setProtectedHeader({ alg: "HS256" })
                                 .setSubject(results.models[0].attrs.id)
                                 .setIssuedAt()
                                 .setExpirationTime('2h')
                                 .sign(serverJwtB64Secret); 
-          return new Response(200,{},{'encodedToken': jwt})
+          return new Response(200,{},{encodedToken: jwt})
         } else{
           return new Response(401,{},{ errors: ["Not authorized"] })
         }
       });
 
       this.get("/me", async (schema, request)  => {
-        // const token = request.requestHeaders['Authorization'].split(' ')[1];
-        // const { payload, protectedHeader } = await jose.jwtVerify(token, serverJwtB64Secret)
-        // console.log(payload, protectedHeader)
+        try {
+          const token = request.requestHeaders['Authorization'].split(' ')[1];
+          const { payload, protectedHeader } = await jose.jwtVerify(token, serverJwtB64Secret)
+          console.log(payload, protectedHeader)
+          return new Response(200,{},{})
+        } catch (error) {
+          return new Response(401,{},{ errors: ["Not authorized"] })
+        }
+        
+        
         return new Response(401,{},{ errors: ["Not authorized"] })
       });
       
