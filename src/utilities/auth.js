@@ -4,7 +4,22 @@ export function getJwtToken() {
   return localStorage.getItem('jwt');
 }
 
-export async function loginHandler(username, password, setSubmitRespondPending, setLoginError, setLoggedIn) {
+function clearJwtToken() {
+  localStorage.setItem('jwt', '');
+}
+
+function setJwtToken(token) {
+  localStorage.setItem('jwt', token);
+}
+
+export async function logoutHandler() {
+  const navigate = useNavigate();
+  clearJwtToken();
+  navigate('login');
+}
+
+export async function loginHandler(username, password, stateHooks) {
+  const [setSubmitRespondPending, setLoginError, setLoggedIn] = stateHooks;
   const navigate = useNavigate();
 
   let response = null;
@@ -37,12 +52,4 @@ export async function loginHandler(username, password, setSubmitRespondPending, 
   } else {
     setLoginError('Login error');
   }
-}
-
-function clearJwtToken() {
-  localStorage.setItem('jwt', '');
-}
-
-function setJwtToken(token) {
-  localStorage.setItem('jwt', token);
 }
