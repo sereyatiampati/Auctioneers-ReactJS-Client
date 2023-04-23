@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './card.css'
 function Card({ product }) {
     const [timeRemaining, setTimeRemaining] = useState('');
     useEffect(() => {
