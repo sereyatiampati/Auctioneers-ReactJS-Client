@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Card from "../ProductCard/Carding";
+import Card from "../ProductCard/Card";
 
 export const ProductsContainer = ({products}) =>  {
   const allProducts = products.map((product) => <Card key={product.id} product={product}/>)
