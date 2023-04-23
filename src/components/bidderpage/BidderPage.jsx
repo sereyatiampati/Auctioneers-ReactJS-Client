@@ -28,7 +28,7 @@ function BidderPage() {
   return (
     <>
       <Banner />
-      <ProductsContainer products={products} />
+      <ProductsContainer products={currentBids} />
       <Pagination totalbids={products.length} bidsPerPage={bidsPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage} />
     </>
   );
