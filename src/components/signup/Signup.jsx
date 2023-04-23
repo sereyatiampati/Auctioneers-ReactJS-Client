@@ -31,12 +31,18 @@ function Signup() {
             if (res.ok){
                 res.json().then((newUser)=> {
                     console.log(newUser)
+                    if(newUser.user_type=="Buyer"){
+                        navigate("/auctions");
+                        console.log(user);
+                      }else if(newUser.user_type=="Seller"){
+                          navigate("/seller");
+                        //   setUser(data);
+                      }
                     setUsername("")
                     setEmail('')
                     setPassword('')
                     setPasswordConfirmation('')
                     setUserType('')
-                    navigate ('/login')
                 });
             } else {
                 res.json().then((err)=> setErrors(err.errors));

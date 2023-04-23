@@ -14,6 +14,7 @@ import Vendors from './components/vendors/vendors';
 import HomeContact from './components/home/HomeContact';
 import Newsletter from './components/home/Newsletter';
 import BidderPage from './components/bidderpage/BidderPage';
+import CreateProduct from './components/createProduct/CreateProduct';
 function App() {
   const [user, setUser] = useState(null);
   const token = localStorage.getItem("jwt");
@@ -54,6 +55,7 @@ function App() {
           <Route path="/login" element={<Login value={value}/>} />
           <Route path="/auction/:id" element={<BidPage />}/>
           <Route path='/seller' element={<Seller/>}/>
+          <Route path='/new-product' element={<CreateProduct/>}/>
           <Route path="*" element={<NotFound value={value}/>} />
         </Routes>
         <HomeFooter/>
