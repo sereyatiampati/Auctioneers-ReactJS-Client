@@ -1,5 +1,8 @@
 import './home.css'
+import { Link } from 'react-router-dom';
+
 function HeroSection() {
+
     return (
     <section id="hero" class="d-flex align-items-center">
     <div class="container">
@@ -8,8 +11,8 @@ function HeroSection() {
           <h1>Winning bids, one click at a time</h1>
           <h2>Where auctions meet technology for a seamless bidding experience.</h2>
           <div class="d-flex justify-content-center justify-content-lg-start">
-            <a href="#about" class="btn-get-started scrollto">Get Started</a>
-            <a href="https://youtu.be/iMmtsJlSylc" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span style={{color: "#47b2e4"}}>Watch Video</span></a>
+            <Link to='/login' class="btn-get-started scrollto">Get Started </Link>
+            <a href="https://youtu.be/iMmtsJlSylc" class="glightbox btn-watch-video" target="_blank" style={{textDecoration: 'none'}}><i class="bi bi-play-circle"></i><span style={{color: "#47b2e4"}}>Watch Video</span></a>
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
