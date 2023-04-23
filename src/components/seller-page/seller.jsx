@@ -1,9 +1,29 @@
-import "./seller.css"
-import React, { Fragment } from 'react';
+import './seller.css';
+import React, { useState, useEffect } from 'react';
 
 function Seller() {
+  const [products, setProducts] = useState(null);
+
+  const fetchProducts = async () => {
+    let response = null;
+    try {
+      console.log('fetch');
+      response = await fetch('http://localhost:3000/products', { credentials: 'include' });
+    } catch (error) {
+      console.log('errors');
+    }
+
+    if (response?.ok) {
+      let fetchedProducts = await response.json();
+      setProducts(fetchedProducts);
+      console.log(fetchedProducts);
+    } else {
+      console.log('product fetch error');
+    }
+  }
+
+  useEffect(() => { fetchProducts(); }, []);
   return (
-    <>
         <div class="extend-height">
             <div class="container-fluid seller-page-banner-background">
                 <div class="row align-items-center py-4">
@@ -68,39 +88,37 @@ function Seller() {
                             <td>22</td>
                             <td>22000</td>
                             <td>26 February 2023 08:00</td>
-                            <td><img src="https://img.icons8.com/ios-glyphs/30/04BCF6/edit--v2.png"/><img src="https://img.icons8.com/ios-glyphs/30/FF0000/filled-trash.png"/></td>
+                          <td><img src="https://img.icons8.com/ios-glyphs/30/04BCF6/edit--v2.png"/><img src="https://img.icons8.com/ios-glyphs/30/FF0000/filled-trash.png"/></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">4</th>
+                          <td>Television</td>
+                          <td>Electronics</td>
+                          <td>Active</td>
+                          <td>15000</td>
+                          <td>16 February 2023 08:00</td>
+                          <td>22</td>
+                          <td>22000</td>
+                          <td>26 February 2023 08:00</td>
+                          <td><img src="https://img.icons8.com/ios-glyphs/30/04BCF6/edit--v2.png"/><img src="https://img.icons8.com/ios-glyphs/30/FF0000/filled-trash.png"/></td>
 
                         </tr>
                         <tr>
-                            <th scope="row">4</th>
-                            <td>Television</td>
-                            <td>Electronics</td>
-                            <td>Active</td>
-                            <td>15000</td>
-                            <td>16 February 2023 08:00</td>
-                            <td>22</td>
-                            <td>22000</td>
-                            <td>26 February 2023 08:00</td>
-                            <td><img src="https://img.icons8.com/ios-glyphs/30/04BCF6/edit--v2.png"/><img src="https://img.icons8.com/ios-glyphs/30/FF0000/filled-trash.png"/></td>
-
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Television</td>
-                            <td>Electronics</td>
-                            <td>Closed</td>
-                            <td>15000</td>
-                            <td>06 February 2023 08:00</td>
-                            <td>22</td>
-                            <td>22000</td>
-                            <td>16 February 2023 08:00</td>
-                            <td></td>
+                          <th scope="row">3</th>
+                          <td>Television</td>
+                          <td>Electronics</td>
+                          <td>Closed</td>
+                          <td>15000</td>
+                          <td>06 February 2023 08:00</td>
+                          <td>22</td>
+                          <td>22000</td>
+                          <td>16 February 2023 08:00</td>
+                          <td></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-    </>
   )
 
 }
