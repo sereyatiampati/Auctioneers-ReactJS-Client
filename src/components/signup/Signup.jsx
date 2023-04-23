@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import './signup.css'
 
-function Signup() {
+function Signup({setUser}) {
     const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -33,10 +33,10 @@ function Signup() {
                     console.log(newUser)
                     if(newUser.user_type=="Buyer"){
                         navigate("/auctions");
-                        console.log(user);
+                        setUser(newUser)
                       }else if(newUser.user_type=="Seller"){
                           navigate("/seller");
-                        //   setUser(data);
+                          setUser(newUser);
                       }
                     setUsername("")
                     setEmail('')
@@ -49,6 +49,7 @@ function Signup() {
             }
             })  
       }
+
 
     return (
 <>
