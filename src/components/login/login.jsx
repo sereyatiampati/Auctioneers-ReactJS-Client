@@ -1,13 +1,14 @@
 import './login.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({user, setUser}) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
+
 
     function handleSubmit(e) {
       e.preventDefault()
@@ -25,9 +26,10 @@ const Login = () => {
             if(user.user_type=="Buyer"){
               navigate("/auctions");
               console.log(user);
+              setUser(user)
             }else if(user.user_type=="Seller"){
                 navigate("/seller");
-                // setUser(data);
+                setUser(user);
             }
             });
             setUsername("")
