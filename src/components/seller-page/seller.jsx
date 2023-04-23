@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router";
 import "./seller.css"
-import React, { Fragment } from 'react';
+import React from 'react';
 
 function Seller() {
+    const navigate = useNavigate();
   return (
     <>
         <div class="extend-height">
@@ -12,7 +14,7 @@ function Seller() {
                         <p class="h4">Your past auctions</p>
                     </div>
                     <div class="col-xs-12 col-md-4 text-center text-md-right">
-                        <button type="button" class="btn btn-primary">New Auction</button>
+                        <button type="button" class="btn btn-primary" onClick={()=> navigate('/new-product')}>New Auction</button>
                     </div>
                 </div>
             </div>

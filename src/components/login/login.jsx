@@ -26,10 +26,10 @@ const Login = () => {
               navigate("/auctions");
               console.log(user);
             }else if(user.user_type=="Seller"){
-                navigate("/seller-dashboard");
-                setUser(data);
+                navigate("/seller");
+                // setUser(data);
             }
-            navigate ('/auctions')});
+            });
             setUsername("")
             setPassword("")
         } else {
