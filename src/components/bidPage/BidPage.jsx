@@ -1,19 +1,47 @@
 import React from 'react';
-
+import {useEffect, useState} from 'react'
+import {useNavigate, useParams} from 'react-router-dom'
 import './BidPage.css'
+
 function BidPage() {
+    const {id}=useParams()
+    const navigate = useNavigate()
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
+    const [start_date, setStartDate] = useState('');
+    const [end_date, setEndDate] = useState('');
+    const [starting_price, setStartingPrice] = useState('');
+    const [image, setImage] = useState('');
+    const [errors, setErrors] = useState([]);
+
+
+    useEffect(()=> {
+        fetch(`https://testing-e1kb.onrender.com/products/${id}`)
+        .then((r) => r.json())
+        .then(({name, description, start_date, end_date, starting_price, image})=> {
+                  setName(name);
+                  setDescription(description);
+                  setStartDate(start_date);
+                  setEndDate(end_date)
+                  setStartingPrice(starting_price);
+                  setImage(image);
+        });
+    },[])
+    const words =name.split(' ')
   return (
     <div className="container extend-height my-5">
     <div className="row">
          <div className="col-4 item-photo">
-              <img style={{maxWidth:'100%'}} src="https://ak1.ostkcdn.com/images/products/8818677/Samsung-Galaxy-S4-I337-16GB-AT-T-Unlocked-GSM-Android-Cell-Phone-85e3430e-6981-4252-a984-245862302c78_600.jpg" />
+              <img style={{maxWidth:'100%'}} src={image} />
           </div>
           <div className="col-5" style={{border:'0px solid gray'}}>
-              <h3>Samsung Galaxy S4 I337 16GB 4G LTE Unlocked GSM Android Cell Phone</h3>    
-              <h5 style={{color:'#3E54AC'}}><a href="#">Samsung</a> · <small style={{color:'#3E54AC'}}>(5054 views)</small></h5>
+              <h3>{name}</h3>    
+              <h5 style={{color:'#3E54AC'}}><a >{words[0]}</a>
+              {/* <small style={{color:'#3E54AC'}}>(5054 views)</small>*/} 
+              </h5> 
   
               <h6 className="title-price"><small>Current highest bid</small></h6>
-              <h3 style={{marginTop:'0px'}}>KES 2000</h3>
+              <h3 style={{marginTop:'0px'}}>KES {starting_price*135}</h3>
                   
               <div className="section" style={{paddingBottom:'20px'}}>
                   <button className="btn btn-success"><span style={{marginRight:'20px'}} className="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Bid</button>
@@ -30,8 +58,7 @@ function BidPage() {
               <div style={{width:'100%', borderTop:'1px solid silver'}}>
                   <p style={{padding:'15px'}}>
                       <small>
-                      Stay connected either on the phone or the Web with the Galaxy S4 I337 from Samsung. With 16 GB of memory and a 4G connection, this phone stores precious photos and video and lets you upload them to a cloud or social network at blinding-fast speed. With a 17-hour operating life from one charge, this phone allows you keep in touch even on the go. 
-  
+                     {description} 
                       With its built-in photo editor, the Galaxy S4 allows you to edit photos with the touch of a finger, eliminating extraneous background items. Usable with most carriers, this smartphone is the perfect companion for work or entertainment.
                       </small>
                   </p>

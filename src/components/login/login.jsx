@@ -3,46 +3,41 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
-const Login = ({value}) => {
+const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [loginError, setLoginError] = useState("");
-    const [submitRespondPending, setSubmitRespondPending] = useState(false);
-
-    const setLoggedIn = value[1];
-
+    const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
 
-    const handleSubmit = async(evt) => {
-        setSubmitRespondPending(true)
-        evt.preventDefault();
-
-        const loginRequestHeader = { "Content-Type": "application/json"};
-        const loginRequestBody = { username: username, password: password};
-        
-        let response = undefined
-        
-        try {
-            response = await fetch("/login", {
-                method: "POST",
-                headers: loginRequestHeader,
-                body: JSON.stringify(loginRequestBody),
-              });
-        } catch (error){
-            console.log("errors")
-        }
-
-        setSubmitRespondPending(false)
-        if (response?.ok) {
-            console.log('success')
-            setLoggedIn(true)
-            navigate("/dashboard");
-        } else if (response['status'] === 401){
-            setLoginError('Invalid username or password')
+    function handleSubmit(e) {
+      e.preventDefault()
+      setErrors([])
+      fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      }).then((r) => {
+        if (r.ok) {
+          r.json().then((user) =>{
+            console.log(user)
+            if(user.user_type=="Buyer"){
+              navigate("/auctions");
+              console.log(user);
+            }else if(user.user_type=="Seller"){
+                navigate("/seller-dashboard");
+                setUser(data);
+            }
+            navigate ('/auctions')});
+            setUsername("")
+            setPassword("")
         } else {
-            setLoginError('Login error')
+          r.json().then((err) => setErrors(err.errors));
         }
-    }
+      });
+      setPassword("")
+  }
 
     return (
     <div class="vh-100 d-flex justify-content-center align-items-center">
@@ -56,19 +51,21 @@ const Login = ({value}) => {
                   <p class=" mb-5 text-muted">Please enter your login details and password!</p>
                   <div class="mb-3">
                     <label htmlfor="username" class="form-label ">Username<span className='text-danger'>*</span></label>
-                    <input type="text" class="form-control" id="username" name="username" value={username} onChange={(e) => setUsername(e.target.value)} required />
+                    <input type="text" class="form-control" id="username" name="username" onChange={(e) => setUsername(e.target.value)} required />
                   </div>
                   <div class="mb-3">
                     <label htmlfor="password" class="form-label ">Password<span className='text-danger'>*</span></label>
-                    <input type="password" class="form-control" id="password"name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                    <input type="password" class="form-control" id="password"name="password" onChange={(e) => setPassword(e.target.value)} required />
                   </div>
                   <p class="small"><a class="text-muted" href="#">Forgot password?</a></p>
                   <div class="d-grid">
                     <button className="btn btn-outline-primary" type="submit">
-                        {(submitRespondPending===true)?<div className="spinner-border spinner-border-sm" role="status" />:"Log in"}
+                        Log in
                     </button>
                   </div>
-                  {(loginError.length > 0)&&<p  className="theme-font text-danger">{loginError}</p> }
+                  {
+                            errors?.length > 0 ? errors.map((error)=><li style={{color: "red", fontSize: "12px"}} key={error}>{error}</li>) : ""
+                  }
                 </form>
                 <div>
                   <p class="mb-0  text-center">Don't have an account? <Link to='/signup' class="text-primary fw-bold">Sign

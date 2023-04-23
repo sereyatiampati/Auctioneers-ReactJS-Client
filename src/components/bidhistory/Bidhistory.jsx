@@ -1,42 +1,47 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './bidhistory.css';
 
 function Bidhistory() {
+  const [bids, setBids] = useState([]);
+
+  useEffect(() => {
+    fetch('https://testing-e1kb.onrender.com/bidhistory')
+      .then(response => response.json())
+      .then(data => setBids(data))
+      .catch(error => console.error(error));
+  }, []);
+
+  console.log(bids);
+
   return (
     <div className="card">
       <div className="card-header">
         <h1>BID HISTORY</h1>
-        <h2>4 Items in Bids</h2>
+        <h2>{bids.length} Items in Bids</h2>
       </div>
       <ul className="list-group list-group-flush">
-        <li className="list-group-item">
-          <img src="https://images.pexels.com/photos/552774/pexels-photo-552774.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="item" />
-          <div className="item-details">
-            <h5 className="item-name">Alarm Clock</h5>
-            <span className="item-price">KSH1,550</span>
-          </div>
-        </li>
-        <li className="list-group-item">
-          <img src="https://images.pexels.com/photos/51383/photo-camera-subject-photographer-51383.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="item" />
-          <div className="item-details">
-            <h5 className="item-name">Digital Camera</h5>
-            <span className="item-price">KSH5,600</span>
-          </div>
-        </li>
-        <li className="list-group-item">
-          <img src="https://images.pexels.com/photos/205926/pexels-photo-205926.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="item" />
-          <div className="item-details">
-            <h5 className="item-name">Head phones</h5>
-            <span className="item-price">KSH2,200</span>
-          </div>
-        </li>
-        <li className="list-group-item">
-          <img src="https://images.pexels.com/photos/393047/pexels-photo-393047.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="item" />
-          <div className="item-details">
-            <h5 className="item-name">Digital Watch</h5>
-            <span className="item-price">KSH600</span>
-          </div>
-        </li>
+        {bids.map((bid) => (
+          <li key={bid.id} className="list-group-item">
+            <div className="row">
+              <div className="col-md-6">
+                <div className="item-image">
+                  <img src={bid.image} alt={bid.name} />
+                </div>
+                <div className="item-details">
+                  <h5 className="item-name">{bid.name}</h5>
+                  <p className="item-description">{bid.description}</p>
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="item-bid-details">
+                  <p className="item-start-price">Starting price: {bid.starting_price}</p>
+                  <p className="item-start-date">Start time: {bid.start_date}</p>
+                  <p className="item-end-date">End time: {bid.end_date}</p>
+                </div>
+              </div>
+            </div>
+          </li>
+        ))}
       </ul>
     </div>
   );
