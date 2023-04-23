@@ -26,7 +26,7 @@ function Card({ product }) {
             <div class="card">
                 <div class="card-body">
                     <div class="card-img-actions">
-                        <img src={product.image} class="card-img img-fluid" width="96" height="300" alt="" />
+                        <img src={product.image} class="card-img img-fluid" width="96" height="300px" alt="" />
                     </div>
                 </div>
                 <div class="card-body pb-1">
