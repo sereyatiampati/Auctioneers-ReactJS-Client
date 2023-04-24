@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import React, {useState, useEffect} from "react";
 function Card({product}) {
-    const {id,name, image, starting_price} = product
+    const {id,name, image, starting_price, bids} = product
     const [timeRemaining, setTimeRemaining] = useState('');
     const navigate = useNavigate()
     useEffect(() => {
@@ -41,18 +41,16 @@ function Card({product}) {
                                     <p style={{color: "#4A60A1"}} data-abc="true">Top Bid: {starting_price*135} KES</p>
                                 </div>
 
-                                <p class="text-muted" data-abc="true">6 bids placed</p>
+                                <p class="text-muted" data-abc="true">{bids.length >= 1 ? `${bids.length}`: 'No'} bids placed</p>
 
                                 <div class="text-muted mb-3">Condition: No visible defects</div>
-                                <div class="text-muted mb-2 pb-2 border-bottom" >Auction ending in: 1 day 6 hours</div>
-
-                                <button type="button" class="btn bg-light mr-3" style={{color: "#4A60A1"}}><i class="bi bi-share"></i></button>
-                                <button type="button" class="btn bg-light mr-3" style={{color: "#4A60A1"}}><i class="fa-regular fa-heart"></i></button>
-                                <button type="button" class="btn bg-light" style={{color: "#4A60A1"}} onClick={()=>navigate(`/auction/${id}`)}><i class="fa-solid fa-plus"></i> Bid</button>
-                            </div>
-                        </div>        
-
-   </div>
+                    <div class="text-muted mb-2 pb-2 border-bottom" >{timeRemaining}</div>
+                    <button disabled={timeRemaining === 'Auction Ended'} type="button" class="btn bg-light mr-3" style={{ color: "#4A60A1" }}><i class="bi bi-share"></i></button>
+                    <button disabled={timeRemaining === 'Auction Ended'} type="button" class="btn bg-light mr-3" style={{ color: "#4A60A1" }}><i class="fa-regular fa-heart"></i></button>
+                    <button disabled={timeRemaining === 'Auction Ended'} type="button" class="btn bg-light" style={{color: "#4A60A1"}} onClick={()=>navigate(`/auction/${id}`)}><i class="fa-solid fa-plus"></i> Bid</button>
+                </div>
+            </div>
+        </div>
      );
 }
 
