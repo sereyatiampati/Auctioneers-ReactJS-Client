@@ -15,8 +15,8 @@ const Login = ({user, setUser}) => {
 
   const navigate = useNavigate();
 
-  function loginSuccessCallback(base64EncodedToken, navigate) {
-    userParams = getJSONPayloadFromJwt(base64EncodedToken)
+  function loginSuccessCallback(base64EncodedToken) {
+    const userParams = getJSONPayloadFromJwt(base64EncodedToken)
     setUser( userParams );
     if ( "buyer_id" in userParams ) {
       navigate('/auctions');
