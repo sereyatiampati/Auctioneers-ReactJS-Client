@@ -21,60 +21,6 @@ function Navbar({user, setUser}) {
     });
   };
 
-  if(user.user_type == "Buyer") {
-    return (
-      <header id="header">
-      <div class="container d-flex align-items-center">
-  
-        {/* <h1 class="logo me-auto"><a href="index.html">Auctioneers</a></h1> */}
-        
-       <a href="index.html" class="logo me-auto"><img src="/favicon-32x32.png" alt="" class="img-fluid"/></a>
-  
-        <nav id="navbar" class="navbar">
-          <ul>
-            <li><NavLink to= '/'class="nav-link scrollto active" >Home</NavLink></li>
-            <li><NavLink to='/auctions'class="nav-link scrollto" >Auctions</NavLink></li>
-            <li><NavLink to='/vendors' class="nav-link scrollto" >Vendors</NavLink></li>
-            <li><NavLink to='/contact'  class="nav-link   scrollto" >Contact</NavLink></li>
-            <li><NavLink to='/auctions' class="nav-link scrollto">Hi, {user.username}</NavLink></li>
-            <li><a class="getstarted scrollto" onClick={()=> {
-              navigate('/');
-              handleLogout();
-              }}>Log Out</a></li>
-          </ul>
-          <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav>
-  
-      </div>
-    </header>
-    );
-  } else if(user.user_type == "Seller") {
-    return (
-      <header id="header">
-      <div class="container d-flex align-items-center">
-  
-        {/* <h1 class="logo me-auto"><a href="index.html">Auctioneers</a></h1> */}
-        
-       <a href="index.html" class="logo me-auto"><img src="/favicon-32x32.png" alt="" class="img-fluid"/></a>
-  
-        <nav id="navbar" class="navbar">
-          <ul>
-            <li><NavLink to= '/'class="nav-link scrollto active" >Home</NavLink></li>
-            <li><NavLink to='/vendors' class="nav-link scrollto" >Vendors</NavLink></li>
-            <li><NavLink to='/contact'  class="nav-link   scrollto" >Contact</NavLink></li>
-            <li><NavLink to='/seller' class="nav-link scrollto">Hello, {user.username}</NavLink></li>
-            <li><a class="getstarted scrollto" onClick={()=> {
-              navigate('/');
-              handleLogout();
-              }}>Log Out</a></li>
-          </ul>
-          <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav>
-  
-      </div>
-    </header>
-    )
-  } else {
   return (
     <header id="header">
     <div class="container d-flex align-items-center">
@@ -97,7 +43,7 @@ function Navbar({user, setUser}) {
 
     </div>
   </header>
-  )}
+  )
 }
 
 export default Navbar;
