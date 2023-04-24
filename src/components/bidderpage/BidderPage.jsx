@@ -11,7 +11,7 @@ function BidderPage() {
   const [bidsPerPage, setbidsPerPage] = useState(9);
 
   useEffect(() => {
-    fetch('https://testing-e1kb.onrender.com/products')
+    fetch('http://localhost:3000/products')
       .then(res => res.json())
       .then(data => {
         console.log('products data:', data);

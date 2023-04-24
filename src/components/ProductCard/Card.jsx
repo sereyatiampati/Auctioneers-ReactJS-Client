@@ -41,7 +41,7 @@ function Card({product}) {
                                     <p style={{color: "#4A60A1"}} data-abc="true">Top Bid: {starting_price*135} KES</p>
                                 </div>
 
-                                <p class="text-muted" data-abc="true">{bids.length >= 1 ? `${bids.length}`: 'No'} bids placed</p>
+                                <p class="text-muted" data-abc="true">6 bids placed</p>
 
                                 <div class="text-muted mb-3">Condition: No visible defects</div>
                     <div class="text-muted mb-2 pb-2 border-bottom" >{timeRemaining}</div>
