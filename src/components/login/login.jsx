@@ -2,43 +2,35 @@ import './login.css';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
+import { jwtLoginHandler, getJSONPayloadFromJwt } from '../../utilities/auth';
 
-const Login = ({user, setUser}) => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [errors, setErrors] = useState([]);
-    const navigate = useNavigate();
+import runServer from '../../mockserver';
+runServer();
 
 
-    function handleSubmit(e) {
-      e.preventDefault()
-      setErrors([])
-      fetch("http://localhost:3000/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      }).then((r) => {
-        if (r.ok) {
-          r.json().then((user) =>{
-            console.log(user)
-            if(user.user_type=="Buyer"){
-              console.log(user);
-              navigate("/auctions");
-              setUser(user)
-            }else if(user.user_type=="Seller"){
-              navigate("/seller");
-              setUser(user);
-            }
-            });
-            setUsername("")
-            setPassword("")
-        } else {
-          r.json().then((err) => setErrors(err.errors));
-        }
-      });
-      setPassword("")
+const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState([]);
+
+  function loginSuccessCallback(base64EncodedToken) {
+    console.log(getJSONPayloadFromJwt(base64EncodedToken))
+    const { role } = getJSONPayloadFromJwt(base64EncodedToken).role;
+    if (role === 'buyer') {
+      navigate('/auctions');
+    } else if (role === 'seller') {
+      navigate('/seller');
+    }
+  }
+
+  async function loginFailureCallback(responsePromise) {
+    const response = await responsePromise.json();
+    setErrors(response.errors);
+  }
+
+  const handleSubmit = async(evt) => {
+    evt.preventDefault();
+    jwtLoginHandler(username, password, loginSuccessCallback, loginFailureCallback);
   }
 
     return (
@@ -65,8 +57,9 @@ const Login = ({user, setUser}) => {
                         Log in
                     </button>
                   </div>
+                  <br />
                   {
-                            errors?.length > 0 ? errors.map((error)=><li style={{color: "red", fontSize: "12px"}} key={error}>{error}</li>) : ""
+                    errors?.length > 0 ? errors.map((error)=><p style={{color: "red", fontSize: "12px"}} className = "text-center" key={error}>{error}</p>) : ""
                   }
                 </form>
                 <div>
