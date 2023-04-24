@@ -17,7 +17,7 @@ const CreateProduct = () => {
                 <div className="row mb-4">
                     <div className="col">
                         <div className="form-outline">
-                            <label className="form-label" htmlFor="form6Example1">Product<span style={{color: 'red'}}>*</span></label>
+                            <label className="form-label" htmlFor="form6Example1">Product Name<span style={{color: 'red'}}>*</span></label>
                             <input type="text" id="form6Example1" className="form-control" />
                         </div>
                     </div>
@@ -50,7 +50,7 @@ const CreateProduct = () => {
                 <div className="row mb-4">
                     <div className="col">
                         <div className="form-outline">
-                            <label className="form-label" htmlFor="form6Example1">Starting Bid (KES)<span style={{color: 'red'}}>*</span></label>
+                            <label className="form-label" htmlFor="form6Example1">Starting Bid (USD)<span style={{color: 'red'}}>*</span></label>
                             <input type="number" id="form6Example1" className="form-control" />
                         </div>
                     </div>

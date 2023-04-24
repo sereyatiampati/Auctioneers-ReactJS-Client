@@ -1,8 +1,28 @@
 import { useNavigate } from "react-router";
-import BidPage from "../bidPage/BidPage";
+import React, {useState, useEffect} from "react";
 function Card({product}) {
-    const {id,name, image} = product
-    const navigate= useNavigate()
+    const {id,name, image, starting_price} = product
+    const [timeRemaining, setTimeRemaining] = useState('');
+    const navigate = useNavigate()
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            const now = new Date();
+            const startDate = product && product.start_date ? new Date(product.start_date) : null;
+            const endDate = product && product.end_date ? new Date(product.end_date) : null;
+            const timeDiff = endDate && startDate ? endDate.getTime() - now.getTime() : 0;
+            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((timeDiff / (1000 * 60)) % 60);
+            const seconds = Math.floor((timeDiff / 1000) % 60);
+            if (!endDate || timeDiff <= 0) {
+                setTimeRemaining('Auction Ended');
+            } else {
+                setTimeRemaining(`Auction ending in: ${days} day(s) ${hours} hour(s) ${minutes} minute(s) ${seconds} second(s)`);
+            }
+        }, 1000);
+        return () => clearInterval(intervalId);
+    }, [product]);
+    console.log(product.name);
     return (
     <div class="product-card col-md-4 mt-2" >   
         <div class="card">
@@ -18,7 +38,7 @@ function Card({product}) {
                                         <a class="text-dark mb-2" data-abc="true">{name}</a>
                                     </h6>
 
-                                    <p style={{color: "#4A60A1"}} data-abc="true">Top Bid: 36,000 KES</p>
+                                    <p style={{color: "#4A60A1"}} data-abc="true">Top Bid: {starting_price*135} KES</p>
                                 </div>
 
                                 <p class="text-muted" data-abc="true">6 bids placed</p>
