@@ -1,33 +1,15 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { jwtLogoutHandler } from '../../utilities/auth';
 import './navbar.css';
 
-function Navbar({user, setUser}) {
-  const navigate = useNavigate()
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-  };
-
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    fetch("http://localhost:3000/logout", {
-      method: "DELETE",
-    }).then((r) => {
-      if (r.ok) {
-        setUser(null);
-      }
-    });
-  };
+function Navbar({Role, setRole}) {
 
   return (
     <header id="header">
-    <div class="container d-flex align-items-center">
-
-      {/* <h1 class="logo me-auto"><a href="index.html">Auctioneers</a></h1> */}
-      
-     <a href="index.html" class="logo me-auto"><img src="/favicon-32x32.png" alt="" class="img-fluid"/></a>
+    <div class="container d-flex align-items-center">      
+    <NavLink to='/' className="navbar-brand"><img className="logo-img" src="/actionhub-logo_uuzoyq.png" alt="HomePage" /></NavLink>
+     {/* <a href="index.html" class="logo me-auto"><img src="/favicon-32x32.png" alt="" class="img-fluid"/></a> */}
 
       <nav id="navbar" class="navbar">
         <ul>

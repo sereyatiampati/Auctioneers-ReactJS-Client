@@ -15,11 +15,9 @@ function setJwtToken(token) {
   localStorage.setItem('jwt', token);
 }
 
-export async function jwtLogoutHandler(logoutCallback) {
+export async function jwtLogoutHandler(useNavigateHook) {
   clearJwtToken();
-  //TODO - Move to callback
-  //const navigate = useNavigate();
-  //navigate('login');
+  useNavigateHook('http://localhost:3000/login');
 }
 
 export async function jwtLoginHandler(username, password, loginSuccessCallback, loginFailureCallback) {
@@ -27,7 +25,7 @@ export async function jwtLoginHandler(username, password, loginSuccessCallback, 
   const loginRequestHeader = { 'Content-Type': 'application/json' };
   const loginRequestBody = { username, password };
   try {
-    responsePromise = await fetch('/login', {
+    responsePromise = await fetch('http://localhost:3000/login', {
       method: 'POST',
       headers: loginRequestHeader,
       body: JSON.stringify(loginRequestBody),
@@ -43,6 +41,6 @@ export async function jwtLoginHandler(username, password, loginSuccessCallback, 
   }
 
   const response = await responsePromise.json();
-  setJwtToken(response.encodedToken);
-  loginSuccessCallback(response.encodedToken);
+  setJwtToken(response.jwt);
+  loginSuccessCallback(response.jwt);
 }

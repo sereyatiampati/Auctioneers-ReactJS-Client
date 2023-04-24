@@ -1,24 +1,26 @@
 import './login.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import { jwtLoginHandler, getJSONPayloadFromJwt } from '../../utilities/auth';
 
-import runServer from '../../mockserver';
-runServer();
+// import runServer from '../../mockserver';
+// runServer();
 
 
-const Login = () => {
+const Login = ({user, setUser}) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  function loginSuccessCallback(base64EncodedToken) {
-    console.log(getJSONPayloadFromJwt(base64EncodedToken))
-    const { role } = getJSONPayloadFromJwt(base64EncodedToken).role;
-    if (role === 'buyer') {
+  const navigate = useNavigate();
+
+  function loginSuccessCallback(base64EncodedToken, navigate) {
+    userParams = getJSONPayloadFromJwt(base64EncodedToken)
+    setUser( userParams );
+    if ( "buyer_id" in userParams ) {
       navigate('/auctions');
-    } else if (role === 'seller') {
+    } else if ( "seller_id" in user ) {
       navigate('/seller');
     }
   }
@@ -30,7 +32,7 @@ const Login = () => {
 
   const handleSubmit = async(evt) => {
     evt.preventDefault();
-    jwtLoginHandler(username, password, loginSuccessCallback, loginFailureCallback);
+    jwtLoginHandler(username, password, loginSuccessCallback, loginFailureCallback);    
   }
 
     return (
@@ -57,7 +59,6 @@ const Login = () => {
                         Log in
                     </button>
                   </div>
-                  <br />
                   {
                     errors?.length > 0 ? errors.map((error)=><p style={{color: "red", fontSize: "12px"}} className = "text-center" key={error}>{error}</p>) : ""
                   }
