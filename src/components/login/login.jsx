@@ -24,12 +24,12 @@ const Login = ({user, setUser}) => {
           r.json().then((user) =>{
             console.log(user)
             if(user.user_type=="Buyer"){
-              navigate("/auctions");
               console.log(user);
+              navigate("/auctions");
               setUser(user)
             }else if(user.user_type=="Seller"){
-                navigate("/seller");
-                setUser(user);
+              navigate("/seller");
+              setUser(user);
             }
             });
             setUsername("")
