@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import './navbar.css';
 
-function Navbar() {
+function Navbar({user, setUser}) {
   const navigate = useNavigate()
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -12,6 +12,13 @@ function Navbar() {
 
   const handleLogout = () => {
     setIsLoggedIn(false);
+    fetch("http://localhost:3000/logout", {
+      method: "DELETE",
+    }).then((r) => {
+      if (r.ok) {
+        setUser(null);
+      }
+    });
   };
 
   return (
@@ -36,7 +43,7 @@ function Navbar() {
 
     </div>
   </header>
-  );
+  )
 }
 
 export default Navbar;

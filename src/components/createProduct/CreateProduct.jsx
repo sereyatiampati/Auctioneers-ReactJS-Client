@@ -76,8 +76,8 @@ const CreateProduct = ({ user }) => {
                 <div className="row mb-4">
                     <div className="col">
                         <div className="form-outline">
-                            <label className="form-label" htmlFor="form6Example1">Product<span style={{ color: 'red' }}>*</span></label>
-                            <input type="text" id="form6Example1" className="form-control" onChange={(e) => setName(e.target.value)} />
+                            <label className="form-label" htmlFor="form6Example1">Product<span style={{color: 'red'}}>*</span></label>
+                            <input type="text" id="form6Example1" className="form-control" />
                         </div>
                     </div>
                     <div className="col">
@@ -109,8 +109,8 @@ const CreateProduct = ({ user }) => {
                 <div className="row mb-4">
                     <div className="col">
                         <div className="form-outline">
-                            <label className="form-label" htmlFor="form6Example1">Starting Bid (KES)<span style={{ color: 'red' }}>*</span></label>
-                            <input type="number" id="form6Example1" className="form-control" onChange={(e) => setStartingBid(e.target.value)} />
+                            <label className="form-label" htmlFor="form6Example1">Starting Bid (KES)<span style={{color: 'red'}}>*</span></label>
+                            <input type="number" id="form6Example1" className="form-control" />
                         </div>
                     </div>
                 </div>

@@ -18,15 +18,15 @@ import BidderPage from './components/bidderpage/BidderPage';
 import CreateProduct from './components/createProduct/CreateProduct';
 function App() {
   const [user, setUser] = useState(null);
-  const token = localStorage.getItem("jwt");
+  console.log(user);
+
+  // const token = localStorage.getItem("jwt");
+  // console.log(token);
 
   // auto-login
   useEffect(() => {
     fetch("http://localhost:3000/me", {
       method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
     }).then((r) => {
       if (r.ok) {
         r.json().then((user) => {
@@ -38,13 +38,15 @@ function App() {
   }, []);
   
 
+
+
   const [loggedIn, setLoggedIn] = useState(false);
   const value = [loggedIn, setLoggedIn];
   return (
     <div className="body">
-        <Navbar/>
+        <Navbar user={user} setUser={setUser}/>
         <Routes>
-          <Route path='/signup' element={<Signup/>}/>
+          <Route path='/signup' element={<Signup setUser={setUser} />}/>
           <Route path='/' element={<Home/>}/>
           <Route path='/auctions' element={<BidderPage/>}/>
           <Route path='/vendors' element={<Vendors/>}/>
@@ -55,11 +57,10 @@ function App() {
             <Newsletter/>
             </>
           }/>
-          <Route path='/dashboard' element={<Seller/>}/>
-          <Route path="/login" element={<Login value={value} setUser={setUser}/>} />
+          <Route path="/login" element={<Login value={value} user={user} setUser={setUser}/>} />
           <Route path="/auction/:id" element={<BidPage />}/>
-          <Route path='/seller' element={<Seller user ={user}/>}/>
-          <Route path='/new-product' element={<CreateProduct user={user}/>}/>
+          <Route path='/seller' element={<Seller user={user}/>}/>
+          <Route path='/new-product' element={<CreateProduct/>}/>
           <Route path="*" element={<NotFound value={value}/>} />
         </Routes>
         <HomeFooter/>

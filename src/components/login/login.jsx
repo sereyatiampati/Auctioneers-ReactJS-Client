@@ -1,5 +1,5 @@
 import './login.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
@@ -8,6 +8,7 @@ const Login = ({setUser}) => {
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
+
 
     function handleSubmit(e) {
       e.preventDefault()
@@ -23,11 +24,12 @@ const Login = ({setUser}) => {
           r.json().then((user) =>{
             setUser(user)
             if(user.user_type=="Buyer"){
-              navigate("/auctions");
               console.log(user);
+              navigate("/auctions");
+              setUser(user)
             }else if(user.user_type=="Seller"){
-                navigate("/seller");
-                // setUser(data);
+              navigate("/seller");
+              setUser(user);
             }
             });
             setUsername("")

@@ -24,22 +24,26 @@ function Card({ product }) {
     }, [product]);
     console.log(product.name);
     return (
-        <div class="col-md-4 mt-2">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-img-actions">
-                        <img src={product.image} class="card-img img-fluid" width="96" height="300px" alt="" />
-                    </div>
-                </div>
-                <div class="card-body pb-1">
-                    <div class="mb-2">
-                        <h6 class="font-weight-semibold mb-2">
-                            <a href="#" class="text-dark mb-2" data-abc="true">{product.name}</a>
-                        </h6>
-                        <p style={{ color: "#4A60A1" }} data-abc="true">Start price : ${product.starting_price}</p>
-                    </div>
-                    <p class="text-muted" data-abc="true">Start Date : {new Date(product.start_date).toLocaleString()}</p>
-                    <div class="text-muted mb-3"> End Date: {new Date(product.end_date).toLocaleString()}</div>
+    <div class="product-card col-md-4 mt-2" >   
+        <div class="card">
+                            <div class="card-body">
+                                <div class="card-img-actions">
+                                        <img src={image} class="card-img img-fluid" alt="" style={{height: "240px", width: '300px', objectFit: 'cover'}} onClick={()=>navigate(`/auction/${id}`)}/>
+                                </div>
+                            </div>
+
+                            <div class="card-body pb-1">
+                                <div class="mb-2">
+                                    <h6 class="font-weight-semibold mb-2">
+                                        <a class="text-dark mb-2" data-abc="true">{name}</a>
+                                    </h6>
+
+                                    <p style={{color: "#4A60A1"}} data-abc="true">Top Bid: {starting_price*135} KES</p>
+                                </div>
+
+                                <p class="text-muted" data-abc="true">6 bids placed</p>
+
+                                <div class="text-muted mb-3">Condition: No visible defects</div>
                     <div class="text-muted mb-2 pb-2 border-bottom" >{timeRemaining}</div>
                     <button disabled={timeRemaining === 'Auction Ended'} type="button" class="btn bg-light mr-3" style={{ color: "#4A60A1" }}><i class="bi bi-share"></i></button>
                     <button disabled={timeRemaining === 'Auction Ended'} type="button" class="btn bg-light mr-3" style={{ color: "#4A60A1" }}><i class="fa-regular fa-heart"></i></button>
@@ -47,7 +51,7 @@ function Card({ product }) {
                 </div>
             </div>
         </div>
-    );
+     );
 }
 
 export default Card;
