@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { jwtLoginAndSignupHandler } from '../../utilities/auth';
+import { jwtSignupHandler } from '../../utilities/auth';
 import './signup.css'
 
 function Signup({setUser}) {
     const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [password, setPassword] = useState('');   
     const [password_confirmation, setPasswordConfirmation] = useState('');
     const [user_type, setUserType] = useState("");
     const [errors, setErrors] = useState([]);
@@ -25,7 +25,7 @@ function Signup({setUser}) {
     evt.preventDefault();
     const formData = { username, email, password, password_confirmation, user_type };
     console.log(formData)
-    jwtLoginAndSignupHandler(formData, 'http://localhost:3000/signup', signupSuccessCallback, signupFailureCallback);
+    jwtSignupHandler(formData, 'http://localhost:3000/signup', signupSuccessCallback, signupFailureCallback);
     }
 
 

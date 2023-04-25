@@ -20,7 +20,7 @@ export async function jwtLogoutHandler(useNavigateHook) {
   useNavigateHook('/login');
 }
 
-export async function jwtLoginAndSignupHandler(requestBody, endpoint,  loginSuccessCallback, loginFailureCallback) {
+export async function jwtLoginHandler(requestBody, endpoint,  loginSuccessCallback, loginFailureCallback) {
     let responsePromise = null;
     const requestHeader = { 'Content-Type': 'application/json' };
     try {
@@ -41,4 +41,26 @@ export async function jwtLoginAndSignupHandler(requestBody, endpoint,  loginSucc
   const response = await responsePromise.json();
   setJwtToken(response.jwt);
   loginSuccessCallback(response.jwt);
+}
+
+export async function jwtSignupHandler(requestBody, endpoint,  signupSuccessCallback, signupFailureCallback) {
+  let responsePromise = null;
+  const requestHeader = { 'Content-Type': 'application/json' };
+  try {
+    responsePromise = await fetch(endpoint, {
+      method: 'POST',
+      headers: requestHeader,
+      body: JSON.stringify(requestBody),
+    });
+  } catch (error) {
+    console.log('Exception encountered');
+  }
+/* Guard block */
+if (!responsePromise.ok) {
+  signupFailureCallback(responsePromise);
+  return;
+}
+
+const response = await responsePromise.json();
+signupSuccessCallback(response.jwt);
 }
