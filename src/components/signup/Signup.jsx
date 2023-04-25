@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from '../../utilities/env';
 import { jwtSignupHandler } from '../../utilities/auth';
 import './signup.css'
 
@@ -25,7 +26,7 @@ function Signup({setUser}) {
     evt.preventDefault();
     const formData = { username, email, password, password_confirmation, user_type };
     console.log(formData)
-    jwtSignupHandler(formData, 'http://localhost:3000/signup', signupSuccessCallback, signupFailureCallback);
+    jwtSignupHandler(formData, `${API_BASE_URL}/signup`, signupSuccessCallback, signupFailureCallback);
     }
 
 

@@ -2,6 +2,7 @@ import './login.css';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from '../../utilities/env';
 import { jwtLoginHandler, getJSONPayloadFromJwt } from '../../utilities/auth';
 
 // import runServer from '../../mockserver';
@@ -33,7 +34,7 @@ const Login = ({user, setUser}) => {
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     const loginRequestBody = { username, password };
-    jwtLoginHandler(loginRequestBody, 'http://localhost:3000/login', loginSuccessCallback, loginFailureCallback);    
+    jwtLoginHandler(loginRequestBody, `${API_BASE_URL}/login`, loginSuccessCallback, loginFailureCallback);    
   }
 
     return (
