@@ -1,25 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import './createProduct.css';
+import { useNavigate } from 'react-router';
 
 const CreateProduct = ({ user }) => {
     // Define the list of categories
     const [categories, setCategories] = useState([])
+    const [products,setProducts]=useState([])
+    // For the form
     const [name, setName] = useState('');
-    const [category, setCategory] = useState('');
+    const [category, setCategory] = useState(null);
     const [startTime, setStartTime] = useState('');
     const [endTime, setEndTime] = useState('');
     const [startingBid, setStartingBid] = useState(0);
     const [description, setDescription] = useState('');
     const [imageUrl, setImageUrl] = useState('');
 
+    const navigate = useNavigate();
+
+    console.log(user)
+
+    useEffect(() => {
+        if (category) {
+            console.log(category.id);
+        }
+    }, [category]);
+    
+
     useEffect(() => {
         fetch('http://localhost:3000/categories')
             .then(res => res.json())
             .then(data => setCategories(data))
     }, [])
-
-    function handleSubmit() {
-        console.log("click")
+    function handleSubmit(e) {
         e.preventDefault()
         fetch('http://localhost:3000/products', {
             method: 'POST',
@@ -28,20 +40,35 @@ const CreateProduct = ({ user }) => {
             },
             body: JSON.stringify({
                 name: name,
-                category: category,
-                start_time: startTime,
-                end_time: endTime,
-                starting_bid: startingBid,
+                category_id: category ? category.id : null,
+                start_date: startTime,
+                end_date: endTime,
+                starting_price: startingBid,
                 description: description,
                 image: imageUrl,
                 seller_id: user.id
             })
         })
-            .then(res => res.json())
-            .then(data => console.log(data))
-            .catch(err => console.log(err))
-
+            .then(res => {
+                if (res.ok) {
+                    return res.json();
+                } else {
+                    throw new Error('Product not created');
+                }
+            })
+            .then(data => {
+                setProducts(data);
+                navigate('/auctions');
+            })
+            .catch(err => {
+                console.error(err);
+                alert('Error: Product not created');
+            });
     }
+    const test = categories.map((category) => console.log(category.id))
+    
+    // console.log(category.id)
+    if(!user) { return <div>Please Log in to create a product</div> }
     return (
         <div className='product-form'>
             <form onSubmit={handleSubmit}>
@@ -56,10 +83,10 @@ const CreateProduct = ({ user }) => {
                     <div className="col">
                         <div className="form-outline">
                             <label className="form-label" htmlFor="category">Category<span style={{ color: 'red' }}>*</span></label>
-                            <select id="category" className="form-control" onChange={(e) => setCategory(e.target.value)}>
+                            <select id="category" className="form-control" onChange={(e) => setCategory({id : e.target.value})}>
                                 <option value="">Select a category</option>
                                 {categories.map(category => (
-                                    <option key={category.category_id} value={category.category_name}>{category.category_name}</option>
+                                    <option key={category.id} value={category.id}>{category.category_name}</option>
                                 ))}
                             </select>
                         </div>

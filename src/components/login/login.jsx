@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({setUser}) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
@@ -21,7 +21,7 @@ const Login = () => {
       }).then((r) => {
         if (r.ok) {
           r.json().then((user) =>{
-            console.log(user)
+            setUser(user)
             if(user.user_type=="Buyer"){
               navigate("/auctions");
               console.log(user);

@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 import "./seller.css"
 import React from 'react';
 
-function Seller() {
+function Seller({user}) {
     const navigate = useNavigate();
   return (
     <>
@@ -11,7 +11,7 @@ function Seller() {
                 <div class="row align-items-center py-4">
                     <div class="col-md-4" />
                     <div class="col-xs-12 col-md-4 text-center">
-                        <p class="h4">Your past auctions</p>
+                        <p class="h4">{user.username}'s past auctions</p>
                     </div>
                     <div class="col-xs-12 col-md-4 text-center text-md-right">
                         <button type="button" class="btn btn-primary" onClick={()=> navigate('/new-product')}>New Auction</button>

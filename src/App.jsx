@@ -14,6 +14,7 @@ import Vendors from './components/vendors/vendors';
 import HomeContact from './components/home/HomeContact';
 import Newsletter from './components/home/Newsletter';
 import BidderPage from './components/bidderpage/BidderPage';
+// import Seller from './components/seller-page/seller';
 import CreateProduct from './components/createProduct/CreateProduct';
 function App() {
   const [user, setUser] = useState(null);
@@ -54,9 +55,10 @@ function App() {
             <Newsletter/>
             </>
           }/>
-          <Route path="/login" element={<Login value={value}/>} />
+          <Route path='/dashboard' element={<Seller/>}/>
+          <Route path="/login" element={<Login value={value} setUser={setUser}/>} />
           <Route path="/auction/:id" element={<BidPage />}/>
-          <Route path='/seller' element={<Seller/>}/>
+          <Route path='/seller' element={<Seller user ={user}/>}/>
           <Route path='/new-product' element={<CreateProduct user={user}/>}/>
           <Route path="*" element={<NotFound value={value}/>} />
         </Routes>
