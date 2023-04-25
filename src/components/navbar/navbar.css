@@ -26,6 +26,14 @@
 #header .logo a {
   color: #fff;
 }
+#header .logo span.logo-name{
+  color: rgba(0, 0, 0, 0.712);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+#header div.container a.logo span.logo-name:hover {
+  text-decoration: none;
+}
 
 #header .logo img {
   max-height: 40px;
@@ -299,3 +307,4 @@
 .navbar-mobile .dropdown>.dropdown-active {
   display: block;
 }
+

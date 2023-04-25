@@ -5,7 +5,7 @@ import './navbar.css';
 function Navbar({user, setUser}) {
   const navigate = useNavigate()
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userType, setUserType] = useState("Buyer");
+  const [userType, setUserType] = useState(null);
 
   const handleLogin = () => {
     setIsLoggedIn(true);
@@ -27,7 +27,7 @@ function Navbar({user, setUser}) {
     <header id="header">
     <div class="container d-flex align-items-center">
 
-     <a href="index.html" class="logo me-auto"><img src="/favicon-32x32.png" alt="" class="img-fluid"/></a>
+     <a href="#" class="logo me-auto"><img src="/favicon-32x32.png" alt="" class="img-fluid"/><span className='logo-name'> Auctioneers</span></a>
 
       <nav id="navbar" class="navbar">
         <ul>
@@ -48,7 +48,7 @@ function Navbar({user, setUser}) {
 return ( 
   <header id="header">
     <div class="container d-flex align-items-center">      
-     <a href="index.html" class="logo me-auto"><img src="/favicon-32x32.png" alt="" class="img-fluid"/></a>
+     <a href="#" class="logo me-auto"><img src="/favicon-32x32.png" alt="" class="img-fluid"/><span className='logo-name'> Auctioneers</span></a>
 
       <nav id="navbar" class="navbar">
         <ul>
@@ -68,7 +68,7 @@ return (
     <header id="header">
     <div class="container d-flex align-items-center">
       
-     <a href="index.html" class="logo me-auto"><img src="/favicon-32x32.png" alt="" class="img-fluid"/></a>
+     <a href="#" class="logo me-auto"><img src="/favicon-32x32.png" alt="" class="img-fluid"/><span className='logo-name'> Auctioneers</span></a>
 
       <nav id="navbar" class="navbar">
         <ul>
