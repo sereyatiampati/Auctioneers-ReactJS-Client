@@ -16,6 +16,7 @@ import Newsletter from './components/home/Newsletter';
 import BidderPage from './components/bidderpage/BidderPage';
 // import Seller from './components/seller-page/seller';
 import CreateProduct from './components/createProduct/CreateProduct';
+import Editproduct from './components/Editproduct/Editproduct';
 function App() {
   const [user, setUser] = useState(null);
   console.log(user);
@@ -61,6 +62,7 @@ function App() {
           <Route path="/auction/:id" element={<BidPage />}/>
           <Route path='/seller' element={<Seller user={user}/>}/>
           <Route path='/new-product' element={<CreateProduct user={user}/>}/>
+          <Route path="/editproduct/:id" element={<Editproduct />} />
           <Route path="*" element={<NotFound value={value}/>} />
         </Routes>
         <HomeFooter/>

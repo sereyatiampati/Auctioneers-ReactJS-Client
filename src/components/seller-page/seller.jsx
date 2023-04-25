@@ -2,32 +2,34 @@ import { useNavigate } from "react-router";
 import "./seller.css"
 import React from 'react';
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Seller({ user }) {
     const navigate = useNavigate();
-    const [products, setProducts] = useState(user.products);
 
     if (!user) {
         navigate('/login');
         return null;
     }
+    const [products, setProducts] = useState(user.products);
+
 
 
     const handleDelete = async (productId) => {
         try {
-          const response = await fetch(`http://localhost:3000/products/${productId}`, {
-            method: 'DELETE',
-          });
-          if (response.ok) {
-            setProducts(products.filter(product => product.id !== productId));
-          } else {
-            throw new Error('Failed to delete product');
-          }
+            const response = await fetch(`http://localhost:3000/products/${productId}`, {
+                method: 'DELETE',
+            });
+            if (response.ok) {
+                setProducts(products.filter(product => product.id !== productId));
+            } else {
+                throw new Error('Failed to delete product');
+            }
         } catch (error) {
-          console.error(error);
+            console.error(error);
         }
-      };
-    
+    };
+
 
     const oneproduct = products.map((product) => {
         return (
@@ -45,8 +47,9 @@ function Seller({ user }) {
                     <button className="seller-button" onClick={(e) => handleDelete(product.id)}><i class="far fa-trash-can"></i></button>
                 </th>
                 <th scope="col">
-                    <button className="seller-button"><i class="far fa-pen-to-square"></i></button>
+                    <Link to={`/editproduct/${product.id}`} className="seller-button"><i class="far fa-pen-to-square"></i></Link>
                 </th>
+
                 <td></td>
             </tr>
         )
