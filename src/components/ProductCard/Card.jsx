@@ -28,17 +28,17 @@ function Card({ product }) {
         <div class="card">
                             <div class="card-body">
                                 <div class="card-img-actions">
-                                        <img src={image} class="card-img img-fluid" alt="" style={{height: "240px", width: '300px', objectFit: 'cover'}} onClick={()=>navigate(`/auction/${id}`)}/>
+                                        <img src={product.image} class="card-img img-fluid" alt="" style={{height: "240px", width: '300px', objectFit: 'cover'}} onClick={()=>navigate(`/auction/${id}`)}/>
                                 </div>
                             </div>
 
                             <div class="card-body pb-1">
                                 <div class="mb-2">
                                     <h6 class="font-weight-semibold mb-2">
-                                        <a class="text-dark mb-2" data-abc="true">{name}</a>
+                                        <a class="text-dark mb-2" data-abc="true">{product.name}</a>
                                     </h6>
 
-                                    <p style={{color: "#4A60A1"}} data-abc="true">Top Bid: {starting_price*135} KES</p>
+                                    <p style={{color: "#4A60A1"}} data-abc="true">Top Bid: {product.starting_price*135} KES</p>
                                 </div>
 
                                 <p class="text-muted" data-abc="true">6 bids placed</p>

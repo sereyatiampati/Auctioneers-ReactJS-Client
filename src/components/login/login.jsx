@@ -24,7 +24,7 @@ const Login = ({setUser}) => {
           r.json().then((user) =>{
             setUser(user)
             if(user.user_type=="Buyer"){
-              console.log(user);
+              setUser(user);
               navigate("/auctions");
               setUser(user)
             }else if(user.user_type=="Seller"){
