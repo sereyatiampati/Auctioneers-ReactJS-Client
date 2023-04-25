@@ -15,6 +15,7 @@ import HomeContact from './components/home/HomeContact';
 import Newsletter from './components/home/Newsletter';
 import BidderPage from './components/bidderpage/BidderPage';
 import CreateProduct from './components/createProduct/CreateProduct';
+import Bidhistory from './components/bidhistory/Bidhistory'
 function App() {
   const [user, setUser] = useState(null);
   console.log(user);
@@ -43,6 +44,7 @@ function App() {
     <div className="body">
         <Navbar user={user} setUser={setUser}/>
         <Routes>
+          {/* A guest user routes */}
           <Route path='/signup' element={<Signup setUser={setUser} />}/>
           <Route path='/' element={<Home/>}/>
           <Route path='/auctions' element={<BidderPage/>}/>
@@ -56,8 +58,11 @@ function App() {
           }/>
           <Route path="/login" element={<Login value={value} user={user} setUser={setUser}/>} />
           <Route path="/auction/:id" element={<BidPage />}/>
+          {/* Seller routes */}
           <Route path='/seller' element={<Seller user={user}/>}/>
           <Route path='/new-product' element={<CreateProduct/>}/>
+          {/* Buyer Routes */}
+          <Route path='/bids' element={<Bidhistory/>}/>
           <Route path="*" element={<NotFound value={value}/>} />
         </Routes>
         <HomeFooter/>

@@ -10,7 +10,7 @@ import React, {useState, useEffect} from "react";
 function Home() {
     const [latestProducts, setLatestProducts]=useState([])
     useEffect(() => {
-        fetch("https://testing-e1kb.onrender.com/latest_products").then((response) => {
+        fetch("http://localhost:3000/latest_products").then((response) => {
           if (response.ok) {
             response.json().then((data) => setLatestProducts(data));
           }
