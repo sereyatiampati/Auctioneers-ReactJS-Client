@@ -58,7 +58,7 @@ const CreateProduct = ({ user }) => {
             })
             .then(data => {
                 setProducts(data);
-                navigate('/auctions');
+                navigate('/seller');
             })
             .catch(err => {
                 console.error(err);
@@ -77,7 +77,7 @@ const CreateProduct = ({ user }) => {
                     <div className="col">
                         <div className="form-outline">
                             <label className="form-label" htmlFor="form6Example1">Product<span style={{color: 'red'}}>*</span></label>
-                            <input type="text" id="form6Example1" className="form-control" />
+                            <input type="text" id="form6Example1" className="form-control" onChange={(e) => setName(e.target.value)} />
                         </div>
                     </div>
                     <div className="col">

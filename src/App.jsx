@@ -60,7 +60,7 @@ function App() {
           <Route path="/login" element={<Login value={value} user={user} setUser={setUser}/>} />
           <Route path="/auction/:id" element={<BidPage />}/>
           <Route path='/seller' element={<Seller user={user}/>}/>
-          <Route path='/new-product' element={<CreateProduct/>}/>
+          <Route path='/new-product' element={<CreateProduct user={user}/>}/>
           <Route path="*" element={<NotFound value={value}/>} />
         </Routes>
         <HomeFooter/>
