@@ -5,7 +5,7 @@ import './navbar.css';
 function Navbar({user, setUser}) {
   const navigate = useNavigate()
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userType, setUserType] = useState(null);
+  const [userType, setUserType] = useState("Buyer");
 
   const handleLogin = () => {
     setIsLoggedIn(true);
@@ -55,8 +55,7 @@ return (
           <li><NavLink to= '/'class="nav-link scrollto active" >Home</NavLink></li>
           <li><NavLink to='/auctions'class="nav-link scrollto" >Auctions</NavLink></li>
           <li><NavLink to='/bids' class="nav-link scrollto" >My Bid History</NavLink></li>
-          <li><NavLink to='/contact'  class="nav-link   scrollto" >Contact</NavLink></li>
-          <li><button class="nav-link scrollto " onClick={handleLogout}>Logout</button></li>
+          <li><button style={{borderWidth: '0px', color: 'rgba(0, 0, 0, 0.459)', backgroundColor: '#e1ecff'}} onClick={handleLogout}>Logout</button></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>
@@ -76,8 +75,7 @@ return (
           <li><NavLink to= '/'class="nav-link scrollto active" >Home</NavLink></li>
           <li><NavLink to='/auctions'class="nav-link scrollto" >Auctions</NavLink></li>
           <li><NavLink to='/seller' class="nav-link scrollto" >Dashboard</NavLink></li>
-          <li><NavLink to='/contact'  class="nav-link   scrollto" >Contact</NavLink></li>
-          <li><button onClick={handleLogout} class="nav-link scrollto">Logout</button></li>
+          <li><button onClick={handleLogout} style={{borderWidth: '0px', color: 'rgba(0, 0, 0, 0.459)', backgroundColor: '#e1ecff'}} >Logout</button></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>
@@ -85,6 +83,8 @@ return (
     </div>
   </header>
   )
+}  else {
+  return null; // Render nothing if the user type is unknown or undefined
 }
 
 }
