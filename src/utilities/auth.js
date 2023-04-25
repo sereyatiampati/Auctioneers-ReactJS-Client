@@ -17,23 +17,21 @@ function setJwtToken(token) {
 
 export async function jwtLogoutHandler(useNavigateHook) {
   clearJwtToken();
-  useNavigateHook('http://localhost:3000/login');
+  useNavigateHook('/login');
 }
 
-export async function jwtLoginHandler(username, password, loginSuccessCallback, loginFailureCallback) {
-  let responsePromise = null;
-  const loginRequestHeader = { 'Content-Type': 'application/json' };
-  const loginRequestBody = { username, password };
-  try {
-    responsePromise = await fetch('http://localhost:3000/login', {
-      method: 'POST',
-      headers: loginRequestHeader,
-      body: JSON.stringify(loginRequestBody),
-    });
-  } catch (error) {
-    console.log('Fetch exception');
-  }
-
+export async function jwtLoginAndSignupHandler(requestBody, endpoint,  loginSuccessCallback, loginFailureCallback) {
+    let responsePromise = null;
+    const requestHeader = { 'Content-Type': 'application/json' };
+    try {
+      responsePromise = await fetch(endpoint, {
+        method: 'POST',
+        headers: requestHeader,
+        body: JSON.stringify(requestBody),
+      });
+    } catch (error) {
+      console.log('Exception encountered');
+    }
   /* Guard block */
   if (!responsePromise.ok) {
     loginFailureCallback(responsePromise);

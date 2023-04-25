@@ -20,7 +20,7 @@ const Login = ({user, setUser}) => {
     setUser( userParams );
     if ( "buyer_id" in userParams ) {
       navigate('/auctions');
-    } else if ( "seller_id" in user ) {
+    } else if ( "seller_id" in userParams ) {
       navigate('/seller');
     }
   }
@@ -30,9 +30,10 @@ const Login = ({user, setUser}) => {
     setErrors(response.errors);
   }
 
-  const handleSubmit = async(evt) => {
+  const handleSubmit = async (evt) => {
     evt.preventDefault();
-    jwtLoginHandler(username, password, loginSuccessCallback, loginFailureCallback);    
+    const loginRequestBody = { username, password };
+    jwtLoginHandler(loginRequestBody, 'http://localhost:3000/login', loginSuccessCallback, loginFailureCallback);    
   }
 
     return (
