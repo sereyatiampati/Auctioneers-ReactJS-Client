@@ -38,7 +38,7 @@ function Card({product}) {
                                         <a class="text-dark mb-2" data-abc="true">{name}</a>
                                     </h6>
 
-                                    <p style={{color: "#4A60A1"}} data-abc="true">Top Bid: {starting_price*135} KES</p>
+                                    <p style={{color: "#4A60A1"}} data-abc="true">Top Bid: ${starting_price} </p>
                                 </div>
 
                                 <p class="text-muted" data-abc="true">6 bids placed</p>
