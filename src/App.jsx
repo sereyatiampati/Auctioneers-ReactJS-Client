@@ -6,7 +6,7 @@ import NotFound from './components/404/NotFound'
 import BidPage from './components/bidPage/BidPage'
 import Seller from './components/seller-page/seller'
 import Home from './components/home/Home'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import Navbar from './components/navbar/Navbar'
 import Signup from './components/signup/Signup'
 import HomeFooter from './components/home/HomeFooter';
@@ -15,35 +15,27 @@ import HomeContact from './components/home/HomeContact';
 import Newsletter from './components/home/Newsletter';
 import BidderPage from './components/bidderpage/BidderPage';
 import CreateProduct from './components/createProduct/CreateProduct';
+import { getJwtToken, getJSONPayloadFromJwt } from './utilities/auth';
+
 function App() {
   const [user, setUser] = useState(null);
-  console.log(user);
 
-  // const token = localStorage.getItem("jwt");
-  // console.log(token);
+  function syncUserStateWithJWTOnLoad() {
+    const userParams = getJSONPayloadFromJwt(getJwtToken());
+    if ('buyer_id' in userParams || 'seller_id' in userParams) {
+      setUser(userParams);
+    } else {
+      setUser(null);
+    }
+  }
 
-  // auto-login
-  useEffect(() => {
-    fetch("http://localhost:3000/me", {
-      method: "GET",
-    }).then((r) => {
-      if (r.ok) {
-        r.json().then((user) => {
-          setUser(user)
-        });        
-      }
-    });
-  }, []);
+  useEffect(syncUserStateWithJWTOnLoad, []);
 
-
-
-  const [loggedIn, setLoggedIn] = useState(false);
-  const value = [loggedIn, setLoggedIn];
   return (
     <div className="body">
         <Navbar user={user} setUser={setUser}/>
         <Routes>
-          <Route path='/signup' element={<Signup setUser={setUser} />}/>
+          <Route path='/signup' element={<Signup/>}/>
           <Route path='/' element={<Home/>}/>
           <Route path='/auctions' element={<BidderPage/>}/>
           <Route path='/vendors' element={<Vendors/>}/>
@@ -54,11 +46,11 @@ function App() {
             <Newsletter/>
             </>
           }/>
-          <Route path="/login" element={<Login value={value} user={user} setUser={setUser}/>} />
+          <Route path="/login" element={<Login user={user} setUser={setUser} />} />
           <Route path="/auction/:id" element={<BidPage />}/>
-          <Route path='/seller' element={<Seller user={user}/>}/>
+          <Route path='/seller' element={<Seller/>}/>
           <Route path='/new-product' element={<CreateProduct/>}/>
-          <Route path="*" element={<NotFound value={value}/>} />
+          <Route path="*" element={<NotFound/>} />
         </Routes>
         <HomeFooter/>
         
