@@ -19,8 +19,6 @@ function Seller({ user }) {
     const [products, setProducts] = useState([]);
     const [userprods, setUserprods] = useState([]);
 
-
-
     useEffect(() => {
         if (user) {
             const fetchProducts = async () => {
@@ -124,16 +122,3 @@ function Seller({ user }) {
 }
 
 export default Seller;
-
-{/* <tr>
-<th scope="row">3</th>
-<td>item</td>
-<td>category</td>
-<td>Closed</td>
-<td>15000</td>
-<td>06 February 2023 08:00</td>
-<td>22</td>
-<td>22000</td>
-<td>16 February 2023 08:00</td>
-<td></td>
-</tr> */}
