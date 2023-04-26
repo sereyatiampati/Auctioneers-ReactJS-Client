@@ -5,7 +5,7 @@ import './bidhistory.css';
 function Bidhistory() {
   const [bids, setBids] = useState([]);
   useEffect(() => {
-    fetch('https://testing-e1kb.onrender.com/bidhistory')
+    fetch('http://localhost:3000/latest_products')
       .then(response => response.json())
       .then(data => setBids(data))
       .catch(error => console.error(error));

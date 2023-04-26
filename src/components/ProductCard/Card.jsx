@@ -22,7 +22,7 @@ function Card({product}) {
         }, 1000);
         return () => clearInterval(intervalId);
     }, [product]);
-    console.log(product.name);
+    
     return (
     <div class="product-card col-md-4 mt-2" >   
         <div class="card">
@@ -38,7 +38,7 @@ function Card({product}) {
                                         <a class="text-dark mb-2" data-abc="true">{name}</a>
                                     </h6>
 
-                                    <p style={{color: "#4A60A1"}} data-abc="true">Top Bid: {starting_price*135} KES</p>
+                                    <p style={{color: "#4A60A1"}} data-abc="true">Top Bid: ${starting_price} </p>
                                 </div>
 
                                 <p class="text-muted" data-abc="true">6 bids placed</p>
