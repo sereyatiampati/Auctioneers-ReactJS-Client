@@ -40,19 +40,7 @@ function BidderPage() {
   return (
     <>
     <Banner />
-    <div className="text-center"> 
-        <div className="sorting">
-          <label htmlFor="sorting-option">Sort By:</label>
-          <select id="sorting-option" value={sortingOption} onChange={handleSortingOptionChange}>
-            <option value="open">Open Bids</option>
-            <option value="all">All Bids</option>
-          </select>
-        </div>
-      </div>
-      
-      <ProductsContainer products={currentBids} />
-      <Pagination totalbids={sortedProducts.length} bidsPerPage={bidsPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage} />
-      <Banner />
+    
       <ProductsContainer products={currentBids} />
       <Pagination totalbids={products.length} bidsPerPage={bidsPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage} />
     </>
