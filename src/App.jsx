@@ -56,7 +56,7 @@ function App() {
           <Route path='/new-product' element={<CreateProduct/>}/>
           {/* Buyer Routes */}
           <Route path='/bids' element={<Bidhistory/>}/>
-          <Route path="*" element={<NotFound value={value}/>} />
+          <Route path="*" element={<NotFound/>} />
 
         </Routes>
         <HomeFooter/>
