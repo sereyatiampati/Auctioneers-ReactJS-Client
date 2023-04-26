@@ -30,10 +30,16 @@ function App() {
   //   }
   // }
   function syncUserStateWithJWTOnLoad() {
-    const userParams = getJSONPayloadFromJwt(getJwtToken());
-    if (userParams && ('buyer_id' in userParams || 'seller_id' in userParams)) {
-      setUser(userParams);
-    } else {
+    try {
+      const userParams = getJSONPayloadFromJwt(getJwtToken());
+      if ('buyer_id' in userParams || 'seller_id' in userParams) {
+        setUser(userParams);
+      } else {
+        /* Catch if jwt is present but the above are not*/
+        setUser(null);
+      }
+    } catch {
+      /* Catch where no token exists absolutely */
       setUser(null);
     }
   }
