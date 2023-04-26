@@ -19,6 +19,7 @@ function Navbar({user, setUser}) {
     <header id="header">
     <div class="container d-flex align-items-center">
     <NavLink to='/' className="logo me-auto"><img src="/favicon-32x32.png" alt="" class="img-fluid"/><span className='logo-name'> Auctioneers</span></NavLink>
+
       <nav id="navbar" class="navbar">
         <ul>
           <li><NavLink to= '/'class="nav-link scrollto active" >Home</NavLink></li>
@@ -34,6 +35,7 @@ function Navbar({user, setUser}) {
     </div>
   </header>
   );
+
 } else if (isBuyer()) {
 return ( 
   <header id="header">
@@ -52,12 +54,12 @@ return (
     </div>
   </header>
   );
+
 } else if (isSeller()) {
   return (
     <header id="header">
     <div class="container d-flex align-items-center">  
     <NavLink to='/' className="logo me-auto"><img src="/favicon-32x32.png" alt="" class="img-fluid"/><span className='logo-name'> Auctioneers</span></NavLink>    
-
       <nav id="navbar" class="navbar">
         <ul>
           <li><NavLink to= '/'class="nav-link scrollto active" >Home</NavLink></li>
@@ -71,6 +73,10 @@ return (
     </div>
   </header>
   )
+}  else {
+  return null; // Render nothing if the user type is unknown or undefined
+}
+
 }
 }
 

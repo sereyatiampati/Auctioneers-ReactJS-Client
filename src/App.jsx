@@ -15,6 +15,7 @@ import HomeContact from './components/home/HomeContact';
 import Newsletter from './components/home/Newsletter';
 import BidderPage from './components/bidderpage/BidderPage';
 import CreateProduct from './components/createProduct/CreateProduct';
+import Bidhistory from './components/bidhistory/Bidhistory'
 import { getJwtToken, getJSONPayloadFromJwt } from './utilities/auth';
 
 function App() {
@@ -35,7 +36,9 @@ function App() {
     <div className="body">
         <Navbar user={user} setUser={setUser}/>
         <Routes>
-          <Route path='/signup' element={<Signup/>}/>
+
+          {/* A guest user routes */}
+          <Route path='/signup' element={<Signup setUser={setUser} />}/>
           <Route path='/' element={<Home/>}/>
           <Route path='/auctions' element={<BidderPage/>}/>
           <Route path='/vendors' element={<Vendors/>}/>
@@ -48,9 +51,13 @@ function App() {
           }/>
           <Route path="/login" element={<Login user={user} setUser={setUser} />} />
           <Route path="/auction/:id" element={<BidPage />}/>
-          <Route path='/seller' element={<Seller/>}/>
+          {/* Seller routes */}
+          <Route path='/seller' element={<Seller user={user}/>}/>
           <Route path='/new-product' element={<CreateProduct/>}/>
-          <Route path="*" element={<NotFound/>} />
+          {/* Buyer Routes */}
+          <Route path='/bids' element={<Bidhistory/>}/>
+          <Route path="*" element={<NotFound value={value}/>} />
+
         </Routes>
         <HomeFooter/>
         
