@@ -7,7 +7,6 @@ export function getJSONPayloadFromJwt(jwt) {
   return JSON.parse(window.atob(jwt.split('.')[payloadIndex]));
 }
 
-
 function clearJwtToken() {
   localStorage.setItem('jwt', '');
 }
