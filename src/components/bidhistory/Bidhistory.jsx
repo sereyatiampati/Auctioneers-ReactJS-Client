@@ -5,7 +5,7 @@ function Bidhistory() {
   const [bids, setBids] = useState([]);
 
   useEffect(() => {
-    fetch('https://testing-e1kb.onrender.com/bidhistory')
+    fetch('http://localhost:3000/latest_products')
       .then(response => response.json())
       .then(data => setBids(data))
       .catch(error => console.error(error));
@@ -14,7 +14,7 @@ function Bidhistory() {
   console.log(bids);
 
   return (
-    <div className="card">
+    <div className="history-card">
       <div className="card-header">
         <h1>BID HISTORY</h1>
         <h2>{bids.length} Items in Bids</h2>

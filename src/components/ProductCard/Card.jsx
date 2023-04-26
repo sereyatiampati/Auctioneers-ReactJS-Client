@@ -22,7 +22,7 @@ function Card({ product }) {
         }, 1000);
         return () => clearInterval(intervalId);
     }, [product]);
-    console.log(product.name);
+    
     return (
     <div class="product-card col-md-4 mt-2" >   
         <div class="card">

@@ -31,29 +31,30 @@ function Seller({ user }) {
     };
 
 
-    const oneproduct = products.map((product) => {
+    const oneproduct = products.map((product, index) => {
+        const startdate = new Date(product.start_time).toLocaleString('en-US', { timeZone: 'EAT' });
         return (
-            <tr key={product.id}>
-                <th scope="row">3</th>
-                <td>{product.name}</td>
-                <td>{product.category_name}</td>
-                <td>Closed</td>
-                <td>15000</td>
-                <td>06 February 2023 08:00</td>
-                <td>22</td>
-                <td>22000</td>
-                <td>16 February 2023 08:00</td>
-                <th scope="col">
-                    <button className="seller-button" onClick={(e) => handleDelete(product.id)}><i class="far fa-trash-can"></i></button>
-                </th>
-                <th scope="col">
-                    <Link to={`/editproduct/${product.id}`} className="seller-button"><i class="far fa-pen-to-square"></i></Link>
-                </th>
-
-                <td></td>
-            </tr>
+          <tr key={product.id}>
+            <th scope="row">{index + 1}</th>
+            <td>{product.name}</td>
+            <td>{product.category_name}</td>
+            <td>Closed</td>
+            <td>15000</td>
+            <td>{startdate}</td>
+            <td>22</td>
+            <td>22000</td>
+            <td>16 February 2023 08:00</td>
+            <th scope="col">
+              <button className="seller-button" onClick={(e) => handleDelete(product.id)}><i class="far fa-trash-can"></i></button>
+            </th>
+            <th scope="col">
+              <Link to={`/editproduct/${product.id}`} className="seller-button"><i class="far fa-pen-to-square"></i></Link>
+            </th>
+            <td></td>
+          </tr>
         )
-    })
+      })
+      
 
     console.log(products)
     return (

@@ -13,21 +13,45 @@ function BidPage() {
     const [starting_price, setStartingPrice] = useState('');
     const [image, setImage] = useState('');
     const [errors, setErrors] = useState([]);
+    const [category, setCategory] = useState({});
+
+    
 
 
     useEffect(()=> {
-        fetch(`https://testing-e1kb.onrender.com/products/${id}`)
+        fetch(`http://localhost:3000/products/${id}`)
         .then((r) => r.json())
-        .then(({name, description, start_date, end_date, starting_price, image})=> {
+        .then(({name, description, start_date, end_date, starting_price, image, category})=> {
                   setName(name);
                   setDescription(description);
                   setStartDate(start_date);
                   setEndDate(end_date)
                   setStartingPrice(starting_price);
                   setImage(image);
+                  setCategory(category)
         });
     },[])
     const words =name.split(' ')
+
+    const [bidAmount, setBidAmount]= useState(0)
+
+  function handleIncrementClick() {
+    let inputValue = parseInt(bidAmount)
+    setBidAmount(inputValue+1);
+  }
+
+  function handleDecrementClick() {
+    if (bidAmount > 1) {
+      setBidAmount(bidAmount - 1);
+    }
+  }
+
+
+    function handleBidSubmit(e) {
+        e.preventDefault();
+        console.log("Bid submitted!")
+        console.log(bidAmount)
+    }
   return (
     <div className="container extend-height my-5">
     <div className="row">
@@ -40,13 +64,19 @@ function BidPage() {
               {/* <small style={{color:'#3E54AC'}}>(5054 views)</small>*/} 
               </h5> 
   
-              <h6 className="title-price"><small>Current highest bid</small></h6>
-              <h3 style={{marginTop:'0px'}}>KES {starting_price*135}</h3>
+              <h6 className="title-price" style={{marginBottom:'10px'}}><small>Current highest bid: </small></h6>
+              <h3 style={{marginTop:'0px'}}>$ {starting_price}</h3>
                   
-              <div className="section" style={{paddingBottom:'20px'}}>
-                  <button className="btn btn-success"><span style={{marginRight:'20px'}} className="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Bid</button>
-              </div>                                        
-          </div>                              
+            <form class="input-group w-auto justify-content-start align-items-center mt-3 " onSubmit={handleBidSubmit}>
+                <input type="button" value="-" class="button-minus border-0 bg-transparent icon-shape icon-sm mx-1 " data-field="quantity" onClick={handleDecrementClick}/>
+                <input type="number" step="1" name="quantity" value={bidAmount} class="quantity-field border-0 text-center w-25" onChange={(e)=> setBidAmount(e.target.value)}/>
+                <input type="button" value="+" class="button-plus border-0 icon-shape icon-sm bg-transparent " data-field="quantity" onClick={handleIncrementClick}/>
+                <button id="btnSubmit"  class="btn btn-info form-control btn-block mx-5" type="submit" >Bid</button>
+            </form>
+            <p className='mt-5'>Category: <span  style={{fontWeight: '500', color:'#3E54AC'}} >{category.category_name}</span> </p>
+          </div> 
+
+                                      
   
           <div className="col-9">
               <ul className="menu-items">

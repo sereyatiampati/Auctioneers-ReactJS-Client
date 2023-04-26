@@ -1,44 +1,37 @@
 import './login.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
+import API_BASE_URL from '../../utilities/env';
+import { jwtLoginHandler, getJSONPayloadFromJwt } from '../../utilities/auth';
 
-const Login = ({setUser}) => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [errors, setErrors] = useState([]);
-    const navigate = useNavigate();
+const Login = ({user, setUser}) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState([]);
 
+  const navigate = useNavigate();
 
-    function handleSubmit(e) {
-      e.preventDefault()
-      setErrors([])
-      fetch("http://localhost:3000/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      }).then((r) => {
-        if (r.ok) {
-          r.json().then((user) =>{
-            setUser(user)
-            if(user.user_type=="Buyer"){
-              setUser(user);
-              navigate("/auctions");
-              setUser(user)
-            }else if(user.user_type=="Seller"){
-              navigate("/seller");
-              setUser(user);
-            }
-            });
-            setUsername("")
-            setPassword("")
-        } else {
-          r.json().then((err) => setErrors(err.errors));
-        }
-      });
-      setPassword("")
+  function loginSuccessCallback(base64EncodedToken) {
+    const userParams = getJSONPayloadFromJwt(base64EncodedToken)
+    setUser( userParams );
+    if ( "buyer_id" in userParams ) {
+      navigate('/auctions');
+    } else if ( "seller_id" in userParams ) {
+      navigate('/seller');
+    }
+  }
+
+  async function loginFailureCallback(responsePromise) {
+    const response = await responsePromise.json();
+    setErrors(response.errors);
+  }
+
+  const handleSubmit = async (evt) => {
+    evt.preventDefault();
+    const loginRequestBody = { username, password };
+    // eslint-disable-next-line max-len
+    jwtLoginHandler(loginRequestBody, `${API_BASE_URL}/login`, loginSuccessCallback, loginFailureCallback);    
   }
 
     return (
@@ -66,7 +59,7 @@ const Login = ({setUser}) => {
                     </button>
                   </div>
                   {
-                            errors?.length > 0 ? errors.map((error)=><li style={{color: "red", fontSize: "12px"}} key={error}>{error}</li>) : ""
+                    errors?.length > 0 ? errors.map((error)=><p style={{color: "red", fontSize: "12px"}} className = "text-center" key={error}>{error}</p>) : ""
                   }
                 </form>
                 <div>
