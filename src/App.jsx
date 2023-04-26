@@ -16,7 +16,6 @@ import HomeContact from './components/home/HomeContact';
 import Newsletter from './components/home/Newsletter';
 import BidderPage from './components/bidderpage/BidderPage';
 import CreateProduct from './components/createProduct/CreateProduct';
-import Bidhistory from './components/bidhistory/Bidhistory'
 import { getJwtToken, getJSONPayloadFromJwt } from './utilities/auth';
 
 function App() {
