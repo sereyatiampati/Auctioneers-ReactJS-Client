@@ -78,6 +78,5 @@ return (
 }
 
 }
-}
 
 export default Navbar;
