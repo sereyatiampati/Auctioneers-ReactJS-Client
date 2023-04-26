@@ -3,6 +3,7 @@ import './bidderpage.css'
 import { Banner } from "./Banner";
 import { ProductsContainer } from "../ProductsContainer/ProductsContainer";
 import Pagination from "../Pagination/Pagination";
+import API_BASE_URL from "../../utilities/env";
 
 
 function BidderPage() {
@@ -11,7 +12,7 @@ function BidderPage() {
   const [bidsPerPage, setbidsPerPage] = useState(9);
 
   useEffect(() => {
-    fetch('http://localhost:3000/products')
+    fetch(`${API_BASE_URL}/products`)
       .then(res => res.json())
       .then(data => {
         console.log('products data:', data);
