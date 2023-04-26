@@ -1,24 +1,32 @@
 import React, { useState, useEffect } from 'react';
+import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 import './bidhistory.css';
-
 function Bidhistory() {
   const [bids, setBids] = useState([]);
-
   useEffect(() => {
     fetch('https://testing-e1kb.onrender.com/bidhistory')
       .then(response => response.json())
       .then(data => setBids(data))
       .catch(error => console.error(error));
   }, []);
-
   console.log(bids);
-
   return (
     <div className="card">
-      <div className="card-header">
-        <h1>BID HISTORY</h1>
+    <div className="card-header">
+      <h1>BID HISTORY</h1>
+      {bids.length > 0 ? (
         <h2>{bids.length} Items in Bids</h2>
-      </div>
+      ) : (
+        <div>
+          <p className="text-white">There are currently no bids on this item.</p>
+          <Button variant="primary" as={Link} to="/auctions">
+            Bid Now
+          </Button>
+        </div>
+      )}
+    </div>
+    {bids.length > 0 && (
       <ul className="list-group list-group-flush">
         {bids.map((bid) => (
           <li key={bid.id} className="list-group-item">
@@ -43,8 +51,8 @@ function Bidhistory() {
           </li>
         ))}
       </ul>
-    </div>
+    )}
+  </div>
   );
 }
-
 export default Bidhistory;

@@ -9,6 +9,7 @@ import Home from './components/home/Home'
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/navbar/Navbar'
 import Signup from './components/signup/Signup'
+import Bidhistory from './components/bidhistory/Bidhistory'
 import HomeFooter from './components/home/HomeFooter';
 import Vendors from './components/vendors/vendors';
 import HomeContact from './components/home/HomeContact';
@@ -30,7 +31,7 @@ function App() {
       if (r.ok) {
         r.json().then((user) => {
           setUser(user)
-        });        
+        });
       }
     });
   }, []);
@@ -48,6 +49,7 @@ function App() {
           <Route path='/auctions' element={<BidderPage/>}/>
           <Route path='/vendors' element={<Vendors/>}/>
           <Route path='/product' element={<BidPage/>}/>
+          <Route path='/bidhistory' element={<Bidhistory/>}/>
           <Route path='/contact' element={
             <>
             <HomeContact/>
@@ -58,7 +60,7 @@ function App() {
           <Route path="/auction/:id" element={<BidPage />}/>
           <Route path='/seller' element={<Seller user={user}/>}/>
           <Route path='/new-product' element={<CreateProduct/>}/>
-          <Route path="*" element={<NotFound value={value}/>} />
+          <Route path="*" element={<NotFound value={value}  />} />
         </Routes>
         <HomeFooter/>
         

@@ -13,6 +13,8 @@ function BidPage() {
     const [starting_price, setStartingPrice] = useState('');
     const [image, setImage] = useState('');
     const [errors, setErrors] = useState([]);
+    const [bids, setBids] = useState([]);
+    const [filter, setFilter] = useState('open');
 
 
     useEffect(()=> {
@@ -26,8 +28,23 @@ function BidPage() {
                   setStartingPrice(starting_price);
                   setImage(image);
         });
+
+        fetch(`https://testing-e1kb.onrender.com/products/${id}/bids`)
+      .then((r) => r.json())
+      .then((data) => {
+        setBids(data.bids);
+      });
     },[])
-    const words =name.split(' ')
+    const words =name.split(' ');
+
+    // filter bids based on the selected filter
+  const filteredBids = bids.filter((bid) => {
+    if (filter === 'open') {
+      return bid.status === 'open';
+    } else {
+      return true; // show all bids
+    }
+  });
   return (
     <div className="container extend-height my-5">
     <div className="row">

@@ -54,3 +54,14 @@
   background-color: #1D3557;
   text-align: center;
 }
+
+.no-bids {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.p {
+  background-color: #fff;
+}
