@@ -1,54 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import API_BASE_URL from '../../utilities/env';
+import { jwtSignupHandler } from '../../utilities/auth';
 import './signup.css'
 
 function Signup({setUser}) {
     const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [password, setPassword] = useState('');   
     const [password_confirmation, setPasswordConfirmation] = useState('');
     const [user_type, setUserType] = useState("");
     const [errors, setErrors] = useState([]);
 
-      function handleSignupSubmit(e) {
-        e.preventDefault()
-        setErrors([]);
-        let formData = {
-            username: username,
-            email: email,
-            password: password,
-            password_confirmation: password_confirmation,
-            user_type: user_type,
-        }
-        fetch('http://localhost:3000/signup', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-          }).then(res => {
-            if (res.ok){
-                res.json().then((newUser)=> {
-                    console.log(newUser)
-                    if(newUser.user_type=="Buyer"){
-                        navigate("/auctions");
-                        setUser(newUser)
-                      }else if(newUser.user_type=="Seller"){
-                          navigate("/seller");
-                          setUser(newUser);
-                      }
-                    setUsername("")
-                    setEmail('')
-                    setPassword('')
-                    setPasswordConfirmation('')
-                    setUserType('')
-                });
-            } else {
-                res.json().then((err)=> setErrors(err.errors));
-            }
-            })  
-      }
+    function signupSuccessCallback() {
+        navigate('/login');
+    }
+  
+    async function signupFailureCallback(responsePromise) {
+      const response = await responsePromise.json();
+      setErrors(response.errors);
+    }
+
+    const handleSignupSubmit = async (evt) => {
+    evt.preventDefault();
+    const formData = { username, email, password, password_confirmation, user_type };
+    console.log(formData)
+    // eslint-disable-next-line max-len
+    jwtSignupHandler(formData, `${API_BASE_URL}/signup`, signupSuccessCallback, signupFailureCallback);
+    }
 
 
     return (
