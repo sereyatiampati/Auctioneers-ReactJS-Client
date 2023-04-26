@@ -64,9 +64,9 @@ function Seller({ user }) {
                 <td>Closed</td>
                 <td>{product.starting_price}</td>
                 <td>{startdate}</td>
-                <td>22</td>
                 <td>22000</td>
                 <td>{enddate}</td>
+                <td>210000</td>
                 <th scope="col">
                     <button className="seller-button" onClick={(e) => handleDelete(product.id)}><i class="far fa-trash-can"></i></button>
                 </th>
@@ -87,7 +87,7 @@ function Seller({ user }) {
                     <div class="row align-items-center py-4">
                         <div class="col-md-4" />
                         <div class="col-xs-12 col-md-4 text-center">
-                            <p class="h4">{user.id}'s past auctions</p>
+                            <p class="h4">Your past auctions</p>
                         </div>
                         <div class="col-xs-12 col-md-4 text-center text-md-right">
                             <button type="button" class="btn btn-primary" onClick={() => navigate('/new-product')}>New Auction</button>
@@ -105,8 +105,8 @@ function Seller({ user }) {
                                 <th scope="col">Reserve price (KES)</th>
                                 <th scope="col">Auction start time</th>
                                 <th scope="col">Bidders</th>
-                                <th scope="col">Highest bid price</th>
                                 <th scope="col">Auction end time</th>
+                                <th scope="col">Highest bid price</th>
                                 {/* <th scope="col">Actions</th> */}
                                 {/* <th scope="col"><i class="far fa-trash-can"></i></th> */}
                             </tr>

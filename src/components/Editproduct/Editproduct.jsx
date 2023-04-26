@@ -40,7 +40,7 @@ export default function Editproduct ()  {
           category_id: category.id,
           start_time: startTime,
           end_time: endTime,
-          starting_bid: startingBid,
+          starting_price: startingBid,
           description: description,
           image_url: imageUrl
         };

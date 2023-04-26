@@ -11,7 +11,7 @@ const CreateProduct = ({ user }) => {
     const [category, setCategory] = useState(null);
     const [startTime, setStartTime] = useState('');
     const [endTime, setEndTime] = useState('');
-    const [startingBid, setStartingBid] = useState(0);
+    const [startingBid, setStartingBid] = useState('');
     const [description, setDescription] = useState('');
     const [imageUrl, setImageUrl] = useState('');
 
@@ -110,7 +110,7 @@ const CreateProduct = ({ user }) => {
                     <div className="col">
                         <div className="form-outline">
                             <label className="form-label" htmlFor="form6Example1">Starting Bid (KES)<span style={{color: 'red'}}>*</span></label>
-                            <input type="number" id="form6Example1" className="form-control" />
+                            <input type="number" id="form6Example1" onChange={(e) => setStartingBid(e.target.value)} className="form-control" />
                         </div>
                     </div>
                 </div>
