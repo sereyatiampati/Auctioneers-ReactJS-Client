@@ -14,7 +14,6 @@ import Vendors from './components/vendors/vendors';
 import HomeContact from './components/home/HomeContact';
 import Newsletter from './components/home/Newsletter';
 import BidderPage from './components/bidderpage/BidderPage';
-// import Seller from './components/seller-page/seller';
 import CreateProduct from './components/createProduct/CreateProduct';
 import Bidhistory from './components/bidhistory/Bidhistory'
 import { getJwtToken, getJSONPayloadFromJwt } from './utilities/auth';
@@ -22,15 +21,23 @@ import { getJwtToken, getJSONPayloadFromJwt } from './utilities/auth';
 function App() {
   const [user, setUser] = useState(null);
 
+  // function syncUserStateWithJWTOnLoad() {
+  //   const userParams = getJSONPayloadFromJwt(getJwtToken());
+  //   if ('buyer_id' in userParams || 'seller_id' in userParams) {
+  //     setUser(userParams);
+  //   } else {
+  //     setUser(null);
+  //   }
+  // }
   function syncUserStateWithJWTOnLoad() {
     const userParams = getJSONPayloadFromJwt(getJwtToken());
-    if ('buyer_id' in userParams || 'seller_id' in userParams) {
+    if (userParams && ('buyer_id' in userParams || 'seller_id' in userParams)) {
       setUser(userParams);
     } else {
       setUser(null);
     }
   }
-
+  console.log(user)
   useEffect(syncUserStateWithJWTOnLoad, []);
 
   return (

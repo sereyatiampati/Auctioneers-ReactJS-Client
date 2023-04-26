@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import "./seller.css"
 import React from 'react';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function Seller({ user }) {
@@ -11,10 +11,34 @@ function Seller({ user }) {
         navigate('/login');
         return null;
     }
-    const [products, setProducts] = useState(user.products);
+    // const [products, setProducts] = useState(user.products);
 
+    // const navigate = useNavigate();
+    const [products, setProducts] = useState([]);
+  
+    // useEffect(() => {
+    //   if (user) {
+    //     const fetchProducts = async () => {
+    //       try {
+    //         const response = await fetch(`http://localhost:3000/products?seller_id=${user.id}`);
+    //         const data = await response.json();
+    //         setProducts(data);
+    //       } catch (error) {
+    //         console.error(error);
+    //       }
+    //     };
+  
+    //     fetchProducts();
+    //   } else {
+    //     navigate('/login');
+    //   }
+    // }, [user, navigate]);
 
-
+    useEffect(() => {
+        fetch(`http://localhost:3000/users/${user.seller_id}`)
+        .then(res => res.json())
+        .then(prods => setProducts(prods))
+    },[])
     const handleDelete = async (productId) => {
         try {
             const response = await fetch(`http://localhost:3000/products/${productId}`, {
@@ -29,8 +53,7 @@ function Seller({ user }) {
             console.error(error);
         }
     };
-
-
+    console.log(user.seller_id)
     const oneproduct = products.map((product, index) => {
         const startdate = new Date(product.start_time).toLocaleString('en-US', { timeZone: 'EAT' });
         return (
@@ -64,7 +87,7 @@ function Seller({ user }) {
                     <div class="row align-items-center py-4">
                         <div class="col-md-4" />
                         <div class="col-xs-12 col-md-4 text-center">
-                            <p class="h4">{user.username}'s past auctions</p>
+                            <p class="h4">{user.id}'s past auctions</p>
                         </div>
                         <div class="col-xs-12 col-md-4 text-center text-md-right">
                             <button type="button" class="btn btn-primary" onClick={() => navigate('/new-product')}>New Auction</button>
