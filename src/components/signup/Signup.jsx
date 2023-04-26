@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { API_BASE_URL } from '../../utilities/env';
+import API_BASE_URL from '../../utilities/env';
 import { jwtSignupHandler } from '../../utilities/auth';
 import './signup.css'
 
@@ -26,6 +26,7 @@ function Signup({setUser}) {
     evt.preventDefault();
     const formData = { username, email, password, password_confirmation, user_type };
     console.log(formData)
+    // eslint-disable-next-line max-len
     jwtSignupHandler(formData, `${API_BASE_URL}/signup`, signupSuccessCallback, signupFailureCallback);
     }
 

@@ -2,12 +2,8 @@ import './login.css';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
-import { API_BASE_URL } from '../../utilities/env';
+import API_BASE_URL from '../../utilities/env';
 import { jwtLoginHandler, getJSONPayloadFromJwt } from '../../utilities/auth';
-
-// import runServer from '../../mockserver';
-// runServer();
-
 
 const Login = ({user, setUser}) => {
   const [username, setUsername] = useState("");
@@ -34,6 +30,7 @@ const Login = ({user, setUser}) => {
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     const loginRequestBody = { username, password };
+    // eslint-disable-next-line max-len
     jwtLoginHandler(loginRequestBody, `${API_BASE_URL}/login`, loginSuccessCallback, loginFailureCallback);    
   }
 
