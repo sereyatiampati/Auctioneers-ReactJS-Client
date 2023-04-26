@@ -3,6 +3,7 @@ import './Editproduct.css';
 import { useNavigate } from 'react-router';
 import { useParams } from 'react-router-dom';
 import React from 'react';
+import API_BASE_URL from '../../utilities/env';
 
 export default function Editproduct() {
     // Define the list of categories
@@ -22,13 +23,13 @@ export default function Editproduct() {
 
 
     useEffect(() => {
-        fetch('http://localhost:3000/categories')
+        fetch(`${API_BASE_URL}/categories`)
             .then(res => res.json())
             .then(data => setCategories(data))
     }, [])
 
     useEffect(() => {
-        fetch(`http://localhost:3000/products/${id}`)
+        fetch(`${API_BASE_URL}/products/${id}`)
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [id])
@@ -46,7 +47,7 @@ export default function Editproduct() {
             image_url: imageUrl
         };
 
-        fetch(`http://localhost:3000/products/${id}`, {
+        fetch(`${API_BASE_URL}/products/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -94,10 +95,9 @@ export default function Editproduct() {
                             <label className="form-label" htmlFor="category">Category<span style={{ color: 'red' }}>*</span></label>
                             <select id="category" className="form-control" onChange={(e) => setCategory({ id: e.target.value })}>
                                 <option value=''>Select a category</option>
-                                {categories.map(category => {
+                                {categories.map(category => (
                                     <option key={category.id} value={category.id}>{category.category_name}</option>
-
-                                })}
+                                ))}
                             </select>
                         </div>
                     </div>

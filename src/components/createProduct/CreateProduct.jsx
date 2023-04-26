@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './createProduct.css';
 import { useNavigate } from 'react-router';
+import API_BASE_URL from '../../utilities/env';
 
 const CreateProduct = ({ user }) => {
     // Define the list of categories
@@ -27,13 +28,13 @@ const CreateProduct = ({ user }) => {
     
 
     useEffect(() => {
-        fetch('http://localhost:3000/categories')
+        fetch(`${API_BASE_URL}/categories`)
             .then(res => res.json())
             .then(data => setCategories(data))
     }, [])
     function handleSubmit(e) {
         e.preventDefault()
-        fetch('http://localhost:3000/products', {
+        fetch(`${API_BASE_URL}/products`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

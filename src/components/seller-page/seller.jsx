@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
 import moment from "moment";
 import "moment-timezone"
+import API_BASE_URL from "../../utilities/env";
 
 function Seller({ user }) {
     const navigate = useNavigate();
@@ -24,7 +25,7 @@ function Seller({ user }) {
         if (user) {
             const fetchProducts = async () => {
                 try {
-                    const response = await fetch(`http://localhost:3000/users/${user.seller_id}/products`);
+                    const response = await fetch(`${API_BASE_URL}/users/${user.seller_id}/products`);
                     const data = await response.json();
                     setUserprods(data);
                 } catch (error) {
@@ -40,7 +41,7 @@ function Seller({ user }) {
     console.log(userprods)
     const handleDelete = async (productId) => {
         try {
-            const response = await fetch(`http://localhost:3000/products/${productId}`, {
+            const response = await fetch(`${API_BASE_URL}/products/${productId}`, {
                 method: 'DELETE',
             });
             if (response.ok) {
