@@ -10,7 +10,6 @@ function BidderPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [bidsPerPage, setBidsPerPage] = useState(9);
   const [sortingOption, setSortingOption] = useState('all');
-
   useEffect(() => {
     fetch(`${API_BASE_URL}/products`)
       .then(res => res.json())
