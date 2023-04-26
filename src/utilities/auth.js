@@ -2,14 +2,7 @@ export function getJwtToken() {
   return localStorage.getItem('jwt');
 }
 
-// export function getJSONPayloadFromJwt(jwt) {
-//   const payloadIndex = 1;
-//   return JSON.parse(window.atob(jwt.split('.')[payloadIndex]));
-// }
-
 export function getJSONPayloadFromJwt(jwt) {
-  if (!jwt) return null; // or handle this case differently
-
   const payloadIndex = 1;
   return JSON.parse(window.atob(jwt.split('.')[payloadIndex]));
 }
