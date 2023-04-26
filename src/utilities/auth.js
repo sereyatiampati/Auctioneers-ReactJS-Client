@@ -21,7 +21,7 @@ export async function jwtLogoutHandler(useNavigateHook) {
 }
 
 // eslint-disable-next-line max-len
-export async function jwtLoginHandler(requestBody, endpoint,  loginSuccessCallback, loginFailureCallback) {
+export async function jwtLoginHandler(requestBody, endpoint, loginSuccessCallback, loginFailureCallback) {
   let responsePromise = null;
   const requestHeader = { 'Content-Type': 'application/json' };
   try {
@@ -45,7 +45,7 @@ export async function jwtLoginHandler(requestBody, endpoint,  loginSuccessCallba
   loginSuccessCallback(response.jwt);
 }
 // eslint-disable-next-line max-len
-export async function jwtSignupHandler(requestBody, endpoint,  signupSuccessCallback, signupFailureCallback) {
+export async function jwtSignupHandler(requestBody, endpoint, signupSuccessCallback, signupFailureCallback) {
   let responsePromise = null;
   const requestHeader = { 'Content-Type': 'application/json' };
   try {
@@ -55,6 +55,7 @@ export async function jwtSignupHandler(requestBody, endpoint,  signupSuccessCall
       body: JSON.stringify(requestBody),
     });
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.log('Exception encountered');
   }
   /* Guard block */
