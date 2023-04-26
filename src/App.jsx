@@ -9,13 +9,13 @@ import Home from './components/home/Home'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import Navbar from './components/navbar/Navbar'
 import Signup from './components/signup/Signup'
+import Bidhistory from './components/bidhistory/Bidhistory'
 import HomeFooter from './components/home/HomeFooter';
 import Vendors from './components/vendors/vendors';
 import HomeContact from './components/home/HomeContact';
 import Newsletter from './components/home/Newsletter';
 import BidderPage from './components/bidderpage/BidderPage';
 import CreateProduct from './components/createProduct/CreateProduct';
-import Bidhistory from './components/bidhistory/Bidhistory'
 import { getJwtToken, getJSONPayloadFromJwt } from './utilities/auth';
 
 function App() {
