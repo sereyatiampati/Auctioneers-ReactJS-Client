@@ -2,7 +2,9 @@ import { useNavigate } from "react-router";
 import "./seller.css"
 import React from 'react';
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
+import moment from "moment";
+import "moment-timezone"
 
 function Seller({ user }) {
     const navigate = useNavigate();
@@ -11,34 +13,31 @@ function Seller({ user }) {
         navigate('/login');
         return null;
     }
-    // const [products, setProducts] = useState(user.products);
 
-    // const navigate = useNavigate();
+    console.log(user)
     const [products, setProducts] = useState([]);
-  
-    // useEffect(() => {
-    //   if (user) {
-    //     const fetchProducts = async () => {
-    //       try {
-    //         const response = await fetch(`http://localhost:3000/products?seller_id=${user.id}`);
-    //         const data = await response.json();
-    //         setProducts(data);
-    //       } catch (error) {
-    //         console.error(error);
-    //       }
-    //     };
-  
-    //     fetchProducts();
-    //   } else {
-    //     navigate('/login');
-    //   }
-    // }, [user, navigate]);
+    const [userprods, setUserprods] = useState([]);
+
+
 
     useEffect(() => {
-        fetch(`http://localhost:3000/users/${user.seller_id}`)
-        .then(res => res.json())
-        .then(prods => setProducts(prods))
-    },[])
+        if (user) {
+            const fetchProducts = async () => {
+                try {
+                    const response = await fetch(`http://localhost:3000/users/${user.seller_id}/products`);
+                    const data = await response.json();
+                    setUserprods(data);
+                } catch (error) {
+                    console.error(error);
+                }
+            };
+            fetchProducts();
+        } else {
+            navigate('/login');
+        }
+    }, [user, navigate]);
+
+    console.log(userprods)
     const handleDelete = async (productId) => {
         try {
             const response = await fetch(`http://localhost:3000/products/${productId}`, {
@@ -54,30 +53,31 @@ function Seller({ user }) {
         }
     };
     console.log(user.seller_id)
-    const oneproduct = products.map((product, index) => {
-        const startdate = new Date(product.start_time).toLocaleString('en-US', { timeZone: 'EAT' });
+    const oneproduct = userprods.map((product, index) => {
+        const startdate = moment.tz(product.start_time, 'EAT').format('DD MMMM YYYY HH:mm');
+        const enddate = moment.tz(product.end_time, 'EAT').format('DD MMMM YYYY HH:mm')
         return (
-          <tr key={product.id}>
-            <th scope="row">{index + 1}</th>
-            <td>{product.name}</td>
-            <td>{product.category_name}</td>
-            <td>Closed</td>
-            <td>15000</td>
-            <td>{startdate}</td>
-            <td>22</td>
-            <td>22000</td>
-            <td>16 February 2023 08:00</td>
-            <th scope="col">
-              <button className="seller-button" onClick={(e) => handleDelete(product.id)}><i class="far fa-trash-can"></i></button>
-            </th>
-            <th scope="col">
-              <Link to={`/editproduct/${product.id}`} className="seller-button"><i class="far fa-pen-to-square"></i></Link>
-            </th>
-            <td></td>
-          </tr>
+            <tr key={product.id}>
+                <th scope="row">{index + 1}</th>
+                <td>{product.name}</td>
+                <td>{product.category.category_name}</td>
+                <td>Closed</td>
+                <td>{product.starting_price}</td>
+                <td>{startdate}</td>
+                <td>22</td>
+                <td>22000</td>
+                <td>{enddate}</td>
+                <th scope="col">
+                    <button className="seller-button" onClick={(e) => handleDelete(product.id)}><i class="far fa-trash-can"></i></button>
+                </th>
+                <th scope="col">
+                    <Link to={`/editproduct/${product.id}`} className="seller-button"><i class="far fa-pen-to-square"></i></Link>
+                </th>
+                <td></td>
+            </tr>
         )
-      })
-      
+    })
+
 
     console.log(products)
     return (

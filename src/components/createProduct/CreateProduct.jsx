@@ -46,7 +46,7 @@ const CreateProduct = ({ user }) => {
                 starting_price: startingBid,
                 description: description,
                 image: imageUrl,
-                seller_id: user.id
+                seller_id: user.seller_id
             })
         })
             .then(res => {
