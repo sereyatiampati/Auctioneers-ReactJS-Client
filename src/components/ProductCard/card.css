@@ -6,7 +6,7 @@ body {
     line-height: 1.5385;
     color: #333;
     text-align: left;
-    background-color: #2196F3;
+    background-color: #e1ecff;
 }
 
 .mt-50{
@@ -33,7 +33,13 @@ body {
     background-clip: border-box;
     border: 1px solid rgba(0,0,0,.125);
     border-radius: .1875rem;
+    transition: all 0.2s ease-in-out;
 }
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  }
 
 .card-img-actions {
     position: relative;
@@ -48,6 +54,7 @@ body {
 .card-img{
 
     width: 350px;
+    height: 350px;
 }
 
 .star{

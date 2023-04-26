@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import './createProduct.css';
+import { useEffect, useState } from 'react';
+import './Editproduct.css';
 import { useNavigate } from 'react-router';
+import { useParams } from 'react-router-dom';
+import React from 'react';
 import API_BASE_URL from '../../utilities/env';
 
-const CreateProduct = ({ user }) => {
+export default function Editproduct() {
     // Define the list of categories
     const [categories, setCategories] = useState([])
-    const [products,setProducts]=useState([])
+    const [product, setProduct] = useState([])
     // For the form
     const [name, setName] = useState('');
     const [category, setCategory] = useState(null);
@@ -15,77 +17,84 @@ const CreateProduct = ({ user }) => {
     const [startingBid, setStartingBid] = useState('');
     const [description, setDescription] = useState('');
     const [imageUrl, setImageUrl] = useState('');
-
+    const { id } = useParams();
     const navigate = useNavigate();
 
-    console.log(user)
 
-    useEffect(() => {
-        if (category) {
-            console.log(category.id);
-        }
-    }, [category]);
-    
 
     useEffect(() => {
         fetch(`${API_BASE_URL}/categories`)
             .then(res => res.json())
             .then(data => setCategories(data))
     }, [])
-    function handleSubmit(e) {
-        e.preventDefault()
-        fetch(`${API_BASE_URL}/products`, {
-            method: 'POST',
+
+    useEffect(() => {
+        fetch(`${API_BASE_URL}/products/${id}`)
+            .then(res => res.json())
+            .then(data => setProduct(data))
+    }, [id])
+
+    const handleUpdate = (e) => {
+        e.preventDefault();
+
+        const updatedProduct = {
+            name: name,
+            category_id: category.id,
+            start_time: startTime,
+            end_time: endTime,
+            starting_price: startingBid,
+            description: description,
+            image_url: imageUrl
+        };
+
+        fetch(`${API_BASE_URL}/products/${id}`, {
+            method: 'PATCH',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                name: name,
-                category_id: category ? category.id : null,
-                start_date: startTime,
-                end_date: endTime,
-                starting_price: startingBid,
-                description: description,
-                image: imageUrl,
-                seller_id: user.seller_id
-            })
+            body: JSON.stringify(updatedProduct)
         })
-            .then(res => {
-                if (res.ok) {
-                    return res.json();
+            .then(response => {
+                if (response.ok) {
+                    // navigate to the product details page for the updated product
+                    navigate(`/seller`);
                 } else {
-                    throw new Error('Product not created');
+                    throw new Error('Failed to update product');
                 }
             })
-            .then(data => {
-                setProducts(data);
-                navigate('/seller');
-            })
-            .catch(err => {
-                console.error(err);
-                alert('Error: Product not created');
+            .catch(error => {
+                console.error(error);
             });
-    }
-    const test = categories.map((category) => console.log(category.id))
-    
-    // console.log(category.id)
-    if(!user) { return <div>Please Log in to create a product</div> }
+    };
+
+    //   <label htmlfor="category">Category:</label>
+    //       <select id="categories" name="category_id" onChange={handleFormInput}>
+    //         <option value={editData?.category?.id}>
+    //           {produuct.category}
+    //         </option>
+    //         {categories.map((option) => (
+    //           <option key={option.id} value={option.id}>
+    //             {option.name}
+    //           </option>
+    //         ))}
+    //       </select>
+
     return (
         <div className='product-form'>
-            <form onSubmit={handleSubmit}>
-                <div className="text">Add a product to Auction</div>
+            <form onSubmit={handleUpdate}>
+                <div className="text">Edit auctioned</div>
                 <div className="row mb-4">
                     <div className="col">
                         <div className="form-outline">
-                            <label className="form-label" htmlFor="form6Example1">Product<span style={{color: 'red'}}>*</span></label>
-                            <input type="text" id="form6Example1" className="form-control" onChange={(e) => setName(e.target.value)} />
+                            <label className="form-label" htmlFor="form6Example1">Product<span style={{ color: 'red' }}>*</span></label>
+                            <input type="text" id="form6Example1" defaultValue={product.name} className="form-control" onChange={(e) => setName(e.target.value)} />
                         </div>
                     </div>
                     <div className="col">
                         <div className="form-outline">
                             <label className="form-label" htmlFor="category">Category<span style={{ color: 'red' }}>*</span></label>
-                            <select id="category" className="form-control" onChange={(e) => setCategory({id : e.target.value})}>
-                                <option value="">Select a category</option>
+                            <select id="category" className="form-control" onChange={(e) => setCategory({ id: e.target.value })}>
+                                <option value=''>Select a category</option>
                                 {categories.map(category => (
                                     <option key={category.id} value={category.id}>{category.category_name}</option>
                                 ))}
@@ -97,21 +106,21 @@ const CreateProduct = ({ user }) => {
                     <div className="col">
                         <div className="form-outline">
                             <label className="form-label" htmlFor="form6Example1">Desired start time (MM/DD/YY)<span style={{ color: 'red' }}>*</span></label>
-                            <input type="date" id="form6Example1" className="form-control" onChange={(e) => setStartTime(e.target.value)} />
+                            <input type="date" id="form6Example1" className="form-control" defaultValue={product.start_date} onChange={(e) => setStartTime(e.target.value)} />
                         </div>
                     </div>
                     <div className="col">
                         <div className="form-outline">
                             <label className="form-label" htmlFor="form6Example2">Desired end time (MM/DD/YY) <span style={{ color: 'red' }}>*</span></label>
-                            <input type="date" id="form6Example2" className="form-control" onChange={(e) => setEndTime(e.target.value)} />
+                            <input type="date" id="form6Example2" className="form-control" defaultValue={product.end_date} onChange={(e) => setEndTime(e.target.value)} />
                         </div>
                     </div>
                 </div>
                 <div className="row mb-4">
                     <div className="col">
                         <div className="form-outline">
-                            <label className="form-label" htmlFor="form6Example1">Starting Bid (KES)<span style={{color: 'red'}}>*</span></label>
-                            <input type="number" id="form6Example1" onChange={(e) => setStartingBid(e.target.value)} className="form-control" />
+                            <label className="form-label" htmlFor="form6Example1">Starting Bid (KES)<span style={{ color: 'red' }}>*</span></label>
+                            <input type="number" id="form6Example1" defaultValue={product.starting_price} className="form-control" onChange={(e) => setStartingBid(e.target.value)} />
                         </div>
                     </div>
                 </div>
@@ -119,7 +128,7 @@ const CreateProduct = ({ user }) => {
                     <div className="col">
                         <div className="form-outline">
                             <label className="form-label" htmlFor="form6Example1">Product Description<span style={{ color: 'red' }}>*</span></label>
-                            <input type="text" id="form6Example1" className="form-control" onChange={(e) => setDescription(e.target.value)} />
+                            <input type="text" id="form6Example1" defaultValue={product.description} className="form-control" onChange={(e) => setDescription(e.target.value)} />
                         </div>
                     </div>
                 </div>
@@ -127,16 +136,13 @@ const CreateProduct = ({ user }) => {
                     <div className="col">
                         <div className="form-outline">
                             <label className="form-label" htmlFor="form6Example1">Image-url<span style={{ color: 'red' }}>*</span></label>
-                            <input type="text" id="form6Example1" className="form-control" onChange={(e) => setImageUrl(e.target.value)} />
+                            <input type="text" id="form6Example1" defaultValue={product.image} className="form-control" onChange={(e) => setImageUrl(e.target.value)} />
                         </div>
                     </div>
                 </div>
                 <div className="row mb-4">
-                    {/* <div className="col">
-                        <button type="submit" className="btn btn-primary btn-block mb-4">Picture</button>
-                    </div> */}
                     <div className="col">
-                        <button type="submit" className="btn btn-primary btn-block mb-4">Submit</button>
+                        <button type="submit" className="btn btn-primary btn-block mb-4">Save</button>
                     </div>
                 </div>
             </form>
@@ -144,4 +150,3 @@ const CreateProduct = ({ user }) => {
     )
 }
 
-export default CreateProduct;
