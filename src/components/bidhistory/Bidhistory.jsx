@@ -6,6 +6,25 @@ import { getJwtToken, getJSONPayloadFromJwt } from '../../utilities/auth';
 import API_BASE_URL from '../../utilities/env';
 
 function Bidhistory() {
+  const [bids, setBids]= useState([]);
+
+  useEffect(() => {
+    fetch(`${API_BASE_URL}/bidhistory`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization : `Bearer ${getJwtToken()}`,
+      },
+    }).then((response) => {
+      if (response.ok) {
+        response.json().then((data) => {
+          console.log(data)
+          setBids(data)});
+      }
+    });
+  }, []);
+
+
 
   return (
     <div className="card">
@@ -14,7 +33,7 @@ function Bidhistory() {
         {bids.length > 0 ? (
           <h2>{bids.length} Items in Bids</h2>
           ) : (
-            <div>
+<div>
               <p className="text-white">There are currently no bids on this item.</p>
               <Button variant="primary" as={Link} to="/auctions">
                 Bid Now
@@ -22,7 +41,7 @@ function Bidhistory() {
             </div>
           )}
         </div>
-        {bids.length > 0 && (
+{bids.length > 0 && (
           <ul className="list-group list-group-flush">
             {bids.map((bid) => (
               <li key={bid.id} className="list-group-item">
@@ -36,13 +55,13 @@ function Bidhistory() {
                       <p className="item-description">{bid.description}</p>
                     </div>
                   </div>
-                  <div className="col-md-6">
+<div className="col-md-6">
                     <div className="item-bid-details">
                       <p className="item-start-price">Starting price: {bid.starting_price}</p>
                       <p className="item-start-date">Start time: {bid.start_date}</p>
                       <p className="item-end-date">End time: {bid.end_date}</p>
                     </div>
-                  </div>
+                    </div>
                 </div>
               </li>
             ))}
@@ -53,4 +72,3 @@ function Bidhistory() {
   }
   
   export default Bidhistory;
-  

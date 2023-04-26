@@ -1,6 +1,8 @@
 import React from 'react';
 import {useEffect, useState} from 'react'
 import {useNavigate, useParams} from 'react-router-dom'
+import { getJwtToken, getJSONPayloadFromJwt } from '../../utilities/auth'
+import API_BASE_URL from '../../utilities/env';
 import './BidPage.css'
 
 function BidPage() {
@@ -13,12 +15,13 @@ function BidPage() {
     const [starting_price, setStartingPrice] = useState('');
     const [image, setImage] = useState('');
     const [errors, setErrors] = useState([]);
-    const [bids, setBids] = useState([]);
-    const [filter, setFilter] = useState('open');
+    const [category, setCategory] = useState({});
+  
+    
 
 
     useEffect(()=> {
-        fetch(`http://localhost:3000/products/${id}`)
+        fetch(`${API_BASE_URL}/products/${id}`)
         .then((r) => r.json())
         .then(({name, description, start_date, end_date, starting_price, image, category})=> {
                   setName(name);
@@ -38,14 +41,50 @@ function BidPage() {
     },[])
     const words =name.split(' ');
 
-    // filter bids based on the selected filter
-  const filteredBids = bids.filter((bid) => {
-    if (filter === 'open') {
-      return bid.status === 'open';
-    } else {
-      return true; // show all bids
+    const [bidAmount, setBidAmount]= useState(0)
+
+  function handleIncrementClick() {
+    let inputValue = parseInt(bidAmount)
+    setBidAmount(inputValue+1);
+  }
+
+  function handleDecrementClick() {
+    if (bidAmount > 1) {
+      setBidAmount(bidAmount - 1);
     }
-  });
+  }
+
+
+    function handleBidSubmit(e) {
+        e.preventDefault();
+        setErrors([])
+        let bidInfo= {
+          bid_amount: bidAmount,
+          product_id: id,
+        };
+
+        console.log(bidInfo)
+        fetch(`${API_BASE_URL}/bids`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization : `Bearer ${getJwtToken()}`,
+          },
+          body: JSON.stringify(bidInfo)
+        })
+          .then((r) => {
+            if (r.ok) {
+              r.json().then(bid=> {
+                console.log(bid)
+                console.log("Bid submitted!")
+
+              })
+            }
+            else {
+              r.json().then((err) => setErrors(err.errors));
+            }
+          })
+  }
   return (
     <div className="container extend-height my-5">
     <div className="row">
