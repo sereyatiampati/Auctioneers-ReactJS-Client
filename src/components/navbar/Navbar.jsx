@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { jwtLogoutHandler } from '../../utilities/auth';
 import './navbar.css';
@@ -14,7 +14,7 @@ function Navbar({user, setUser}) {
     jwtLogoutHandler(navigate);
   }
 
-  if (isGuest()) {  
+  if (isGuest()) {
     return (
     <header id="header">
     <div class="container d-flex align-items-center">
