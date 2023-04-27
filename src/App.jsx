@@ -17,6 +17,7 @@ import Newsletter from './components/home/Newsletter';
 import BidderPage from './components/bidderpage/BidderPage';
 import CreateProduct from './components/createProduct/CreateProduct';
 import { getJwtToken, getJSONPayloadFromJwt } from './utilities/auth';
+import Editproduct from './components/Editproduct/Editproduct';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -59,7 +60,8 @@ function App() {
           <Route path="/auction/:id" element={<BidPage />}/>
           {/* Seller routes */}
           <Route path='/seller' element={<Seller user={user}/>}/>
-          <Route path='/new-product' element={<CreateProduct/>}/>
+          <Route path='/new-product' element={<CreateProduct user={user}/>}/>
+          <Route path='editproduct/:id' element={<Editproduct/>}/>
           {/* Buyer Routes */}
           <Route path='/bids' element={<Bidhistory/>}/>
           <Route path="*" element={<NotFound/>} />

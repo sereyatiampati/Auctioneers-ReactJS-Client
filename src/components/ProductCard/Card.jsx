@@ -28,7 +28,7 @@ function Card({product}) {
         <div class="card">
                             <div class="card-body">
                                 <div class="card-img-actions">
-                                        <img src={image} class="card-img img-fluid" alt="" style={{height: "240px", width: '300px', objectFit: 'cover'}} onClick={()=>navigate(`/auction/${id}`)}/>
+                                        <img src={image} class="card-img img-fluid" alt="" style={{height: "240px", width: '300px', objectFit: 'cover'}}/>
                                 </div>
                             </div>
 
