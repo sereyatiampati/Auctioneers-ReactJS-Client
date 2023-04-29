@@ -49,6 +49,7 @@ function Seller({ user }) {
             });
             if (response.ok) {
                 setProducts(products.filter(product => product.id !== productId));
+                 setUserprods(userprods.filter(product => product.id !== productId));
             } else {
                 throw new Error('Failed to delete product');
             }
