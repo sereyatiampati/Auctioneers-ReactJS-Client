@@ -59,6 +59,7 @@ const CreateProduct = ({ user }) => {
             })
             .then(data => {
                 setProducts(data);
+                console.log(data)
                 navigate('/seller');
             })
             .catch(err => {
