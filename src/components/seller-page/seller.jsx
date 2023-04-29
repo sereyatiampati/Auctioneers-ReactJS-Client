@@ -113,12 +113,12 @@ function Seller({ user }) {
                 <td>{enddate}</td>
                 <td>210000</td>
                 <th scope="col">
-                    <button className="seller-button" onClick={(e) => handleDelete(product.id)}>
+                    <button className="seller-button-delete" onClick={(e) => handleDelete(product.id)}>
                         <i className="far fa-trash-can"></i>
                     </button>
                 </th>
                 <th scope="col">
-                    <Link to={`/editproduct/${product.id}`} className="seller-button">
+                    <Link to={`/editproduct/${product.id}`} className="seller-button-edit">
                         <i className="far fa-pen-to-square"></i>
                     </Link>
                 </th>
