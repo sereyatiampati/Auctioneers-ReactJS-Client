@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router";
 import React, {useState, useEffect} from "react";
+import API_BASE_URL from '../../utilities/env';
 function Card({product}) {
-    const {id,name, image, starting_price, bids} = product
+    const {id,name, image, starting_price, bids, category, seller, count} = product
+    const [hbid, setHbid] = useState([])
     const [timeRemaining, setTimeRemaining] = useState('');
     const navigate = useNavigate()
     useEffect(() => {
@@ -22,6 +24,14 @@ function Card({product}) {
         }, 1000);
         return () => clearInterval(intervalId);
     }, [product]);
+
+    useEffect(() => {
+        fetch(`${API_BASE_URL}/highestbid/${id}`)
+        .then((r) => r.json())
+      .then((data) => {
+        setHbid(data);
+      });
+    },[])
     
     return (
     <div class="product-card col-md-4 mt-2" >   
@@ -38,10 +48,11 @@ function Card({product}) {
                                         <a class="text-dark mb-2" data-abc="true">{name}</a>
                                     </h6>
 
-                                    <p style={{color: "#4A60A1"}} data-abc="true">Top Bid: ${starting_price} </p>
+                                    <p style={{color: "#4A60A1"}} data-abc="true">Starting Price: ${starting_price} </p>
+                                    <p style={{color: "#4A60A1"}} data-abc="true">Top Bid: ${hbid.bid_amount} </p>
                                 </div>
 
-                                <p class="text-muted" data-abc="true">6 bids placed</p>
+                                <p class="text-muted" data-abc="true">{count} bids placed</p>
 
                                 <div class="text-muted mb-3">Condition: No visible defects</div>
                     <div class="text-muted mb-2 pb-2 border-bottom" >{timeRemaining}</div>
