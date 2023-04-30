@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 import moment from "moment";
 import "moment-timezone"
 import API_BASE_URL from "../../utilities/env"
-import {getJwtToken} from "../../utilities/auth";
+import { getJwtToken } from "../../utilities/auth";
 
 function Seller({ user }) {
     const navigate = useNavigate();
@@ -44,43 +44,97 @@ function Seller({ user }) {
                 method: 'DELETE',
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization : `Bearer ${getJwtToken()}`,
+                    Authorization: `Bearer ${getJwtToken()}`,
                 }
             });
             if (response.ok) {
                 setProducts(products.filter(product => product.id !== productId));
+                setUserprods(userprods.filter(product => product.id !== productId));
             } else {
                 throw new Error('Failed to delete product');
             }
         } catch (error) {
             console.error(error);
         }
-    };
+    }
+
+    const handleCloseBid = async (productId) => {
+        try {
+            const response = await fetch(`${API_BASE_URL}/close_bid/${productId}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${getJwtToken()}`,
+                },
+            });
+            if (response.ok) {
+                const updatedProducts = userprods.map((product) => {
+                    if (product.id === productId) {
+                        return {
+                            ...product,
+                            end_date: moment().toISOString(),
+                        };
+                    } else {
+                        return product;
+                    }
+                });
+                setUserprods(updatedProducts);
+                console.log("clicked")
+            } else {
+                throw new Error('Failed to close bid');
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+
+
     console.log(user.seller_id)
+ 
     const oneproduct = userprods.map((product, index) => {
-        const startdate = moment.tz(product.start_time, 'EAT').format('DD MMMM YYYY HH:mm');
-        const enddate = moment.tz(product.end_time, 'EAT').format('DD MMMM YYYY HH:mm')
+        const startdate = moment(product.start_date).format('DD MMMM YYYY HH:mm');
+        const enddate = moment(product.end_date).format('DD MMMM YYYY HH:mm')
+        const isActive = moment().isBefore(moment(product.end_date));
+        const statusClass = isActive ? 'text-success' : 'text-danger';
+        const statusLabel = isActive ? 'Active' : 'Closed';
+
         return (
             <tr key={product.id}>
                 <th scope="row">{index + 1}</th>
                 <td>{product.name}</td>
                 <td>{product.category.category_name}</td>
-                <td>Open</td>
-                <td>{product.starting_price}</td>
+                <td>
+                    <span className={`font-weight-bold ${statusClass}`}>{statusLabel}</span>
+                </td>
+                <td>{product.starting_price * 135}</td>
                 <td>{startdate}</td>
                 <td>22000</td>
                 <td>{enddate}</td>
                 <td>210000</td>
                 <th scope="col">
-                    <button className="seller-button" onClick={(e) => handleDelete(product.id)}><i class="far fa-trash-can"></i></button>
+                    <button className="seller-button-delete" onClick={(e) => handleDelete(product.id)}>
+                        <i className="far fa-trash-can"></i>
+                    </button>
                 </th>
                 <th scope="col">
-                    <Link to={`/editproduct/${product.id}`} className="seller-button"><i class="far fa-pen-to-square"></i></Link>
+                    <Link to={`/editproduct/${product.id}`} className="seller-button-edit">
+                        <i className="far fa-pen-to-square"></i>
+                    </Link>
+                </th>
+                <th scope="col">
+                    {isActive ? (
+                        <button className="seller-button" onClick={(e) => handleCloseBid(product.id)}>
+                            Close bid
+                        </button>
+                    ) : (
+                        <span className="text-muted">Closed</span>
+                    )}
                 </th>
                 <td></td>
             </tr>
-        )
-    })
+        );
+    });
 
 
     console.log(products)
