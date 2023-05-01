@@ -9,7 +9,6 @@ function BidderPage() {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [bidsPerPage, setBidsPerPage] = useState(9);
-  const [sortingOption, setSortingOption] = useState('all');
   const [filter, setFilter] = useState("all");
 
 
@@ -17,23 +16,12 @@ function BidderPage() {
     fetch(`${API_BASE_URL}/products`)
       .then(res => res.json())
       .then(data => {
-        console.log('products data:', data);
+        
         setProducts(data);
       })
       .catch(error => console.log(error));
   }, []);
 
-  // const handleSortingOptionChange = (event) => {
-  //   setSortingOption(event.target.value);
-  // }
-
-  // console.log('products:', products);
-  // const filteredProducts = sortingOption === 'open' ? products.filter(p => p.status === 'open') : products;
-  // const sortedProducts = [...filteredProducts].sort((a, b) => {
-  //   if (sortingOption === 'open') {
-  //     return new Date(a.end_time) - new Date(b.end_time);
-  //   } else {
-  //     return b.bid_count - a.bid_count;
   const now = new Date();
   const filteredProducts = products.filter((product) => {
     if (filter === "all") {
@@ -60,7 +48,6 @@ function BidderPage() {
   };
   const indexOfLastBid = currentPage * bidsPerPage;
   const indexOfFirstBid = indexOfLastBid - bidsPerPage;
-  // const currentBids = sortedProducts.slice(indexOfFirstBid, indexOfLastBid);
   const currentBids = Array.isArray(products) ? filteredProducts.slice(indexOfFirstBid, indexOfLastBid) : [];
   return (
     <>

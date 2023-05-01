@@ -92,9 +92,6 @@ function Seller({ user }) {
 
 
     console.log(user.seller_id)
-
-    
-    
  
     const oneproduct = userprods.map((product, index) => {
         const startdate = moment(product.start_date).format('DD MMMM YYYY HH:mm');
@@ -117,6 +114,12 @@ function Seller({ user }) {
                 <td>{enddate}</td>
                 <td>{product.highest_bid}</td>
                 <th scope="col">
+                    <button className="seller-button-delete" onClick={(e) => handleDelete(product.id)}>
+                        <i className="far fa-trash-can"></i>
+                    </button>
+                </th>
+                <th scope="col">
+
                     <button className="seller-button-delete" onClick={(e) => handleDelete(product.id)}>
                         <i className="far fa-trash-can"></i>
                     </button>

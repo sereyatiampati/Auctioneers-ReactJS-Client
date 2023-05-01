@@ -65,7 +65,7 @@ function App() {
           {/* Buyer Routes */}
           <Route path='/bids' element={<Bidhistory/>}/>
           <Route path="*" element={<NotFound/>} />
-
+          
         </Routes>
         <HomeFooter/>
         
