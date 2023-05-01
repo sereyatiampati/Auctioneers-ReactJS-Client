@@ -40,7 +40,7 @@ function BidPage() {
                   setCategory(category)
         });
 
-        fetch(`https://testing-e1kb.onrender.com/productbids/${id}`)
+        fetch(`${API_BASE_URL}/productbids/${id}`)
       .then((r) => r.json())
       .then((bids) => {
         setBids(bids);
