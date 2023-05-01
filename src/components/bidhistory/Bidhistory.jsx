@@ -34,7 +34,7 @@ function Bidhistory() {
           <h2>{bids.length} Items in Bids</h2>
           ) : (
 <div>
-              <p className="text-white">There are currently no bids on this item.</p>
+              <p className="text-white">There are currently no bids on this.</p>
               <Button variant="primary" as={Link} to="/auctions">
                 Bid Now
               </Button>
@@ -57,6 +57,7 @@ function Bidhistory() {
                   </div>
 <div className="col-md-6">
                     <div className="item-bid-details">
+                      <p className="item-start-price">Starting price: {bid.starting_price}</p>
                       <p className="item-start-price">Starting price: {bid.starting_price}</p>
                       <p className="item-start-date">Start time: {bid.start_date}</p>
                       <p className="item-end-date">End time: {bid.end_date}</p>

@@ -28,8 +28,8 @@ function Card({product}) {
     useEffect(() => {
         fetch(`${API_BASE_URL}/highestbid/${id}`)
         .then((r) => r.json())
-      .then((data) => {
-        setHbid(data);
+      .then((bid) => {
+        setHbid(bid);
       });
     },[])
     

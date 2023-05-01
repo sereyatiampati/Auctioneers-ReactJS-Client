@@ -4,6 +4,8 @@ import {useNavigate, useParams} from 'react-router-dom'
 import { getJwtToken, getJSONPayloadFromJwt } from '../../utilities/auth'
 import API_BASE_URL from '../../utilities/env';
 import './BidPage.css'
+import './../bidConfirmation/ConfirmBidCard.css'
+
 
 function BidPage() {
     const {id}=useParams()
@@ -16,10 +18,9 @@ function BidPage() {
     const [image, setImage] = useState('');
     const [errors, setErrors] = useState([]);
     const [category, setCategory] = useState({});
+    const [bids, setBids]= useState([])
+    const [showModal, setShowModal] =useState(false)
   
-    
-
-
     useEffect(()=> {
         fetch(`${API_BASE_URL}/products/${id}`)
         .then((r) => r.json())
@@ -33,15 +34,15 @@ function BidPage() {
                   setCategory(category)
         });
 
-        fetch(`https://testing-e1kb.onrender.com/products/${id}/bids`)
+        fetch(`https://testing-e1kb.onrender.com/productbids/${id}`)
       .then((r) => r.json())
-      .then((data) => {
-        setBids(data.bids);
+      .then((bids) => {
+        setBids(bids);
       });
     },[])
     const words =name.split(' ');
 
-    const [bidAmount, setBidAmount]= useState(0)
+    const [bidAmount, setBidAmount]= useState('')
 
   function handleIncrementClick() {
     let inputValue = parseInt(bidAmount)
@@ -55,8 +56,8 @@ function BidPage() {
   }
 
 
-    function handleBidSubmit(e) {
-        e.preventDefault();
+    function handleConfirmBidSubmit(e) {
+        // e.preventDefault();
         setErrors([])
         let bidInfo= {
           bid_amount: bidAmount,
@@ -77,7 +78,7 @@ function BidPage() {
               r.json().then(bid=> {
                 console.log(bid)
                 console.log("Bid submitted!")
-
+                setShowModal(false)
               })
             }
             else {
@@ -85,9 +86,25 @@ function BidPage() {
             }
           })
   }
+
+  function handleBidClick() {
+    setShowModal(true);
+  }
+
+  function handleCancelClick() {
+    setShowModal(false);
+  }
+
+  if(showModal) {
+    document.body.classList.add('active-modal')
+  } else {
+    document.body.classList.remove('active-modal')
+  }
+
   return (
-    <div className="container extend-height my-5">
-    <div className="row">
+  <>
+      <div className="container extend-height my-5">
+        <div className="row">
          <div className="col-4 item-photo">
               <img style={{maxWidth:'100%'}} src={image} />
           </div>
@@ -100,12 +117,33 @@ function BidPage() {
               <h6 className="title-price" style={{marginBottom:'10px'}}><small>Current highest bid: </small></h6>
               <h3 style={{marginTop:'0px'}}>$ {starting_price}</h3>
                   
-            <form class="input-group w-auto justify-content-start align-items-center mt-3 " onSubmit={handleBidSubmit}>
+            <div class="input-group w-auto justify-content-start align-items-center mt-3 " >
                 <input type="button" value="-" class="button-minus border-0 bg-transparent icon-shape icon-sm mx-1 " data-field="quantity" onClick={handleDecrementClick}/>
-                <input type="number" step="1" name="quantity" value={bidAmount} class="quantity-field border-0 text-center w-25" onChange={(e)=> setBidAmount(e.target.value)}/>
+                <input type="number" step="1" name="quantity" value={bidAmount} class="quantity-field border-0 text-center w-25" onChange={(e)=> setBidAmount(e.target.value)} placeholder={starting_price}/>
                 <input type="button" value="+" class="button-plus border-0 icon-shape icon-sm bg-transparent " data-field="quantity" onClick={handleIncrementClick}/>
-                <button id="btnSubmit"  class="btn btn-info form-control btn-block mx-5" type="submit" >Bid</button>
-            </form>
+                <button id="btnSubmit"  class="btn btn-info form-control btn-block mx-5" type="submit" 
+                onClick={handleBidClick} >Bid</button>
+
+                {showModal && (
+                 <div className="modal">
+                    <div onClick={handleCancelClick} className="overlay"></div>
+                    <div className="confirm-bid-card">
+                      <div className='modalCloseBtn'><button onClick={handleCancelClick}>X</button></div>
+                        <div className="confirm-bid-card__image">
+                        <img src="/bid.jpg"/>
+                        </div>
+                        <div className="confirm-bid-card__details">
+                          <h2>Confirm Your Bid</h2>
+                          <p>You have placed a bid for $ {bidAmount}. Should we place this as your Bid? </p>
+                          <button className="confirm-bid-card__button" onClick={(e) => handleConfirmBidSubmit(e)}>Yes, Place My Bid</button> 
+                          <button className="confirm-bid-card__button-cancel" onClick={handleCancelClick}>Cancel</button>
+                        </div>
+                    </div>
+               </div>
+
+                )}
+
+            </div>
             <p className='mt-5'>Category: <span  style={{fontWeight: '500', color:'#3E54AC'}} >{category.category_name}</span> </p>
           </div> 
 
@@ -148,6 +186,7 @@ function BidPage() {
           </div>		
       </div>
   </div>
+  </>
   );
 }
 

@@ -11,7 +11,7 @@ function HeroSection() {
           <h1>Winning bids, one click at a time</h1>
           <h2>Where auctions meet technology for a seamless bidding experience.</h2>
           <div class="d-flex justify-content-center justify-content-lg-start">
-            <Link to='/login' class="btn-get-started scrollto">Get Started </Link>
+            <Link to='/auctions' class="btn-get-started scrollto">View Auctions </Link>
             <a href="https://youtu.be/iMmtsJlSylc" class="glightbox btn-watch-video" target="_blank" style={{textDecoration: 'none'}}><i class="bi bi-play-circle"></i><span style={{color: "#47b2e4"}}>Watch Video</span></a>
           </div>
         </div>
