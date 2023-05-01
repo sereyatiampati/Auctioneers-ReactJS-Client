@@ -38,6 +38,7 @@ function Seller({ user }) {
     }, [user, navigate]);
 
     console.log(userprods)
+    console.log(products);
     const handleDelete = async (productId) => {
         try {
             const response = await fetch(`${API_BASE_URL}/products/${productId}`, {
@@ -91,6 +92,9 @@ function Seller({ user }) {
 
 
     console.log(user.seller_id)
+
+    
+    
  
     const oneproduct = userprods.map((product, index) => {
         const startdate = moment(product.start_date).format('DD MMMM YYYY HH:mm');
@@ -109,9 +113,9 @@ function Seller({ user }) {
                 </td>
                 <td>{product.starting_price * 135}</td>
                 <td>{startdate}</td>
-                <td>22000</td>
+                <td>{product.count}</td>
                 <td>{enddate}</td>
-                <td>210000</td>
+                <td>{product.highest_bid}</td>
                 <th scope="col">
                     <button className="seller-button-delete" onClick={(e) => handleDelete(product.id)}>
                         <i className="far fa-trash-can"></i>
