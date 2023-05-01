@@ -18,6 +18,7 @@ import BidderPage from './components/bidderpage/BidderPage';
 import CreateProduct from './components/createProduct/CreateProduct';
 import { getJwtToken, getJSONPayloadFromJwt } from './utilities/auth';
 import Editproduct from './components/Editproduct/Editproduct';
+import ProductCategories from './components/ProductsContainer/ProductCategories';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -47,6 +48,7 @@ function App() {
           {/* A guest user routes */}
           <Route path='/signup' element={<Signup setUser={setUser} />}/>
           <Route path='/' element={<Home/>}/>
+          <Route path='categories/:categoryID' element={<ProductCategories />}/>
           <Route path='/auctions' element={<BidderPage/>}/>
           <Route path='/vendors' element={<Vendors/>}/>
           <Route path='/product' element={<BidPage/>}/>
