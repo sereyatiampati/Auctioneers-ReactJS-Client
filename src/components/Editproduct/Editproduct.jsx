@@ -40,8 +40,8 @@ export default function Editproduct() {
         const updatedProduct = {
             name: name,
             category_id: category.id,
-            start_time: startTime,
-            end_time: endTime,
+            start_date: startTime,
+            end_date: endTime,
             starting_price: startingBid,
             description: description,
             image_url: imageUrl
