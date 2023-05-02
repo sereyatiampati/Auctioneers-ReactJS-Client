@@ -121,7 +121,7 @@ function Categories () {
                     style={cat}
                     onClick={() => {
                     navigator("/categories/9")
-                    }}> <img src="https://ibid.modeltheme.com/vuejs/img/laptop-cat1.ffd64937.jpg" height="100" width="100" /> </div>
+                    }}> <img src="https://images.unsplash.com/photo-1547932087-59a8f2be576e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjF8fGhlYWRwaG9uZXMlMjAlMjYlMjBzbWFydHdhdGNoZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" height="100" width="100" /> </div>
                 </div>
             </div>
         </div>
@@ -133,7 +133,7 @@ function Categories () {
                     style={cat}
                     onClick={() => {
                     navigator("/categories/10")
-                    }}> <img src="https://ibid.modeltheme.com/vuejs/img/laptop-cat1.ffd64937.jpg" height="100" width="100" /> </div>
+                    }}> <img src="https://images.unsplash.com/photo-1600322305530-45714a0bc945?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8dmFjdXVtJTIwY2xlYW5lcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" height="100" width="100" /> </div>
                 </div>
             </div>
         </div>
@@ -145,7 +145,7 @@ function Categories () {
                     style={cat}
                     onClick={() => {
                     navigator("/categories/11")
-                    }}> <img src="https://ibid.modeltheme.com/vuejs/img/laptop-cat1.ffd64937.jpg" height="100" width="100" /> </div>
+                    }}> <img src="https://plus.unsplash.com/premium_photo-1668614524295-c3bb5bb3a2b2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aG91c2Vob2xkJTIwSXRlbXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" height="100" width="100" /> </div>
                 </div>
             </div>
         </div>
@@ -157,7 +157,7 @@ function Categories () {
                     style={cat}
                     onClick={() => {
                     navigator("/categories/12")
-                    }}> <img src="https://ibid.modeltheme.com/vuejs/img/laptop-cat1.ffd64937.jpg" height="100" width="100" /> </div>
+                    }}> <img src="https://images.unsplash.com/photo-1545875615-86f54b81a82d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Y3VydmVkJTIwdHZ8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" height="100" width="100" /> </div>
                 </div>
             </div>
         </div>
