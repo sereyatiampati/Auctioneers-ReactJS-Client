@@ -38,7 +38,6 @@ function Seller({ user }) {
     }, [user, navigate]);
 
     console.log(userprods)
-    console.log(products);
     const handleDelete = async (productId) => {
         try {
             const response = await fetch(`${API_BASE_URL}/products/${productId}`, {
@@ -67,6 +66,7 @@ function Seller({ user }) {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${getJwtToken()}`,
                 },
+                body: JSON.stringify({...userprods, end_date: moment().toISOString()}),
             });
             if (response.ok) {
                 const updatedProducts = userprods.map((product) => {
@@ -114,12 +114,6 @@ function Seller({ user }) {
                 <td>{enddate}</td>
                 <td>{product.highest_bid}</td>
                 <th scope="col">
-                    <button className="seller-button-delete" onClick={(e) => handleDelete(product.id)}>
-                        <i className="far fa-trash-can"></i>
-                    </button>
-                </th>
-                <th scope="col">
-
                     <button className="seller-button-delete" onClick={(e) => handleDelete(product.id)}>
                         <i className="far fa-trash-can"></i>
                     </button>

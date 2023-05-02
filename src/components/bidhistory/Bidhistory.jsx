@@ -24,6 +24,10 @@ function Bidhistory() {
     });
   }, []);
 
+  console.log(bids);
+
+  
+
 
 
   return (
@@ -44,23 +48,26 @@ function Bidhistory() {
 {bids.length > 0 && (
           <ul className="list-group list-group-flush">
             {bids.map((bid) => (
+              // const startdate = moment(bid.product.start_date).format('DD MMMM YYYY HH:mm');
+              // const enddate = moment(bid.product.end_date).format('DD MMMM YYYY HH:mm')
               <li key={bid.id} className="list-group-item">
                 <div className="row">
                   <div className="col-md-6">
                     <div className="item-image">
-                      <img src={bid.image} alt={bid.name} />
+                      <img src={bid.product.image} alt={bid.product.name} />
                     </div>
                     <div className="item-details">
-                      <h5 className="item-name">{bid.name}</h5>
-                      <p className="item-description">{bid.description}</p>
+                      <h5 className="item-name">{bid.product.name}</h5>
+                      <p className="item-description">{bid.product.description}</p>
                     </div>
                   </div>
 <div className="col-md-6">
                     <div className="item-bid-details">
-                      <p className="item-start-price">Starting price: {bid.starting_price}</p>
-                      <p className="item-start-price">Starting price: {bid.starting_price}</p>
-                      <p className="item-start-date">Start time: {bid.start_date}</p>
-                      <p className="item-end-date">End time: {bid.end_date}</p>
+                      <p className="item-start-price"><b> Your Bid: {bid.bid_amount}</b></p>
+                      <p className="item-start-price">Starting price: {bid.product.starting_price}</p>
+                      <p className="item-start-date">Start time: {bid.product.start_date}</p>
+                      <p className="item-end-date">End time: {bid.product.end_date}</p>
+                      <p className="item-end-date"><strong>Highest Bid: {bid.product.highest_bid}</strong></p>
                     </div>
                     </div>
                 </div>
