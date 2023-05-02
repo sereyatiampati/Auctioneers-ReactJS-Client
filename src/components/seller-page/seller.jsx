@@ -8,6 +8,10 @@ import "moment-timezone"
 import API_BASE_URL from "../../utilities/env"
 import { getJwtToken } from "../../utilities/auth";
 
+//toast
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function Seller({ user }) {
     const navigate = useNavigate();
 
@@ -50,6 +54,16 @@ function Seller({ user }) {
             if (response.ok) {
                 setProducts(products.filter(product => product.id !== productId));
                 setUserprods(userprods.filter(product => product.id !== productId));
+                toast.error(`Product Deleted successfully!`, {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                    });
             } else {
                 throw new Error('Failed to delete product');
             }
@@ -108,7 +122,7 @@ function Seller({ user }) {
                 <td>
                     <span className={`font-weight-bold ${statusClass}`}>{statusLabel}</span>
                 </td>
-                <td>{product.starting_price * 135}</td>
+                <td>{product.starting_price}</td>
                 <td>{startdate}</td>
                 <td>{product.count}</td>
                 <td>{enddate}</td>
@@ -125,7 +139,8 @@ function Seller({ user }) {
                 </th>
                 <th scope="col">
                     {isActive ? (
-                        <button className="seller-button" onClick={(e) => handleCloseBid(product.id)}>
+                        <button className="seller-button text-danger" onClick={(e) => handleCloseBid(product.id)}>
+                            <i class="fa-solid fa-triangle-exclamation"></i>
                             Close bid
                         </button>
                     ) : (
@@ -140,7 +155,7 @@ function Seller({ user }) {
 
     console.log(products)
     return (
-        <>
+        <div className="sellerDashboard">
             <div class="extend-height">
                 <div class="container-fluid seller-page-banner-background">
                     <div class="row align-items-center py-4">
@@ -157,13 +172,13 @@ function Seller({ user }) {
                     <table class="table mt-5">
                         <thead>
                             <tr>
-                                <th scope="col">Auction number</th>
+                                <th scope="col">No.</th>
                                 <th scope="col">Auctioned product</th>
                                 <th scope="col">Category</th>
                                 <th scope="col">Auction status</th>
-                                <th scope="col">Reserve price (KES)</th>
+                                <th scope="col">Reserve price ($)</th>
                                 <th scope="col">Auction start time</th>
-                                <th scope="col">Bidders</th>
+                                <th scope="col">Totals Bids</th>
                                 <th scope="col">Auction end time</th>
                                 <th scope="col">Highest bid price</th>
                                 {/* <th scope="col">Actions</th> */}
@@ -176,7 +191,8 @@ function Seller({ user }) {
                     </table>
                 </div>
             </div>
-        </>
+            <ToastContainer/>
+        </div>
     )
 
 }

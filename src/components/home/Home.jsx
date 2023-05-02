@@ -6,12 +6,12 @@ import HomeContact from "./HomeContact";
 import LatestAuctions from "./LatestAuctions";
 import Newsletter from "./Newsletter";
 import React, {useState, useEffect} from "react";
-import API_BASE_URL from "../../utilities/env";
+import API_BASE_URL from '../../utilities/env';
 
 function Home() {
     const [latestProducts, setLatestProducts]=useState([])
     useEffect(() => {
-        fetch(`${API_BASE_URL}/productbids/${id}`).then((response) => {
+        fetch(`${API_BASE_URL}/latest_products`).then((response) => {
           if (response.ok) {
             response.json().then((data) => setLatestProducts(data));
           }

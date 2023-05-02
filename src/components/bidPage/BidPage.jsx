@@ -1,10 +1,16 @@
 import React from 'react';
 import {useEffect, useState} from 'react'
 import {useNavigate, useParams} from 'react-router-dom'
-import { getJwtToken, getJSONPayloadFromJwt } from '../../utilities/auth'
+import { getJwtToken} from '../../utilities/auth'
 import API_BASE_URL from '../../utilities/env';
+
+// styled components
 import './BidPage.css'
 import './../bidConfirmation/ConfirmBidCard.css'
+
+//toast
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function BidPage() {
@@ -34,7 +40,7 @@ function BidPage() {
                   setCategory(category)
         });
 
-        fetch(`https://testing-e1kb.onrender.com/productbids/${id}`)
+        fetch(`${API_BASE_URL}/productbids/${id}`)
       .then((r) => r.json())
       .then((bids) => {
         setBids(bids);
@@ -57,7 +63,6 @@ function BidPage() {
 
 
     function handleConfirmBidSubmit(e) {
-        // e.preventDefault();
         setErrors([])
         let bidInfo= {
           bid_amount: bidAmount,
@@ -79,6 +84,16 @@ function BidPage() {
                 console.log(bid)
                 console.log("Bid submitted!")
                 setShowModal(false)
+                toast.success(`Successfully bidded $${bidAmount}`, {
+                  position: "top-center",
+                  autoClose: 5000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "colored",
+                  });
               })
             }
             else {
@@ -93,6 +108,16 @@ function BidPage() {
 
   function handleCancelClick() {
     setShowModal(false);
+    toast.error('Bid Cancelled!', {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      });
   }
 
   if(showModal) {
@@ -111,7 +136,6 @@ function BidPage() {
           <div className="col-5" style={{border:'0px solid gray'}}>
               <h3>{name}</h3>    
               <h5 style={{color:'#3E54AC'}}><a >{words[0]}</a>
-              {/* <small style={{color:'#3E54AC'}}>(5054 views)</small>*/} 
               </h5> 
   
               <h6 className="title-price" style={{marginBottom:'10px'}}><small>Current highest bid: </small></h6>
@@ -134,7 +158,7 @@ function BidPage() {
                         </div>
                         <div className="confirm-bid-card__details">
                           <h2>Confirm Your Bid</h2>
-                          <p>You have placed a bid for $ {bidAmount}. Should we place this as your Bid? </p>
+                          <p>You have placed a bid for <span style={{color: 'cornflowerblue'}}>$ {bidAmount}</span>. Should we place this as your Bid? </p>
                           <button className="confirm-bid-card__button" onClick={(e) => handleConfirmBidSubmit(e)}>Yes, Place My Bid</button> 
                           <button className="confirm-bid-card__button-cancel" onClick={handleCancelClick}>Cancel</button>
                         </div>
@@ -185,6 +209,7 @@ function BidPage() {
               </div>
           </div>		
       </div>
+      <ToastContainer/>
   </div>
   </>
   );

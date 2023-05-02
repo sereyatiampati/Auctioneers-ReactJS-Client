@@ -47,7 +47,7 @@ function  FAQ(){
                   </h2>
                   <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
                     <div class="accordion-body">
-                    If you win an item in an auction, you'll typically be emailed to pay for the item plus any shipping or handling fees. The auctioneer will then ship the item to you.
+                    If you win an item in an auction, you'll typically be emailed to pay within 24 hours for the item plus any shipping or handling fees. The auctioneer will then ship the item to you.
                     </div>
                   </div>
                 </div>
