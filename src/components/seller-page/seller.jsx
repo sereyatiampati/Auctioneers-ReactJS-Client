@@ -80,6 +80,7 @@ function Seller({ user }) {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${getJwtToken()}`,
                 },
+                body: JSON.stringify({...userprods, end_date: moment().toISOString()}),
             });
             if (response.ok) {
                 const updatedProducts = userprods.map((product) => {
@@ -123,9 +124,9 @@ function Seller({ user }) {
                 </td>
                 <td>{product.starting_price}</td>
                 <td>{startdate}</td>
-                <td>22000</td>
+                <td>{product.count}</td>
                 <td>{enddate}</td>
-                <td>210000</td>
+                <td>{product.highest_bid}</td>
                 <th scope="col">
                     <button className="seller-button-delete" onClick={(e) => handleDelete(product.id)}>
                         <i className="far fa-trash-can"></i>
