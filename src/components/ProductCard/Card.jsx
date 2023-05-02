@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 import React, {useState, useEffect} from "react";
 import API_BASE_URL from '../../utilities/env';
 function Card({product}) {
-    const {id,name, image, starting_price, bids, category, seller, count} = product
+    const {id, name, image, starting_price, bids, category, seller, count} = product
     const [hbid, setHbid] = useState([])
     const [timeRemaining, setTimeRemaining] = useState('');
     const navigate = useNavigate()
@@ -49,7 +49,7 @@ function Card({product}) {
                                     </h6>
 
                                     <p style={{color: "#4A60A1"}} data-abc="true">Starting Price: ${starting_price} </p>
-                                    <p style={{color: "#4A60A1"}} data-abc="true">Top Bid: ${hbid.bid_amount} </p>
+                                    <p style={{color: "#4A60A1"}} data-abc="true">Top Bid: ${hbid.bid_amount == null ? starting_price : hbid.bid_amount} </p>
                                 </div>
 
                                 <p class="text-muted" data-abc="true">{count} bids placed</p>
