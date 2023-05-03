@@ -101,8 +101,8 @@ Back end
   src="./readme-images/bidhistory.png"
   alt="Auctioneer Platform Buyer's Bid History Page"
   title="Bid history page">
-  
-* Seller Dashboard
+
+* Seller's Dashboard
 <img
   src="./readme-images/dashboard.png"
   alt="Auctioneers Platform Seller's Dashboard"
