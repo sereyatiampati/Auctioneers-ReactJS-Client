@@ -94,8 +94,14 @@ Back end
 <img
   src="./readme-images/bidconfirm.png"
   alt="Auctioneer Platform Confirmation Modal"
-  title="product">
+  title="bid confirmation modal">
 
+* Bid History
+<img
+  src="./readme-images/bidhistory.png"
+  alt="Auctioneer Platform Buyer's Bid History Page"
+  title="Bid history page">
+  
 * Seller Dashboard
 <img
   src="./readme-images/dashboard.png"
