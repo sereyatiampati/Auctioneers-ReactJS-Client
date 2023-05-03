@@ -77,11 +77,25 @@ Back end
   src="./readme-images/homepage.png"
   alt="Auctioneers Platform Landing Page"
   title="Homepage">
+
 * Auctions
 <img
   src="./readme-images/auctions.png"
   alt="Auctioneer Platform Auctions Page"
   title="Auctions">
+
+* Product view
+<img
+  src="./readme-images/product.png"
+  alt="Auctioneer Platform Product Page"
+  title="product">
+
+* Confirm Bid
+<img
+  src="./readme-images/bidconfirm.png"
+  alt="Auctioneer Platform Confirmation Modal"
+  title="product">
+
 * Seller Dashboard
 <img
   src="./readme-images/dashboard.png"
