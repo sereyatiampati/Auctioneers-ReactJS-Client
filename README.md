@@ -67,9 +67,10 @@ Back end
 * ability to view total number of bids placed on each product
 * ability to view highest bid amount placed on each active product
 * ability to view countdown timer on each active bid
+* ability to filter products by category
 * Users will see the winning bid once the bid is closed. 
 * Winning bidder receives email notification
-* Responsive design
+* Responsive design for users of different screen sizes.
 
 ## Front-end Sample Design
 * Landing page
