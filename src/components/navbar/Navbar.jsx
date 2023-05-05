@@ -24,7 +24,7 @@ function Navbar({user, setUser}) {
         <ul>
           <li><NavLink to= '/'class="nav-link scrollto active" >Home</NavLink></li>
           <li><NavLink to='/auctions'class="nav-link scrollto" >Auctions</NavLink></li>
-          <li><NavLink to='/vendors' class="nav-link scrollto" >Vendors</NavLink></li>
+          {/* <li><NavLink to='/vendors' class="nav-link scrollto" >Vendors</NavLink></li> */}
           <li><NavLink to='/contact'  class="nav-link   scrollto" >Contact</NavLink></li>
           <li><NavLink to='/login' class="nav-link scrollto">Sign-in</NavLink></li>
           <li><a class="getstarted scrollto" onClick={()=> navigate('/signup')}>Get Started</a></li>
