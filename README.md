@@ -32,6 +32,7 @@ Back end
 - CSS
 - HTML
 - Ruby on Rails
+- Bcrypt
 
 
 ### Setup Requirements
